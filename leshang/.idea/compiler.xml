@@ -2,26 +2,43 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="ls-auth-common" />
+        <module name="ls-auth-service" />
+        <module name="ls-cart" />
         <module name="ls-common" />
         <module name="ls-gateway" />
         <module name="ls-item-interface" />
         <module name="ls-item-service" />
+        <module name="ls-order" />
         <module name="ls-registry" />
+        <module name="ls-search" />
+        <module name="ls-user-interface" />
+        <module name="ls-user-service" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ls-auth" options="-parameters" />
+      <module name="ls-auth-common" options="-parameters" />
+      <module name="ls-auth-service" options="-parameters" />
+      <module name="ls-cart" options="-parameters" />
       <module name="ls-common" options="-parameters" />
       <module name="ls-gateway" options="-parameters" />
       <module name="ls-item" options="-parameters" />
       <module name="ls-item-interface" options="-parameters" />
       <module name="ls-item-service" options="-parameters" />
+      <module name="ls-order" options="-parameters" />
       <module name="ls-registry" options="-parameters" />
+      <module name="ls-search" options="-parameters" />
+      <module name="ls-user" options="-parameters" />
+      <module name="ls-user-interface" options="-parameters" />
+      <module name="ls-user-service" options="-parameters" />
     </option>
   </component>
 </project>

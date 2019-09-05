@@ -7,6 +7,19 @@
     <groupId>com.leshang.parent</groupId>
     <artifactId>leshang</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>ls-registry</module>
+        <module>ls-gateway</module>
+        <module>ls-item</module>
+        <module>ls-common</module>
+        <module>ls-user</module>
+        <module>ls-cart</module>
+        <module>ls-auth</module>
+        <module>ls-order</module>
+        <module>ls-search</module>
+        <!--  <module>ls-upload</module>
+          <module>ls-search</module>-->
+    </modules>
     <packaging>pom</packaging>
 
     <name>leshang</name>
