@@ -8,7 +8,6 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/ls-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/ls-registry/pom.xml" />
         <option value="$PROJECT_DIR$/ls-common/pom.xml" />
         <option value="$PROJECT_DIR$/ls-item/pom.xml" />

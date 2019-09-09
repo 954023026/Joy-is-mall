@@ -4,8 +4,10 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
+
 @Data
 @Table(name = "zk_item")
 public class ZkItem implements Serializable {
@@ -25,7 +27,7 @@ public class ZkItem implements Serializable {
     private String image;
 
     private Long cid;
-
+    @Transient
     private String cName;
 
     private Byte status;

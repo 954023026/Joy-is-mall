@@ -10,10 +10,14 @@ import org.springframework.web.filter.CorsFilter;
 public class GlobalCorsConfig {
     @Bean
     public CorsFilter corsFilter() {
+
         //1.添加CORS配置信息
-        CorsConfiguration config = new CorsConfiguration();
+        final CorsConfiguration config = new CorsConfiguration();
         //1) 允许的域,不要写*，否则cookie就无法使用了
+        config.addAllowedOrigin("http://www.leshang.com");
+        config.addAllowedOrigin("http://api.leshang.com");
         config.addAllowedOrigin("http://manage.leshang.com");
+        config.addAllowedOrigin("*");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);
         //3) 允许的请求方式
@@ -30,7 +34,7 @@ public class GlobalCorsConfig {
         config.setMaxAge(3600L);
 
         //2.添加映射路径，我们拦截一切请求
-        UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
+        final UrlBasedCorsConfigurationSource configSource = new UrlBasedCorsConfigurationSource();
         configSource.registerCorsConfiguration("/**", config);
 
         //3.返回新的CorsFilter.

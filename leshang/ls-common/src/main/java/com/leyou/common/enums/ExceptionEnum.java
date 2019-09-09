@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public enum ExceptionEnum {
 
     PRICE_CANNOT_NE_NULL(400,"价格不能为空！"),
-    CATEGORY_NOT_FOND(404,"商品分类没查询到！"),
+    ITEM_NOT_FOND(404,"商品没查询到！"),
     UPDATE_BRAND_FAILED(500, "品牌更新失败"),
     SPEC_PARAM_NOT_FOUND(404,"商品规格组没查到"),
 

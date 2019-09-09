@@ -17,6 +17,7 @@
         <module>ls-auth</module>
         <module>ls-order</module>
         <module>ls-search</module>
+        <module>ls-gateway</module>
         <!--  <module>ls-upload</module>
           <module>ls-search</module>-->
     </modules>

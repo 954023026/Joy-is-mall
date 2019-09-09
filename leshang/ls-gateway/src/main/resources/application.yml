@@ -16,7 +16,11 @@ zuul:
   prefix: /api # 添加路由前缀
   retryable: true
   routes:
-    item-service: /item/**    #注册服务
+    item-service:
+      path: /item/**
+      serviceId: item-service
+      strip-prefix: false   #代理前缀不移除，保留item
+    search-service: /search/**
     upload-service:
       path: /upload/**
       serviceId: upload-service
