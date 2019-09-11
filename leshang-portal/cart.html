@@ -1,0 +1,536 @@
+<!doctype html>
+<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="meta description">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="${path}/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="${path}/assets/img/icon.png">
+
+    <!-- Title -->
+    <title>Zuka</title>
+
+    <!-- ************************* CSS Files ************************* -->
+
+    <!-- All Plugins CSS  -->
+    <link rel="stylesheet" href="assets/css/plugins.css">
+
+    <!-- Revoulation CSS  -->
+    <link rel="stylesheet" href="assets/css/revoulation.css">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+
+
+    <!-- modernizr JS
+      ============================================ -->
+    <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- ************************* Vue Files ************************* -->
+    <script src="assets/js/vue/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+</head>
+
+<body class="default-color">
+
+<!-- Preloader Start -->
+<div class="zuka-preloader active">
+    <div class="zuka-preloader-inner h-100 d-flex align-items-center justify-content-center">
+        <div class="zuka-child zuka-bounce1"></div>
+        <div class="zuka-child zuka-bounce2"></div>
+        <div class="zuka-child zuka-bounce3"></div>
+    </div>
+</div>
+<!-- Preloader End -->
+
+<!-- Main Wrapper Start -->
+<div class="wrapper">
+    <!-- Header Area Start -->
+    <!--页面顶部，由js动态加载-->
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <div class="nav-top"></div>
+    <script type="text/javascript">$(".nav-top").load("module/header.html");</script>
+    <!-- Header Area End -->
+
+    <!-- Breadcrumb area Start -->
+    <div class="breadcrumb-area pt--40 pb--30 pb-md--20">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="page-title">购物车</h1>
+                    <ul class="breadcrumb justify-content-center">
+                        <li><a href="index">主页</a></li>
+                        <li class="current"><span>购物车</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb area End -->
+
+    <!-- Main Content Wrapper Start -->
+    <div id="content" class="main-content-wrapper">
+        <div class="page-content-inner">
+            <div class="container">
+                <div class="row pt--50 pt-md--40 pt-sm--20 pb--80 pb-md--60 pb-sm--40">
+                    <div class="col-lg-8 mb-md--30">
+                        <form class="cart-form" action="#">
+                            <div class="row no-gutters">
+                                <div class="col-12">
+                                    <div class="table-content table-responsive">
+                                        <table class="table text-center">
+                                            <thead>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                                <th class="text-left">产品</th>
+                                                <th>单价</th>
+                                                <th>数量</th>
+                                                <th>总价</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:if test="${not empty sessionScope.cart.cartItems}">
+                                                <c:forEach items="${sessionScope.cart.cartItems}" var="zkItem">
+                                                    <tr>
+                                                        <td class="product-remove text-left"><a onclick="deletItem('${zkItem.product.id}')" id="deletItem"><i class="dl-icon-close"></i></a></td>
+                                                        <td class="product-thumbnail text-left">
+                                                            <img src="${path}/${zkItem.product.image}" alt="Product Thumnail">
+                                                        </td>
+                                                        <td class="product-name text-left wide-column">
+                                                            <h3>
+                                                                <a href="product-details?id=${zkItem.product.id}">${zkItem.product.title}</a>
+                                                            </h3>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$${zkItem.product.price}.00</span>
+                                                            </span>
+                                                        </td>
+                                                        <td class="product-quantity">
+                                                            <div class="quantity">
+                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="${zkItem.num}" min="1" >
+                                                            </div>
+                                                            <input type="hidden" value="${zkItem.product.id}" >
+                                                        </td>
+                                                        <td class="product-total-price">
+                                                            <span class="product-price-wrapper">
+                                                               <span class="money" id="totalMon" aria-valuetext="1"  value="1">$${zkItem.subTotal}.0</span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:if>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters border-top pt--20 mt--20">
+                                <div class="col-sm-6">
+                                    <div class="coupon">
+                                        <input type="text" id="coupon" name="coupon" class="cart-form__input" placeholder="Coupon Code">
+                                        <button type="button" onclick="save()"  class="cart-form__btn">申请优惠券</button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 text-sm-right">
+                                    <button type="button" class="cart-form__btn" onclick="clearCart()">清空购物车</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="cart-collaterals">
+                            <div class="cart-totals">
+                                <h5 class="font-size-14 font-bold mb--15">购物车总数</h5>
+                                <div class="cart-calculator">
+                                    <div class="cart-calculator__item">
+                                        <div class="cart-calculator__item--head">
+                                            <span >总计</span>
+                                        </div>
+                                        <div class="cart-calculator__item--value">
+                                            <span id="total">$${sessionScope.cart.total}.0</span>
+                                        </div>
+                                    </div>
+                                    <div class="cart-calculator__item">
+                                        <div class="cart-calculator__item--head">
+                                            <span>运费</span>
+                                        </div>
+                                        <div class="cart-calculator__item--value">
+                                            <span>总共: $20.00</span>
+                                            <div class="shipping-calculator-wrap">
+                                                <a href="#shipping_calculator" class="expand-btn">进行结算</a>
+                                                <form id="shipping_calculator" class="form shipping-calculator-form hide-in-default">
+                                                    <div class="form__group mb--10">
+                                                        <select id="calc_shipping_country" name="calc_shipping_country" onchange="loadArea(this.value,'city')" class="nice-select">
+                                                            <option value="">选择一个城市</option>
+                                                            <option value="BD" selected="selected">Bangladesh</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form__group mb--10">
+                                                        <select id="calc_shipping_district" name="calc_shipping_district" class="nice-select">
+                                                            <option value="">城市…</option>
+                                                            <option>BARISAL</option>
+                                                            <option>BHOLA</option>
+                                                            <option>BANDARBAN</option>
+                                                            <option>BRAHMANBARIA</option>
+                                                            <option>CHANDPUR</option>
+                                                            <option>CHITTAGONG</option>
+                                                            <option>COMILLA</option>
+                                                            <option>COX'S BAZAR</option>
+                                                            <option>DHAKA</option>
+                                                            <option>FARIDPUR</option>
+                                                            <option>FENI</option>
+                                                            <option>GAZIPUR</option>
+                                                            <option>GOPALGANJ</option>
+                                                            <option>JAMALPUR</option>
+                                                            <option>KHAGRACHHARI</option>
+                                                            <option>KISHOREGONJ</option>
+                                                            <option>LAKSHMIPU</option>
+                                                            <option>RMADARIPUR</option>
+                                                            <option>MUNSHIGANJ</option>
+                                                            <option>MYMENSINGH</option>
+                                                            <option>NARAYANGANJ</option>
+                                                            <option>NARSINGDI</option>
+                                                            <option>NETRAKONA</option>
+                                                            <option>NOAKHALI</option>
+                                                            <option>RANGAMATI </option>
+                                                            <option>RAJBARI</option>
+                                                            <option>SHARIATPUR</option>
+                                                            <option>SHERPUR</option>
+                                                            <option>TANGAIL</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="form__group mb--10">
+                                                        <input type="text" name="calc_shipping_city" id="calc_shipping_city" placeholder="详细地址">
+                                                    </div>
+
+                                                    <div class="form__group">
+                                                        <input type="submit" value="Update Totals">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-calculator__item order-total">
+                                        <div class="cart-calculator__item--head">
+                                            <span>总计</span>
+                                        </div>
+                                        <div class="cart-calculator__item--value">
+                                                <span class="product-price-wrapper">
+
+                                                    <span class="money" id="checkOutMon">$<c:if test="${not empty sessionScope.cart.total }">${sessionScope.cart.total + 20}.0</c:if></span>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="checkout" class="btn btn-fullwidth btn-style-1">
+                                结账
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main Content Wrapper Start -->
+
+    <!-- Footer Start -->
+    <footer class="footer footer-3 border-top">
+        <div class="footer-top pt--80 pt-md--60">
+            <div class="container-fluid">
+                <div class="row footer-row">
+                    <div class="footer-column footer-column-1 order-first mb-xl--35 mb-md--30 mb-sm--20">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <div class="textwidget mb--30 mb-sm--20">
+                                <a href="index" class="footer-logo">
+                                    <img src="${path}/assets/img/logo/logo.png" alt="Logo" class="logo-img">
+                                </a>
+                            </div>
+                            <div class="textwidget mr--40 mr-sm--0">
+                                <p>Zuka 2019 流行单品,舒适百搭,全场购物满额享优惠!时尚,简约,优雅,舒适的穿搭体验,尽在Zuka祖卡官方旗舰店!</p>
+                            </div>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-2 order-xl-2 order-3 mb-sm--30 mb-xs--25">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">帮助</h3>
+                            <ul class="widget-menu">
+                                <li><a href="shop-collections">收藏</a></li>
+                                <li><a href="#">尺寸表</a></li>
+                                <li><a href="#">退货渠道</a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-3 order-xl-3 order-4 mb-sm--30">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25">关务ZuKa</h3>
+                            <ul class="widget-menu">
+                                <li><a href="about-us">关于我们</a></li>
+                                <li><a href="#">我们的服务</a></li>
+                                <li><a href="#">加入 Zuka</a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-4 order-xl-4 order-5 mb-xs--25">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25">开放时间</h3>
+                            <ul class="widget-menu">
+                                <li><span>周一 至 周六</span></li>
+                                <li><span>7:00 – 22:00</span></li>
+                                <li><span>周日</span></li>
+                                <li><span>9:00 – 20:00</span></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-5 order-xl-5 order-6">
+                        <!-- Contact Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">联系我们</h3>
+                            <div class="widget_contact_info">
+                                <ul>
+                                    <li><i class="fa fa-phone"></i><span>(+612) 2531 5600</span></li>
+                                    <li><i class="fa fa-envelope"></i><a href="mailto:info@company.com">info@company.com</a></li>
+                                    <li><i class="fa fa-map-marker"></i><span>Get direction</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Contact Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-6 order-xl-6 order-2 mb-xl--35 mb-md--30 mb-xs--25">
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">MailChimp Signup Form</h3>
+                            <!-- Subscribe widget Start Here -->
+                            <div class="subscribe-widget mb--30">
+                                <form action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a" class="newsletter-form mc-form" method="post" target="_blank">
+                                    <input type="email" name="EMAIL" id="newsletter_email" placeholder="请输入你的邮箱." required="required" class="newsletter-form__input">
+                                    <button type="submit" class="newsletter-form__submit">提交</button>
+                                </form>
+                            </div>
+                            <!-- Subscribe widget End Here -->
+
+                            <!-- Social Icons Start Here -->
+                            <ul class="social social-medium">
+                                <li class="social__item">
+                                    <a href="https://twitter.com" class="social__link">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://plus.google.com" class="social__link">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://facebook.com" class="social__link">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://youtube.com" class="social__link">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://instagram.com" class="social__link">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Social Icons End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom pt--45 pb--50 pb-xs--45">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">&copy; 2018 ZUKA. Designed by XianYuan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Search from Start -->
+    <div class="searchform__popup" id="searchForm">
+        <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
+        <div class="searchform__body">
+            <p>开始输入并按Enter键进行搜索</p>
+            <form class="searchform">
+                <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="搜索整个商城">
+                <button type="submit" class="searchform__submit"><i class="dl-icon-search10"></i></button>
+            </form>
+        </div>
+    </div>
+    <!-- Search from End -->
+
+    <!-- Side Navigation Start -->
+    <%@ include file="../insertion/sideNav.jsp" %>
+    <!-- Side Navigation End -->
+
+    <!-- Mini Cart Start -->
+    <%@include file="../insertion/miniCart.jsp"%>
+    <!-- Mini Cart End -->
+
+    <!-- Global Overlay Start -->
+    <div class="zuka-global-overlay"></div>
+    <!-- Global Overlay End -->
+
+    <!-- Modal Start -->
+    <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"><i class="dl-icon-close"></i></span>
+                    </button>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="zuka-element-carousel product-image-carousel nav-vertical-center nav-style-1"
+                                 data-slick-options='{
+                                    "slidesToShow": 1,
+                                    "slidesToScroll": 1,
+                                    "arrows": true,
+                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "dl-icon-left" },
+                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "dl-icon-right" }
+                                }'
+                            >
+                                <div class="product-image">
+                                    <div class="product-image--holder">
+                                        <a href="single-product">
+                                            <img src="${path}/assets/img/products/prod-7-1.jpg" alt="Product Image" class="primary-image">
+                                        </a>
+                                    </div>
+                                    <span class="product-badge sale">sale</span>
+                                </div>
+                                <div class="product-image">
+                                    <div class="product-image--holder">
+                                        <a href="single-product">
+                                            <img src="${path}/assets/img/products/prod-7-2.jpg" alt="Product Image" class="primary-image">
+                                        </a>
+                                    </div>
+                                    <span class="product-badge sale">sale</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="modal-box product-summary">
+                                <div class="product-top-meta d-flex justify-content-between flex-sm-row flex-column-reverse">
+                                    <div class="product-rating d-flex">
+                                        <div class="star-rating star-five">
+                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                        </div>
+                                        <a href="" class="review-link">评价)</a>
+                                    </div>
+                                    <div class="product-navigation">
+                                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
+                                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <h3 class="product-title mb--30 mb-md--20">Fake News Network Abstract Novelty T-Shirt</h3>
+                                <div class="product-price-wrapper mb--30 mb-md--20">
+                                <span class="product-price-old">
+                                    <span class="money">&pound;60.00</span>
+                                </span>
+                                    <span class="money">&pound;49.00</span>
+                                </div>
+                                <p class="product-short-description mb--30 mb-md--20">Zuka 2019 流行单品,舒适百搭,全场购物满额享优惠!时尚,简约,优雅,舒适的穿搭体验,尽在Zuka祖卡官方旗舰店!</p>
+                                <div class="product-action d-flex flex-row align-items-center mb--20">
+                                    <div class="quantity mr--20">
+                                        <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
+                                    </div>
+                                    <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart'">
+                                        Add To Cart
+                                    </button>
+                                    <a href="wishlist" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
+                                    <a href="compare" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
+                                </div>
+                                <div class="product-extra mb--20">
+                                    <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near you</a>
+                                    <a href="#" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and return</a>
+                                </div>
+                                <div class="product-summary-footer">
+                                    <div class="product-meta mb--20">
+                                        <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF. LA-887</span></span>
+                                        <span class="posted_in font-size-12">分类: <a href="shop-sidebar" rel="tag">时尚</a></span>
+                                    </div>
+                                    <div class="product-share-box">
+                                        <span class="font-size-12">分享</span>
+                                        <!-- Social Icons Start Here -->
+                                        <ul class="social social-small">
+                                            <li class="social__item">
+                                                <a href="facebook.com" class="social__link">
+                                                    <i class="fa fa-facebook"></i>
+                                                </a>
+                                            </li>
+                                            <li class="social__item">
+                                                <a href="twitter.com" class="social__link">
+                                                    <i class="fa fa-twitter"></i>
+                                                </a>
+                                            </li>
+                                            <li class="social__item">
+                                                <a href="plus.google.com" class="social__link">
+                                                    <i class="fa fa-google-plus"></i>
+                                                </a>
+                                            </li>
+                                            <li class="social__item">
+                                                <a href="plus.google.com" class="social__link">
+                                                    <i class="fa fa-pinterest-p"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <!-- Social Icons End Here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+</div>
+<!-- Main Wrapper End -->
+
+
+<!-- ************************* JS Files ************************* -->
+
+<!-- All Plugins Js -->
+<script src="${path}/assets/js/plugins.js"></script>
+
+<!-- Main JS -->
+<script src="${path}/assets/js/main.js"></script>
+
+<!-- REVOLUTION JS FILES -->
+<script src="${path}/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
+<script src="${path}/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
+
+<!-- REVOLUTION ACTIVE JS FILES -->
+<script src="${path}/assets/js/revoulation.js"></script>
+</body>
+
+</html>
