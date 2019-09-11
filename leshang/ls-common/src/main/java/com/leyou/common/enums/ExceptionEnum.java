@@ -1,4 +1,4 @@
-package com.leyou.common.enums;
+ package com.leyou.common.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

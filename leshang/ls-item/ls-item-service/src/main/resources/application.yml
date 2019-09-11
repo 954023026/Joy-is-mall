@@ -5,8 +5,10 @@ spring:
     name: item-service
   datasource:
     url: jdbc:mysql:///zuka?useSSL=false&serverTimezone=GMT%2B8
+    #url: jdbc:mysql://192.168.43.150/zuka?useSSL=false&serverTimezone=GMT%2B8
+
     username: root
-    password: sasa
+    password: 123456
     hikari:
       maximum-pool-size: 30
       minimum-idle: 10

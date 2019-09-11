@@ -1,12 +1,14 @@
 package com.leshang.item.web;
 
 import com.leshang.item.pojo.ZkItem;
+import com.leshang.item.pojo.ZkItemCat;
 import com.leshang.item.service.ItemService;
 import com.leyou.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 /**
  * 描述:
@@ -40,5 +42,23 @@ public class ItemController {
         //校验价格
         return ResponseEntity.ok(itemService.queryItemsPage(page,rows,status,key,cid));
     }
-
+    @GetMapping("/findItemById")
+    public ResponseEntity<ZkItem> queryItemsById(Long id){
+        ZkItem item = itemService.finditemById(id);
+        return ResponseEntity.ok(item);
+    }
+    @GetMapping("/getCats")
+    public ResponseEntity<List<ZkItemCat>> queryAllCats(Long cid){
+        List<ZkItemCat> zkItemCats = itemService.queryAllCat();
+        for (ZkItemCat zkItemCat : zkItemCats) {
+            zkItemCat.setSortOrder(itemService.queryItemCountByCatId(zkItemCat.getId()));
+        }
+        return ResponseEntity.ok(zkItemCats);
+    }
+    @GetMapping("/getItemsByCid")
+    public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id){
+        System.out.println(id);
+        List<ZkItem> zkItems = itemService.queryItemsByCatId(id);
+        return ResponseEntity.ok(zkItems);
+    }
 }
