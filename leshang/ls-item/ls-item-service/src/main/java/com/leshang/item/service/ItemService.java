@@ -18,4 +18,8 @@ public interface ItemService {
     Integer queryItemCountByCatId(Long cid);
 
     List<ZkItem> queryItemsByCatId(Long id);
+
+    List<ZkItem> queryItemsByPriceASC();
+
+    List<ZkItem> queryItemsByPriceDESC();
 }

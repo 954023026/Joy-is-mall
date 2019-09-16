@@ -10,11 +10,12 @@ import com.leshang.item.service.ItemService;
 import com.leyou.common.enums.ExceptionEnum;
 import com.leyou.common.exception.LyException;
 import com.leyou.common.vo.PageResult;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
-import sun.plugin.viewer.frame.IExplorerEmbeddedFrame;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -71,18 +72,28 @@ public class ItemServiceImpl implements ItemService {
         return new PageResult<>(info.getTotal(),(long)info.getPages(), zkItems);
     }
 
+    /**
+     * 根据id获取商品信息
+     * @param id 商品id
+     * @return
+     */
     @Override
     public ZkItem finditemById(Long id) {
         ZkItem zkItem=new ZkItem();
         zkItem.setId(id);
         return zkItemMapper.selectOne(zkItem);
     }
-
     @Override
     public List<ZkItemCat> queryAllCat() {
-        List<ZkItemCat> zkItemCats = zkItemCatMapper.selectAll();
+        List<ZkItemCat> zkItemCats = zkItemCatMapper.selectAll();//获取商品所有类别
         return zkItemCats;
     }
+
+    /**
+     * 获取当前商品类别下的商品数量
+     * @param cid 类别id
+     * @return
+     */
     @Override
     public Integer queryItemCountByCatId(Long cid) {
         Example example = new Example(ZkItem.class);
@@ -93,11 +104,28 @@ public class ItemServiceImpl implements ItemService {
         return zkItemMapper.selectCountByExample(example);
     }
 
+    /**
+     * 查找该商品类别下的所有商品
+     * @param id
+     * @return
+     */
     @Override
     public List<ZkItem> queryItemsByCatId(Long id) {
         ZkItem item=new ZkItem();
         item.setCid(id);
         List<ZkItem> itemList = zkItemMapper.select(item);
         return itemList;
+    }
+
+    @Override
+    public List<ZkItem> queryItemsByPriceASC() {
+        List<ZkItem> zkItems = zkItemMapper.queryItemsByPriceASC();
+        return zkItems;
+    }
+
+    @Override
+    public List<ZkItem> queryItemsByPriceDESC() {
+        List<ZkItem> zkItems = zkItemMapper.queryItemsByPriceDESC();
+        return zkItems;
     }
 }

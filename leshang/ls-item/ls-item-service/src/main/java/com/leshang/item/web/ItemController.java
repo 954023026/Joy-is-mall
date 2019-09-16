@@ -42,23 +42,43 @@ public class ItemController {
         //校验价格
         return ResponseEntity.ok(itemService.queryItemsPage(page,rows,status,key,cid));
     }
+
+    /**
+     * 获取商品详情
+     * @param id 商品id
+     * @return
+     */
     @GetMapping("/findItemById")
     public ResponseEntity<ZkItem> queryItemsById(Long id){
         ZkItem item = itemService.finditemById(id);
         return ResponseEntity.ok(item);
     }
+
+    /**
+     * 获取商品类别
+     * @return
+     */
     @GetMapping("/getCats")
-    public ResponseEntity<List<ZkItemCat>> queryAllCats(Long cid){
+    public ResponseEntity<List<ZkItemCat>> queryAllCats(){
         List<ZkItemCat> zkItemCats = itemService.queryAllCat();
         for (ZkItemCat zkItemCat : zkItemCats) {
-            zkItemCat.setSortOrder(itemService.queryItemCountByCatId(zkItemCat.getId()));
+            zkItemCat.setSortOrder(itemService.queryItemCountByCatId(zkItemCat.getId()));// 获取当前商品类别下的商品数量
         }
         return ResponseEntity.ok(zkItemCats);
     }
     @GetMapping("/getItemsByCid")
     public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id){
-        System.out.println(id);
-        List<ZkItem> zkItems = itemService.queryItemsByCatId(id);
+        List<ZkItem> zkItems = itemService.queryItemsByCatId(id);//根据商品类别cid查询当前类别下的所属商品
+        return ResponseEntity.ok(zkItems);
+    }
+    @GetMapping("/queryItemsByPrice")
+    public ResponseEntity<List<ZkItem>> queryItemsByPrice(String orderWay){
+        List<ZkItem> zkItems=null;
+        if(orderWay.equals("ASC")){
+            zkItems = itemService.queryItemsByPriceASC();
+        }else{
+            zkItems = itemService.queryItemsByPriceDESC();
+        }
         return ResponseEntity.ok(zkItems);
     }
 }

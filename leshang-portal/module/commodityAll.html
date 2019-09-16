@@ -32,10 +32,8 @@
                                             </a>
                                             <ul class="product-ordering__list">
                                                 <li class="active"><a href="#">按人气排序</a></li>
-                                                <li><a href="#">按等级排序</a></li>
-                                                <li><a href="#">按上新时间排序</a></li>
-                                                <li><a href="#">按价格排序：从低到高</a></li>
-                                                <li><a href="#">按价格排序：从高到低</a></li>
+                                                <li><a v-on:click="orderByPrice('ASC')">按价格排序：从低到高</a></li>
+                                                <li><a v-on:click="orderByPrice('DESC')">按价格排序：从高到低</a></li>
                                             </ul>
                                         </div>
                                         <div class="product-view-mode">
@@ -213,7 +211,7 @@
                                             <div class="zuka-product-action">
                                                 <div class="product-action d-flex flex-column align-items-end">
                                                     <a class="quickview-btn action-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="详情">
-                                                                <span data-toggle="modal" data-target="#productModal">
+                                                                <span data-toggle="modal" data-target="#productModal" >
                                                                     <i class="dl-icon-view"></i>
                                                                 </span>
                                                     </a>
@@ -255,7 +253,7 @@
                                             </div>
                                             <div class="product-thumbnail-action">
                                                 <a class="quickview-btn action-btn" data-toggle="tooltip" data-placement="top" title="" data-original-title="Quick Shop">
-                                                            <span data-toggle="modal" data-target="#productModal">
+                                                            <span data-toggle="modal"  data-target="#productModal">
                                                                 <i class="dl-icon-view"></i>
                                                             </span>
                                                 </a>
@@ -297,9 +295,7 @@
                     <nav class="pagination-wrap">
                         <ul class="pagination">
                             <li><a href="shop-sidebar.html" class="prev page-number"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li><span class="current page-number">1</span></li>
-                            <li><a href="shop-sidebar.html" class="page-number">2</a></li>
-                            <li><a href="shop-sidebar.html" class="page-number">3</a></li>
+                            <li><span class="current page-number"></span></li>
                             <li><a href="shop-sidebar.html" class="next page-number"><i class="fa fa-angle-double-right"></i></a></li>
                         </ul>
                     </nav>
@@ -407,6 +403,11 @@
             },
             findItemById(id){
                 ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
+                    this.items = resp.data;
+                })
+            },
+            orderByPrice(orderWay){
+                ly.http.get("/item/queryItemsByPrice?orderWay="+orderWay).then(resp => {
                     this.items = resp.data;
                 })
             }

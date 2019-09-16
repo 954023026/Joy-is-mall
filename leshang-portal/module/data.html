@@ -11,26 +11,8 @@
             <div class="col-12">
                 <div class="product-tab tab-style-4">
                     <div class="nav nav-tabs product-tab__head mb--30 mb-sm--5" id="food-product-tab" role="tablist">
-                        <a class="product-tab__link nav-link active" id="nav-food-all-tab" data-toggle="tab" href="#nav-food-all" role="tab" aria-selected="true">
-                            <span>All Product</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-veg-tab" data-toggle="tab" href="#nav-food-veg" role="tab" aria-selected="true">
-                            <span>Vegetable</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-jam-tab" data-toggle="tab" href="#nav-food-jam" role="tab" aria-selected="true">
-                            <span>Fruit Jam</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-egg-tab" data-toggle="tab" href="#nav-food-egg" role="tab" aria-selected="true">
-                            <span>Egg</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-pig-tab" data-toggle="tab" href="#nav-food-pig" role="tab" aria-selected="true">
-                            <span>Pig Meat</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-fish-tab" data-toggle="tab" href="#nav-food-fish" role="tab" aria-selected="true">
-                            <span>Fish Meat</span>
-                        </a>
-                        <a class="product-tab__link nav-link" id="nav-food-juice-tab" data-toggle="tab" href="#nav-food-juice" role="tab" aria-selected="true">
-                            <span>Juice</span>
+                        <a class="product-tab__link nav-link active" id="nav-food-all-tab" data-toggle="tab" href="#nav-food-all" role="tab" aria-selected="true"   v-for="cat in commodityAll" :key="cat.id">
+                            <span v-on:click="goFind(cat.id)">{{cat.name}}</span>
                         </a>
                     </div>
                     <div class="tab-content product-tab__content" id="food-product-tab-content">
@@ -996,10 +978,21 @@
             //获取请求参数
             ly.http.get("/item/").then(resp => {
                 this.items = resp.data.items;
+            }),
+            ly.http.get("/item/getCats").then(resp => {
+                this.commodityAll = resp.data;
             })
         },
         data: {
             items:{},
+            commodityAll:{},
+        },
+        methods:{
+            goFind(id) {
+                ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
+                    this.items = resp.data;
+                })
+            },
         },
         components:{
             // lsTop:() => import('./assets/js/pages/lstop.js')

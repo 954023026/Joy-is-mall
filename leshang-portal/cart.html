@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8">
@@ -7,12 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="meta description">
     <!-- Favicons -->
-    <link rel="shortcut icon" href="${path}/assets/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="${path}/assets/img/icon.png">
+    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/img/icon.png">
 
     <!-- Title -->
-    <title>Zuka</title>
-
+    <title>Zuka - Clean, Minimal eCommerce Bootstrap 4 Template</title>
     <!-- ************************* CSS Files ************************* -->
 
     <!-- All Plugins CSS  -->
@@ -97,37 +96,33 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:if test="${not empty sessionScope.cart.cartItems}">
-                                                <c:forEach items="${sessionScope.cart.cartItems}" var="zkItem">
                                                     <tr>
-                                                        <td class="product-remove text-left"><a onclick="deletItem('${zkItem.product.id}')" id="deletItem"><i class="dl-icon-close"></i></a></td>
+                                                        <td class="product-remove text-left"><a id="deletItem"><i class="dl-icon-close"></i></a></td>
                                                         <td class="product-thumbnail text-left">
-                                                            <img src="${path}/${zkItem.product.image}" alt="Product Thumnail">
+                                                            <img src="" alt="Product Thumnail">
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>
-                                                                <a href="product-details?id=${zkItem.product.id}">${zkItem.product.title}</a>
+                                                                <a href="product-details?id=${zkItem.product.id}"></a>
                                                             </h3>
                                                         </td>
                                                         <td class="product-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">$${zkItem.product.price}.00</span>
+                                                                <span class="money">$.00</span>
                                                             </span>
                                                         </td>
                                                         <td class="product-quantity">
                                                             <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="${zkItem.num}" min="1" >
+                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="" min="1" >
                                                             </div>
-                                                            <input type="hidden" value="${zkItem.product.id}" >
+                                                            <input type="hidden" value="" >
                                                         </td>
                                                         <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                               <span class="money" id="totalMon" aria-valuetext="1"  value="1">$${zkItem.subTotal}.0</span>
+                                                               <span class="money" id="totalMon" aria-valuetext="1"  value="1">$.0</span>
                                                             </span>
                                                         </td>
                                                     </tr>
-                                                </c:forEach>
-                                            </c:if>
                                             </tbody>
                                         </table>
                                     </div>
@@ -156,7 +151,7 @@
                                             <span >总计</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span id="total">$${sessionScope.cart.total}.0</span>
+                                            <span id="total">$.0</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item">
