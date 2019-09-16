@@ -71,11 +71,11 @@
                                                     <span>Rated <strong class="rating">4.00</strong> out of 5</span>
                                                 </div>
                                                 <h3 class="product-title">
-                                                    <a href="../product-details.html">{{item.title}}</a>
+                                                    <a href="../product-details.html" v-text="item.title"></a>
                                                 </h3>
                                                 <span class="product-price-wrapper">
-                                                                <span class="money">&pound;{{item.price}}.00</span>
-                                                            </span>
+                                                    <span class="money">£{{item.price}}.00</span>
+                                                </span>
                                             </div>
                                         </div>
                                     </div>
@@ -1000,6 +1000,11 @@
         },
         data: {
             items:{},
+        },
+        methods: {
+            search() {
+                window.location = 'search.html?key=' + this.key;
+            },
         },
         components:{
             // lsTop:() => import('./assets/js/pages/lstop.js')

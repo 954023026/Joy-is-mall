@@ -8,13 +8,14 @@
     <file url="file://$PROJECT_DIR$/ls-cart" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-common" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-gateway" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/ls-gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-item" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-item/ls-item-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-item/ls-item-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-order" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ls-page" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-registry" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-search" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ls-sms" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-user" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-user/ls-user-interface" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ls-user/ls-user-service" charset="UTF-8" />

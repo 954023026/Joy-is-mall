@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.leshang.parent</groupId>
+    <groupId>com.leshang.service</groupId>
     <artifactId>ls-user</artifactId>
     <packaging>pom</packaging>
     <modules>

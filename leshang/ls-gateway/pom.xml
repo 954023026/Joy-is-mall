@@ -22,6 +22,28 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-netflix-zuul</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!--写入cookie问题，降版本-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-netflix-zuul</artifactId>
+            <version>2.0.0.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>com.leshang.service</groupId>
+            <artifactId>ls-auth-common</artifactId>
+            <version>${leshang.latest.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.leshang.common</groupId>
+            <artifactId>ls-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

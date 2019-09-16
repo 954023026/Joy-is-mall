@@ -21,10 +21,15 @@ zuul:
       serviceId: item-service
       strip-prefix: false   #代理前缀不移除，保留item
     search-service: /search/**
-    upload-service:
-      path: /upload/**
-      serviceId: upload-service
-      strip-prefix: false
+    user-service: /user/**
+      auth-service: /auth/**
+      #controller的路径为upload/image,网关的路径前缀为upload，访问地址就会变为/upload/upload/image,所以设置网关忽略前缀
+      upload-service:
+        path: /upload/**
+        serviceId: upload-service
+        strip-prefix: false
+      add-host-header: true   #携带域名信息
+      sensitive-headers:  #覆盖默认信息
 ribbon:
   ConnectTimeout: 250 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)
@@ -38,3 +43,15 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+ls:
+  jwt:
+    pubKeyPath: D:/coding/rsa/rsa.pub # 公钥地址
+    cookieName: LS_TOKEN
+  filter: #拦截白名单,暂时没有配置拦截
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item
