@@ -17,7 +17,7 @@ public class GlobalCorsConfig {
         config.addAllowedOrigin("http://www.leshang.com");
         config.addAllowedOrigin("http://api.leshang.com");
         config.addAllowedOrigin("http://manage.leshang.com");
-//        config.addAllowedOrigin("*");
+        config.addAllowedOrigin("*");
         //2) 是否发送Cookie信息
         config.setAllowCredentials(true);
         //3) 允许的请求方式

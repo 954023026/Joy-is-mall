@@ -4,7 +4,7 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/yun6?useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://127.0.0.1:3306/zuka?useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: sasa
   rabbitmq:
@@ -26,4 +26,4 @@ eureka:
     lease-expiration-duration-in-seconds: 15
 
 mybatis:
-  type-aliases-package: com.leshang.user.com.leshang.common.pojo
+  type-aliases-package: com.leshang.user.pojo

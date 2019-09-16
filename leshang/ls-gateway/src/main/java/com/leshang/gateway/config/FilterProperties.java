@@ -12,7 +12,7 @@ import java.util.List;
  * @create 2019-09-15 22:33
  */
 @Data
-@ConfigurationProperties(prefix = "ly.filter")
+@ConfigurationProperties(prefix = "ls.filter")
 public class FilterProperties {
 
     private List<String> allowPaths;

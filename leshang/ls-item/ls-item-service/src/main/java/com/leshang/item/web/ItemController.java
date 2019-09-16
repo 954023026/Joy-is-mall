@@ -47,8 +47,7 @@ public class ItemController {
 
     @GetMapping("/findItemById")
     public ResponseEntity<ZkItem> queryItemsById(Long id) {
-        ZkItem item = itemService.finditemById(id);
-        return ResponseEntity.ok(item);
+        return ResponseEntity.ok(itemService.finditemById(id));
     }
 
     @GetMapping("/getCats")
@@ -62,7 +61,6 @@ public class ItemController {
 
     @GetMapping("/getItemsByCid")
     public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id) {
-        List<ZkItem> zkItems = itemService.queryItemsByCatId(id);
-        return ResponseEntity.ok(zkItems);
+        return ResponseEntity.ok(itemService.queryItemsByCatId(id));
     }
 }
