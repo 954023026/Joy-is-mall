@@ -56,11 +56,11 @@ public class ZkUserServiceImpl implements ZkUserService {
     @Override
     public void register(ZkUser user, String code) {
         //从reids中取出验证码
-        String cacheCode = redisTemplate.opsForValue().get(KEY_PREFIX + user.getPhone());
+        /*String cacheCode = redisTemplate.opsForValue().get(KEY_PREFIX + user.getPhone());
         //校验验证码
         if (!StringUtils.equals(code, cacheCode)) {
             throw new LyException(ExceptionEnum.INVALID_VERIFY_CODE);
-        }
+        }*/
         //生成盐
         String salt = CodecUtils.generateSalt();
         user.setSalt(salt);
@@ -74,7 +74,19 @@ public class ZkUserServiceImpl implements ZkUserService {
 
     @Override
     public ZkUser queruUserByUsernameAndPassword(String username, String password) {
-        return null;
+        //查询用户
+        ZkUser record = new ZkUser();
+        record.setUsername(username);
+        ZkUser user = userMapper.selectOne(record);
+        //校验
+        if (user == null) {
+            throw new LyException(ExceptionEnum.INVALID_USERNAME_PASSWORD);
+        }
+        //校验密码
+        if (!StringUtils.equals(user.getPassword(), CodecUtils.md5Hex(password,user.getSalt()))) {
+            throw new LyException(ExceptionEnum.INVALID_USERNAME_PASSWORD);
+        }
+        return user;
     }
 
     @Override
