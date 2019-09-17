@@ -7,13 +7,11 @@ import com.leshang.item.mapper.ZkItemMapper;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
 import com.leshang.item.service.ItemService;
-import com.leyou.common.enums.ExceptionEnum;
-import com.leyou.common.exception.LyException;
-import com.leyou.common.vo.PageResult;
-import com.mysql.cj.x.protobuf.MysqlxCrud;
+import com.leshang.common.enums.ExceptionEnum;
+import com.leshang.common.exception.LyException;
+import com.leshang.common.vo.PageResult;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
@@ -83,6 +81,7 @@ public class ItemServiceImpl implements ItemService {
         zkItem.setId(id);
         return zkItemMapper.selectOne(zkItem);
     }
+
     @Override
     public List<ZkItemCat> queryAllCat() {
         List<ZkItemCat> zkItemCats = zkItemCatMapper.selectAll();//获取商品所有类别

@@ -2,7 +2,7 @@ package com.leshang.item.service;
 
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
-import com.leyou.common.vo.PageResult;
+import com.leshang.common.vo.PageResult;
 
 import java.util.List;
 

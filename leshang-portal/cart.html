@@ -12,6 +12,7 @@
 
     <!-- Title -->
     <title>Zuka - Clean, Minimal eCommerce Bootstrap 4 Template</title>
+
     <!-- ************************* CSS Files ************************* -->
 
     <!-- All Plugins CSS  -->
@@ -23,18 +24,13 @@
     <!-- style CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
 
-
     <!-- modernizr JS
-      ============================================ -->
+    ============================================ -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
     <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <!-- ************************* Vue Files ************************* -->
-    <script src="assets/js/vue/vue.js"></script>
-    <script src="assets/js/axios.min.js"></script>
-    <script src="assets/js/common.js"></script>
 </head>
 
 <body class="default-color">
@@ -63,10 +59,10 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 text-center">
-                    <h1 class="page-title">购物车</h1>
+                    <h1 class="page-title">Shpping Cart</h1>
                     <ul class="breadcrumb justify-content-center">
-                        <li><a href="index">主页</a></li>
-                        <li class="current"><span>购物车</span></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li class="current"><span>Shppping Cart</span></li>
                     </ul>
                 </div>
             </div>
@@ -89,40 +85,91 @@
                                             <tr>
                                                 <th>&nbsp;</th>
                                                 <th>&nbsp;</th>
-                                                <th class="text-left">产品</th>
-                                                <th>单价</th>
-                                                <th>数量</th>
-                                                <th>总价</th>
+                                                <th class="text-left">Product</th>
+                                                <th>price</th>
+                                                <th>quantity</th>
+                                                <th>total</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a id="deletItem"><i class="dl-icon-close"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details?id=${zkItem.product.id}"></a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
+                                            <tr>
+                                                <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
+                                                <td class="product-thumbnail text-left">
+                                                    <img src="assets/img/products/prod-29-1-70x88.jpg" alt="Product Thumnail">
+                                                </td>
+                                                <td class="product-name text-left wide-column">
+                                                    <h3>
+                                                        <a href="product-details.html">Super skinny blazer</a>
+                                                    </h3>
+                                                </td>
+                                                <td class="product-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">$.00</span>
+                                                                <span class="money">$49.00</span>
                                                             </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="" min="1" >
-                                                            </div>
-                                                            <input type="hidden" value="" >
-                                                        </td>
-                                                        <td class="product-total-price">
+                                                </td>
+                                                <td class="product-quantity">
+                                                    <div class="quantity">
+                                                        <input type="number" class="quantity-input" name="qty" id="qty-1" value="1" min="1">
+                                                    </div>
+                                                </td>
+                                                <td class="product-total-price">
                                                             <span class="product-price-wrapper">
-                                                               <span class="money" id="totalMon" aria-valuetext="1"  value="1">$.0</span>
+                                                                <span class="money">$49.00</span>
                                                             </span>
-                                                        </td>
-                                                    </tr>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
+                                                <td class="product-thumbnail text-left">
+                                                    <img src="assets/img/products/prod-30-1-70x88.jpg" alt="Product Thumnail">
+                                                </td>
+                                                <td class="product-name text-left wide-column">
+                                                    <h3>
+                                                        <a href="product-details.html"> Jogging trousers</a>
+                                                    </h3>
+                                                </td>
+                                                <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                </td>
+                                                <td class="product-quantity">
+                                                    <div class="quantity">
+                                                        <input type="number" class="quantity-input" name="qty" id="qty-2" value="1" min="1">
+                                                    </div>
+                                                </td>
+                                                <td class="product-total-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
+                                                <td class="product-thumbnail text-left">
+                                                    <img src="assets/img/products/prod-30-1-70x88.jpg" alt="Product Thumnail">
+                                                </td>
+                                                <td class="product-name text-left wide-column">
+                                                    <h3>
+                                                        <a href="product-details.html"> Grey blue leather backpack</a>
+                                                    </h3>
+                                                </td>
+                                                <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                </td>
+                                                <td class="product-quantity">
+                                                    <div class="quantity">
+                                                        <input type="number" class="quantity-input" name="qty" id="qty-3" value="1" min="1">
+                                                    </div>
+                                                </td>
+                                                <td class="product-total-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -132,11 +179,12 @@
                                 <div class="col-sm-6">
                                     <div class="coupon">
                                         <input type="text" id="coupon" name="coupon" class="cart-form__input" placeholder="Coupon Code">
-                                        <button type="button" onclick="save()"  class="cart-form__btn">申请优惠券</button>
+                                        <button type="submit" class="cart-form__btn">Apply Coupon</button>
                                     </div>
                                 </div>
                                 <div class="col-sm-6 text-sm-right">
-                                    <button type="button" class="cart-form__btn" onclick="clearCart()">清空购物车</button>
+                                    <button type="submit" class="cart-form__btn">Clear Cart</button>
+                                    <button type="submit" class="cart-form__btn">Update Cart</button>
                                 </div>
                             </div>
                         </form>
@@ -144,34 +192,79 @@
                     <div class="col-lg-4">
                         <div class="cart-collaterals">
                             <div class="cart-totals">
-                                <h5 class="font-size-14 font-bold mb--15">购物车总数</h5>
+                                <h5 class="font-size-14 font-bold mb--15">Cart totals</h5>
                                 <div class="cart-calculator">
                                     <div class="cart-calculator__item">
                                         <div class="cart-calculator__item--head">
-                                            <span >总计</span>
+                                            <span>Subtotal</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span id="total">$.0</span>
+                                            <span>$196.00</span>
                                         </div>
                                     </div>
                                     <div class="cart-calculator__item">
                                         <div class="cart-calculator__item--head">
-                                            <span>运费</span>
+                                            <span>Shipping</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
-                                            <span>总共: $20.00</span>
+                                            <span>Flat rate: $20.00</span>
                                             <div class="shipping-calculator-wrap">
-                                                <a href="#shipping_calculator" class="expand-btn">进行结算</a>
+                                                <a href="#shipping_calculator" class="expand-btn">Calculate Shipping</a>
                                                 <form id="shipping_calculator" class="form shipping-calculator-form hide-in-default">
                                                     <div class="form__group mb--10">
-                                                        <select id="calc_shipping_country" name="calc_shipping_country" onchange="loadArea(this.value,'city')" class="nice-select">
-                                                            <option value="">选择一个城市</option>
+                                                        <select id="calc_shipping_country" name="calc_shipping_country" class="nice-select">
+                                                            <option value="">Select a country…</option>
+                                                            <option value="AF">Afghanistan</option>
+                                                            <option value="AL">Albania</option>
+                                                            <option value="DZ">Algeria</option>
+                                                            <option value="AR">Argentina</option>
+                                                            <option value="AM">Armenia</option>
+                                                            <option value="AU">Australia</option>
+                                                            <option value="AT">Austria</option>
+                                                            <option value="AZ">Azerbaijan</option>
+                                                            <option value="BH">Bahrain</option>
                                                             <option value="BD" selected="selected">Bangladesh</option>
+                                                            <option value="BD">Brazil</option>
+                                                            <option value="CN">China</option>
+                                                            <option value="EG">Egypt</option>
+                                                            <option value="FR">France</option>
+                                                            <option value="DE">Germany</option>
+                                                            <option value="HK">Hong Kong</option>
+                                                            <option value="HU">Hungary</option>
+                                                            <option value="IS">Iceland</option>
+                                                            <option value="IN">India</option>
+                                                            <option value="ID">Indonesia</option>
+                                                            <option value="IR">Iran</option>
+                                                            <option value="IQ">Iraq</option>
+                                                            <option value="IE">Ireland</option>
+                                                            <option value="IT">Italy</option>
+                                                            <option value="JP">Japan</option>
+                                                            <option value="KW">Kuwait</option>
+                                                            <option value="MY">Malaysia</option>
+                                                            <option value="MV">Maldives</option>
+                                                            <option value="MX">Mexico</option>
+                                                            <option value="MC">Monaco</option>
+                                                            <option value="NP">Nepal</option>
+                                                            <option value="RU">Russia</option>
+                                                            <option value="KR">South Korea</option>
+                                                            <option value="SS">South Sudan</option>
+                                                            <option value="ES">Spain</option>
+                                                            <option value="LK">Sri Lanka</option>
+                                                            <option value="SD">Sudan</option>
+                                                            <option value="SZ">Swaziland</option>
+                                                            <option value="SE">Sweden</option>
+                                                            <option value="CH">Switzerland</option>
+                                                            <option value="TN">Tunisia</option>
+                                                            <option value="TR">Turkey</option>
+                                                            <option value="UA">Ukraine</option>
+                                                            <option value="AE">United Arab Emirates</option>
+                                                            <option value="GB">United Kingdom (UK)</option>
+                                                            <option value="US">United States (US)</option>
                                                         </select>
                                                     </div>
                                                     <div class="form__group mb--10">
                                                         <select id="calc_shipping_district" name="calc_shipping_district" class="nice-select">
-                                                            <option value="">城市…</option>
+                                                            <option value="">Select a District…</option>
                                                             <option>BARISAL</option>
                                                             <option>BHOLA</option>
                                                             <option>BANDARBAN</option>
@@ -205,7 +298,11 @@
                                                     </div>
 
                                                     <div class="form__group mb--10">
-                                                        <input type="text" name="calc_shipping_city" id="calc_shipping_city" placeholder="详细地址">
+                                                        <input type="text" name="calc_shipping_city" id="calc_shipping_city" placeholder="Town / City">
+                                                    </div>
+
+                                                    <div class="form__group mb--10">
+                                                        <input type="text" name="calc_shipping_zip" id="calc_shipping_zip" placeholder="Postcode / Zip">
                                                     </div>
 
                                                     <div class="form__group">
@@ -217,19 +314,18 @@
                                     </div>
                                     <div class="cart-calculator__item order-total">
                                         <div class="cart-calculator__item--head">
-                                            <span>总计</span>
+                                            <span>Total</span>
                                         </div>
                                         <div class="cart-calculator__item--value">
                                                 <span class="product-price-wrapper">
-
-                                                    <span class="money" id="checkOutMon">$<c:if test="${not empty sessionScope.cart.total }">${sessionScope.cart.total + 20}.0</c:if></span>
+                                                    <span class="money">$226.00</span>
                                                 </span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="checkout" class="btn btn-fullwidth btn-style-1">
-                                结账
+                            <a href="checkout.html" class="btn btn-fullwidth btn-style-1">
+                                Proceed To Checkout
                             </a>
                         </div>
                     </div>
@@ -248,12 +344,12 @@
                         <!-- Widget Start Here -->
                         <div class="footer-widget text-center text-sm-left">
                             <div class="textwidget mb--30 mb-sm--20">
-                                <a href="index" class="footer-logo">
-                                    <img src="${path}/assets/img/logo/logo.png" alt="Logo" class="logo-img">
+                                <a href="index.html" class="footer-logo">
+                                    <img src="assets/img/logo/logo.png" alt="Logo" class="logo-img">
                                 </a>
                             </div>
                             <div class="textwidget mr--40 mr-sm--0">
-                                <p>Zuka 2019 流行单品,舒适百搭,全场购物满额享优惠!时尚,简约,优雅,舒适的穿搭体验,尽在Zuka祖卡官方旗舰店!</p>
+                                <p>Integer ut ligula quis lectus fringilla elementum porttitor sed est. Duis fringilla efficitur ligula sed lobortis.</p>
                             </div>
                         </div>
                         <!-- Widget End Here -->
@@ -261,11 +357,11 @@
                     <div class="footer-column footer-column-2 order-xl-2 order-3 mb-sm--30 mb-xs--25">
                         <!-- Widget Start Here -->
                         <div class="footer-widget text-center text-sm-left">
-                            <h3 class="widget-title mb--25 mb-xs--20">帮助</h3>
+                            <h3 class="widget-title mb--25 mb-xs--20">Helful Link</h3>
                             <ul class="widget-menu">
-                                <li><a href="shop-collections">收藏</a></li>
-                                <li><a href="#">尺寸表</a></li>
-                                <li><a href="#">退货渠道</a></li>
+                                <li><a href="shop-collections.html">The Collections</a></li>
+                                <li><a href="#">Size Guide</a></li>
+                                <li><a href="#">Return Policy</a></li>
                             </ul>
                         </div>
                         <!-- Widget End Here -->
@@ -273,11 +369,13 @@
                     <div class="footer-column footer-column-3 order-xl-3 order-4 mb-sm--30">
                         <!-- Widget Start Here -->
                         <div class="footer-widget text-center text-sm-left">
-                            <h3 class="widget-title mb--25">关务ZuKa</h3>
+                            <h3 class="widget-title mb--25">Company Link</h3>
                             <ul class="widget-menu">
-                                <li><a href="about-us">关于我们</a></li>
-                                <li><a href="#">我们的服务</a></li>
-                                <li><a href="#">加入 Zuka</a></li>
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="shop-collections.html">Portfolios</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Affiliate Program</a></li>
+                                <li><a href="#">Work for Zuka</a></li>
                             </ul>
                         </div>
                         <!-- Widget End Here -->
@@ -285,11 +383,11 @@
                     <div class="footer-column footer-column-4 order-xl-4 order-5 mb-xs--25">
                         <!-- Widget Start Here -->
                         <div class="footer-widget text-center text-sm-left">
-                            <h3 class="widget-title mb--25">开放时间</h3>
+                            <h3 class="widget-title mb--25">Openning Time</h3>
                             <ul class="widget-menu">
-                                <li><span>周一 至 周六</span></li>
+                                <li><span>Monday – Saturday</span></li>
                                 <li><span>7:00 – 22:00</span></li>
-                                <li><span>周日</span></li>
+                                <li><span>Sunday</span></li>
                                 <li><span>9:00 – 20:00</span></li>
                             </ul>
                         </div>
@@ -298,7 +396,7 @@
                     <div class="footer-column footer-column-5 order-xl-5 order-6">
                         <!-- Contact Widget Start Here -->
                         <div class="footer-widget text-center text-sm-left">
-                            <h3 class="widget-title mb--25 mb-xs--20">联系我们</h3>
+                            <h3 class="widget-title mb--25 mb-xs--20">Contact Info</h3>
                             <div class="widget_contact_info">
                                 <ul>
                                     <li><i class="fa fa-phone"></i><span>(+612) 2531 5600</span></li>
@@ -315,8 +413,8 @@
                             <!-- Subscribe widget Start Here -->
                             <div class="subscribe-widget mb--30">
                                 <form action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a" class="newsletter-form mc-form" method="post" target="_blank">
-                                    <input type="email" name="EMAIL" id="newsletter_email" placeholder="请输入你的邮箱." required="required" class="newsletter-form__input">
-                                    <button type="submit" class="newsletter-form__submit">提交</button>
+                                    <input type="email" name="EMAIL" id="newsletter_email" placeholder="Enter your email address.." required="required" class="newsletter-form__input">
+                                    <button type="submit" class="newsletter-form__submit">Submit</button>
                                 </form>
                             </div>
                             <!-- Subscribe widget End Here -->
@@ -359,7 +457,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <p class="copyright-text">&copy; 2018 ZUKA. Designed by XianYuan</p>
+                        <p class="copyright-text">&copy; 2018 ZUKA. Designed by HasTech</p>
                     </div>
                 </div>
             </div>
@@ -371,9 +469,9 @@
     <div class="searchform__popup" id="searchForm">
         <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
         <div class="searchform__body">
-            <p>开始输入并按Enter键进行搜索</p>
+            <p>Start typing and press Enter to search</p>
             <form class="searchform">
-                <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="搜索整个商城">
+                <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
                 <button type="submit" class="searchform__submit"><i class="dl-icon-search10"></i></button>
             </form>
         </div>
@@ -381,11 +479,166 @@
     <!-- Search from End -->
 
     <!-- Side Navigation Start -->
-    <%@ include file="../insertion/sideNav.jsp" %>
+    <aside class="side-navigation" id="sideNav">
+        <div class="side-navigation-wrapper">
+            <div class="side-navigation-inner">
+                <div class="widget mb--30">
+                    <ul class="sidenav-menu">
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="shop-collections.html">Portfolios</a></li>
+                        <li><a href="contact-us.html">Our Services</a></li>
+                        <li><a href="#">Affiliate Program</a></li>
+                        <li><a href="#">Work For Zuka</a></li>
+                    </ul>
+                </div>
+                <div class="widget mb--30">
+                    <div class="banner-box banner-type-1 banner-hover-1">
+                        <div class="banner-inner">
+                            <div class="banner-image">
+                                <img src="assets/img/banner/menu-humberger.jpg" alt="Banner">
+                            </div>
+                            <div class="banner-info">
+                                <a class="banner-title-1 text-uppercase" href="shop-sidebar.html">New</a>
+                            </div>
+                            <a class="banner-link banner-overlay" href="shop-sidebar.html">New</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget mb--30">
+                    <div class="text-widget">
+                        <p>
+                            <a href="#">(+612) 2531 5600</a>
+                            <a href="mailto:info@la-studioweb.com">info@la-studioweb.com</a>
+                            PO Box 1622 Colins Street West
+                        </p>
+                    </div>
+                </div>
+                <div class="widget mb--5">
+                    <div class="text-widget google-map-link">
+                        <p>
+                            <a href="https://www.google.com/maps" target="_blank">Google Maps</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="widget">
+                    <div class="text-widget">
+                        <!-- Social Icons Start Here -->
+                        <ul class="social social-small">
+                            <li class="social__item">
+                                <a href="twitter.com" class="social__link">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a href="plus.google.com" class="social__link">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a href="facebook.com" class="social__link">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a href="youtube.com" class="social__link">
+                                    <i class="fa fa-youtube"></i>
+                                </a>
+                            </li>
+                            <li class="social__item">
+                                <a href="instagram.com" class="social__link">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Social Icons End Here -->
+                    </div>
+                </div>
+                <div class="widget mtb--15">
+                    <div class="text-widget">
+                        <p>
+                            <img src="assets/img/others/payments.png" alt="payment">
+                        </p>
+                    </div>
+                </div>
+                <div class="widget">
+                    <div class="text-widget">
+                        <p class="copyright-text">&copy; 2018 Zuka Shop All rights <a href="http://www.bootstrapmb.com/" title="bootstrapmb">Reserved</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
     <!-- Side Navigation End -->
 
     <!-- Mini Cart Start -->
-    <%@include file="../insertion/miniCart.jsp"%>
+    <aside class="mini-cart" id="miniCart">
+        <div class="mini-cart-wrapper">
+            <a href="" class="btn-close"><i class="dl-icon-close"></i></a>
+            <div class="mini-cart-inner">
+                <h5 class="mini-cart__heading mb--40 mb-lg--30">Shopping Cart</h5>
+                <div class="mini-cart__content">
+                    <ul class="mini-cart__list">
+                        <li class="mini-cart__product">
+                            <a href="#" class="remove-from-cart remove">
+                                <i class="dl-icon-close"></i>
+                            </a>
+                            <div class="mini-cart__product__image">
+                                <img src="assets/img/products/prod-26-1-70x88.jpg" alt="products">
+                            </div>
+                            <div class="mini-cart__product__content">
+                                <a class="mini-cart__product__title" href="single-product.html">Atlin Designs Mid Century Club Chair</a>
+                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
+                            </div>
+                        </li>
+                        <li class="mini-cart__product">
+                            <a href="#" class="remove-from-cart remove">
+                                <i class="dl-icon-close"></i>
+                            </a>
+                            <div class="mini-cart__product__image">
+                                <img src="assets/img/products/prod-30-1-70x88.jpg" alt="products">
+                            </div>
+                            <div class="mini-cart__product__content">
+                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
+                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
+                            </div>
+                        </li>
+                        <li class="mini-cart__product">
+                            <a href="#" class="remove-from-cart remove">
+                                <i class="dl-icon-close"></i>
+                            </a>
+                            <div class="mini-cart__product__image">
+                                <img src="assets/img/products/prod-29-1-70x88.jpg" alt="products">
+                            </div>
+                            <div class="mini-cart__product__content">
+                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
+                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
+                            </div>
+                        </li>
+                        <li class="mini-cart__product">
+                            <a href="#" class="remove-from-cart remove">
+                                <i class="dl-icon-close"></i>
+                            </a>
+                            <div class="mini-cart__product__image">
+                                <img src="assets/img/products/prod-31-1-70x88.jpg" alt="products">
+                            </div>
+                            <div class="mini-cart__product__content">
+                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
+                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mini-cart__total">
+                        <span>Subtotal:</span>
+                        <span class="ammount">&pound;98.00</span>
+                    </div>
+                    <div class="mini-cart__buttons">
+                        <a href="cart.html" class="btn btn-fullwidth btn-style-1">View Cart</a>
+                        <a href="checkout.html" class="btn btn-fullwidth btn-style-1">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
     <!-- Mini Cart End -->
 
     <!-- Global Overlay Start -->
@@ -413,16 +666,16 @@
                             >
                                 <div class="product-image">
                                     <div class="product-image--holder">
-                                        <a href="single-product">
-                                            <img src="${path}/assets/img/products/prod-7-1.jpg" alt="Product Image" class="primary-image">
+                                        <a href="single-product.html">
+                                            <img src="assets/img/products/prod-7-1.jpg" alt="Product Image" class="primary-image">
                                         </a>
                                     </div>
                                     <span class="product-badge sale">sale</span>
                                 </div>
                                 <div class="product-image">
                                     <div class="product-image--holder">
-                                        <a href="single-product">
-                                            <img src="${path}/assets/img/products/prod-7-2.jpg" alt="Product Image" class="primary-image">
+                                        <a href="single-product.html">
+                                            <img src="assets/img/products/prod-7-2.jpg" alt="Product Image" class="primary-image">
                                         </a>
                                     </div>
                                     <span class="product-badge sale">sale</span>
@@ -436,7 +689,7 @@
                                         <div class="star-rating star-five">
                                             <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                         </div>
-                                        <a href="" class="review-link">评价)</a>
+                                        <a href="" class="review-link">(1 customer review)</a>
                                     </div>
                                     <div class="product-navigation">
                                         <a href="#" class="prev"><i class="dl-icon-left"></i></a>
@@ -451,16 +704,16 @@
                                 </span>
                                     <span class="money">&pound;49.00</span>
                                 </div>
-                                <p class="product-short-description mb--30 mb-md--20">Zuka 2019 流行单品,舒适百搭,全场购物满额享优惠!时尚,简约,优雅,舒适的穿搭体验,尽在Zuka祖卡官方旗舰店!</p>
+                                <p class="product-short-description mb--30 mb-md--20">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
                                 <div class="product-action d-flex flex-row align-items-center mb--20">
                                     <div class="quantity mr--20">
                                         <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
                                     </div>
-                                    <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart'">
+                                    <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart.html'">
                                         Add To Cart
                                     </button>
-                                    <a href="wishlist" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
-                                    <a href="compare" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
+                                    <a href="wishlist.html" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
+                                    <a href="compare.html" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
                                 </div>
                                 <div class="product-extra mb--20">
                                     <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near you</a>
@@ -469,10 +722,10 @@
                                 <div class="product-summary-footer">
                                     <div class="product-meta mb--20">
                                         <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF. LA-887</span></span>
-                                        <span class="posted_in font-size-12">分类: <a href="shop-sidebar" rel="tag">时尚</a></span>
+                                        <span class="posted_in font-size-12">Categories: <a href="shop-sidebar.html" rel="tag">Fashions</a></span>
                                     </div>
                                     <div class="product-share-box">
-                                        <span class="font-size-12">分享</span>
+                                        <span class="font-size-12">Share With</span>
                                         <!-- Social Icons Start Here -->
                                         <ul class="social social-small">
                                             <li class="social__item">
@@ -515,17 +768,18 @@
 <!-- ************************* JS Files ************************* -->
 
 <!-- All Plugins Js -->
-<script src="${path}/assets/js/plugins.js"></script>
+<script src="assets/js/plugins.js"></script>
 
 <!-- Main JS -->
-<script src="${path}/assets/js/main.js"></script>
+<script src="assets/js/main.js"></script>
 
 <!-- REVOLUTION JS FILES -->
-<script src="${path}/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
-<script src="${path}/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
+<script src="assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
+<script src="assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
 
 <!-- REVOLUTION ACTIVE JS FILES -->
-<script src="${path}/assets/js/revoulation.js"></script>
+<script src="assets/js/revoulation.js"></script>
+
 </body>
 
 </html>

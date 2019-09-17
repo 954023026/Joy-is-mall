@@ -8,7 +8,7 @@ import java.util.List;
  * @author 愿你活的通透拎得清轻重辩得明是非
  * @create 2019-07-31 16:05
  */
-public class ZkUserExtend extends ZkUser {
+public class ZkUserExtend  {
     List<ZkOrder> orderList;
 
     public List<ZkOrder> getOrderList() {
