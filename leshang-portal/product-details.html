@@ -73,7 +73,7 @@
         <!-- Main Content Wrapper Start -->
         <div id="content" class="main-content-wrapper">
             <div class="page-content-inner enable-full-width">
-                <div class="container-fluid">
+                <div class="container-fluid" v-for="item in items">
                     <div class="row pt--40 pt-sm--30">
                         <div class="col-md-6 product-main-image">
                             <div class="product-image">
@@ -124,16 +124,16 @@
                                             }
                                         ]'>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/prod-14-1-166x208.jpg" alt="Products">
+                                                <img :src="item.image"  alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/prod-13-1-166x208.jpg" alt="Products">
+                                                <img :src="item.image" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/prod-13-2-166x208.jpg" alt="Products">
+                                                <img :src="item.image" alt="Products">
                                             </figure>
                                             <figure class="product-gallery__nav-image--single">
-                                                <img src="assets/img/products/prod-12-1-166x208.jpg" alt="Products">
+                                                <img :src="item.image" alt="Products">
                                             </figure>
                                         </div>
                                     </div>
@@ -148,16 +148,16 @@
                                                 "asNavFor": ".nav-slider"
                                             }'>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/prod-14-1.jpg" alt="Product">
+                                                    <img :src="item.image" alt="Product">
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/prod-13-1.jpg" alt="Product">
+                                                    <img :src="item.image" alt="Product">
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/prod-13-2.jpg" alt="Product">
+                                                    <img :src="item.image" alt="Product">
                                                 </figure>
                                                 <figure class="product-gallery__image zoom">
-                                                    <img src="assets/img/products/prod-12-1.jpg" alt="Product">
+                                                    <img :src="item.image" alt="Product">
                                                 </figure>
                                             </div>
                                             <div class="product-gallery__actions">
@@ -185,10 +185,10 @@
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
-                                <h3 class="product-title mb--30 mb-lg--20 mb-sm--10">Slim-fit suit blazer</h3>
+                                <h3 class="product-title mb--30 mb-lg--20 mb-sm--10">{{item.title}}</h3>
                                 <div class="product-price-wrapper float-left mb--30 mb-lg--20 mb-sm--10">
                                     <span class="product-price-old">
-                                        <span class="money">&pound;60.00</span>
+                                        <span class="money">&pound;{{item.price}}.00</span>
                                     </span>
                                     <span class="product-price-new">
                                         <span class="money">&pound;49.00</span>
@@ -262,10 +262,10 @@
                             <div class="product-data-tab tab-style-5">
                                 <div class="nav nav-tabs product-data-tab__head mb--35 mb-sm--25" id="product-tab" role="tablist">
                                     <a class="product-data-tab__link nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-selected="true"> 
-                                        <span>Description</span>
+                                        <span>描述</span>
                                     </a>
                                     <a class="product-data-tab__link nav-link" id="nav-info-tab" data-toggle="tab" href="#nav-info" role="tab" aria-selected="true">
-                                        <span>Additional Information</span>
+                                        <span>附加信息</span>
                                     </a>
                                     <a class="product-data-tab__link nav-link" id="nav-reviews-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="true">
                                         <span>Reviews(1)</span>

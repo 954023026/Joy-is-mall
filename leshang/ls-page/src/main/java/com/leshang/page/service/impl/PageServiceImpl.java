@@ -1,8 +1,11 @@
 package com.leshang.page.service.impl;
 
+import com.leshang.item.pojo.ZkItem;
+import com.leshang.page.client.ItemClinet;
 import com.leshang.page.service.PageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
@@ -25,20 +28,17 @@ import java.util.Map;
 public class PageServiceImpl implements PageService {
     @Autowired
     private TemplateEngine templateEngine;
+    @Autowired
+    private ItemClinet itemClinet;
 
     @Override
     public Map<String, Object> loadModel(Long spuId) {
-        Map<String, Object> model = new HashMap<>();
-
-
-//        model.put("title", spu.getTitle());
-//        model.put("subTitle", spu.getSubTitle());
-//        model.put("skus", skus);
-//        model.put("detail", detail);
-//        model.put("brand", brand);
-//        model.put("categories", categories);
-//        model.put("specs", specs);
-        return model;
+        Map<String, Object> map = new HashMap<>();
+        ZkItem item = itemClinet.queryItemsById(spuId);
+        map.put("title", item.getTitle());
+        map.put("price",item.getPrice());
+        map.put("image",item.getImage());
+        return map;
     }
 
     @Override

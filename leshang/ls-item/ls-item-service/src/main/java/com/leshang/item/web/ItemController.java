@@ -51,8 +51,8 @@ public class ItemController {
      * @param id 商品id
      * @return
      */
-    @GetMapping("/findItemById")
-    public ResponseEntity<ZkItem> queryItemsById(Long id) {
+    @GetMapping("/findItemById/{id}")
+    public ResponseEntity<ZkItem> queryItemsById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(itemService.finditemById(id));
     }
     /**
@@ -72,6 +72,7 @@ public class ItemController {
     public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id) {
         return ResponseEntity.ok(itemService.queryItemsByCatId(id));
     }
+
     @GetMapping("/queryItemsByPrice")
     public ResponseEntity<List<ZkItem>> queryItemsByPrice(String orderWay){
         List<ZkItem> zkItems=null;

@@ -1,7 +1,7 @@
 package com.leshang.page.web;
 
 import com.leshang.page.service.PageService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +36,8 @@ public class PageController {
 
         model.addAllAttributes(attributes);*/
 
-
+        Map<String, Object> map = pageService.loadModel(spuId);
+        model.addAttribute("item",map);
         //返回视图
         return "product-details";
     }
