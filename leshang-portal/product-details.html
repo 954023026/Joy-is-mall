@@ -31,6 +31,11 @@
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- ************************* Vue Files ************************* -->
+    <script src="assets/js/vue/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script>Vue.config.productionTip = false</script>
 </head>
 
 <body class="default-color" >
@@ -46,12 +51,15 @@
     <!-- Preloader End -->
 
     <!-- Main Wrapper Start -->
-    <div class="wrapper" id="">
+    <div class="wrapper">
         <!-- Header Area Start -->
         <!--页面顶部，由js动态加载-->
-        <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-        <div class="nav-top"></div>
-        <script type="text/javascript">$(".nav-top").load("module/header.html");</script>
+
+        <!-- 头部栏位 -->
+        <div id="details">
+            <shortcut/>
+        </div>
+
         <!-- Header Area End -->
 
         <!-- Breadcrumb area Start -->
@@ -1046,7 +1054,14 @@
 
     <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="assets/js/revoulation.js"></script>
-
+    <script type="text/javascript">
+        var details= new Vue({
+            el:"#details",
+            components:{
+                shortcut:() => import('./assets/js/pages/shop.js')
+            }
+        });
+    </script>
 </body>
 
 </html>

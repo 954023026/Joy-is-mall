@@ -31,6 +31,7 @@
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
     <!-- ************************* Vue Files ************************* -->
     <script src="assets/js/vue/vue.js"></script>
     <script src="assets/js/axios.min.js"></script>
@@ -54,9 +55,21 @@
 <div class="wrapper">
     <!-- Header Area Start -->
     <!--页面顶部，由js动态加载-->
-    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-    <header class="nav-top"></header>
-    <script type="text/javascript">$(".nav-top").load("module/header.html");</script>
+
+
+    <!-- 头部栏位 -->
+    <div id="nav-top">
+        <shortcut/>
+    </div>
+    <script type="text/javascript">
+        var indexVm = new Vue({
+            el:"#nav-top",
+            components:{
+                shortcut:() => import('./assets/js/pages/shop.js')
+            }
+        });
+    </script>
+
     <!-- Header Area End -->
 
     <!-- Main Content Wrapper Start -->
@@ -473,7 +486,6 @@
         <!--数据显示，由js动态加载-->
         <section class="data"></section>
         <script type="text/javascript">$(".data").load("module/data.html");</script>
-
         <!-- Product Tab Area End -->
 
         <!-- Fullwidth Banner area Start -->

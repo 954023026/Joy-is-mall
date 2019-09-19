@@ -1,4 +1,4 @@
-<header class="header header-st yle-3" id="shortcut" >
+<header class="header header-st yle-3" id="shortcut">
     <div class="header-inner headroom headroom--fixed">
         <div class="top-bar d-none d-lg-block">
             <div class="container-fluid">
@@ -36,7 +36,8 @@
                     </div>
                     <div class="col-xl-4 text-center">
                         <div class="header__text">
-                            <span>Flash sale! Off 20% All Items This Week <a href="../shop-sidebar.html">SHOP NOW</a></span>
+                            <span>Flash sale! Off 20% All Items This Week <a
+                                    href="../shop-sidebar.html">SHOP NOW</a></span>
                         </div>
                     </div>
                     <div class="col-xl-4 text-right d-none d-xl-block">
@@ -72,7 +73,8 @@
                     </div>
                     <div class="col-lg-6 d-lg-block d-none">
                         <form action="#" class="searchform searchform-3">
-                            <input type="text" name="search" id="search" class="searchform__input" placeholder="Search Products">
+                            <input type="text" name="search" id="search" class="searchform__input"
+                                   placeholder="Search Products">
                             <button type="submit" class="searchform__submit"><i class="dl-icon-search1"></i></button>
                         </form>
                     </div>
@@ -752,13 +754,21 @@
         name: "shortcut",
         data() {
             return {
-                user: null
+                user: null,
+                form:{
+                    username:'zhou',
+                    password:'123456'
+                },
+                msg:''
             }
+
         },
         data:{
             commodityAll:{}
         },
         created() {
+            ly.http.post("/auth/login", ly.stringify(this.form));
+
             ly.http("/auth/verify")
                 .then(resp => {
                     this.user = resp.data;

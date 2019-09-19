@@ -1,7 +1,7 @@
 (function($){
 
 	'use strict';
-    //×îÐÂ×îÈ«×îºÃµÄBootstrapÄ£°å£ºhttp://www.bootstrapmb.com
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Ãµï¿½BootstrapÄ£ï¿½å£ºhttp://www.bootstrapmb.com
     // Check if element exists
     $.fn.elExists = function() {
         return this.length > 0;
@@ -272,9 +272,9 @@
 	* Product Quantity
 	***********************/
 
-    $(".quantity").append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
+    // $(".quantity").append('<div class="dec qtybutton">-</div><div class="inc qtybutton">+</div>');
 
-    $(".qtybutton").on("click", function () {
+  /*  $(".qtybutton").on("click", function () {
         var $button = $(this);
         var oldValue = $button.parent().find("input").val();
         if ($button.hasClass("inc")) {
@@ -288,7 +288,7 @@
             }
         }
         $button.parent().find("input").val(newVal);
-    });	
+    });	*/
 
 
 	/**********************

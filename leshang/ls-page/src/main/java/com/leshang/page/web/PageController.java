@@ -30,14 +30,9 @@ public class PageController {
     @GetMapping("item/{id}.html")
     public String toItemPage(@PathVariable("id") Long spuId, Model model){
         //查询模型数据
-        /*Map<String,Object> attributes = pageService.loadModel(spuId);
-
+        Map<String,Object> attributes = pageService.loadModel(spuId);
         //准备模型数据
-
-        model.addAllAttributes(attributes);*/
-
-        Map<String, Object> map = pageService.loadModel(spuId);
-        model.addAttribute("item",map);
+        model.addAllAttributes(attributes);
         //返回视图
         return "product-details";
     }

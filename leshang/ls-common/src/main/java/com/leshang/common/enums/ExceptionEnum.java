@@ -41,6 +41,8 @@ public enum ExceptionEnum {
     INVALID_VERIFY_CODE(400,"无效的验证码"),
     INVALID_USERNAME_PASSWORD(400,"用户名或密码错误"),
     UNAUTHORIZED(403,"未授权"),
+
+    CART_NOT_FOUND(404,"购物车为空！"),
     ;
 
     private int code;

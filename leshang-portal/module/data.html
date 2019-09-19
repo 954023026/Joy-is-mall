@@ -1,5 +1,5 @@
 <!--展示数据抽取出页面-->
-
+<script src="assets/js/model/cartModel.js"></script>
 <section class="product-tab-area pt--10 pt-sm--5 pb--45 pb-md--25 pb-sm--5" id="data">
     <div class="container-fluid">
         <div class="row mb--30 mb-md--25">
@@ -42,7 +42,7 @@
                                                         <a class="add_compare action-btn" href="compare.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Compare">
                                                             <i class="dl-icon-compare"></i>
                                                         </a>
-                                                        <a class="add_to_cart_btn action-btn" href="cart.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
+                                                        <a class="add_to_cart_btn action-btn" @click="addCart(item.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add to Cart">
                                                             <i class="dl-icon-cart29"></i>
                                                         </a>
                                                     </div>
@@ -967,10 +967,6 @@
         </div>
     </div>
 </section>
-<!--<script src="./js/vue/vue.js"></script>
-<script src="./js/axios.min.js"></script>
-<script src="./js/common.js"></script>
-<script src="./js/plugins/jquery/jquery.cookie.js"></script>-->
 <script type="text/javascript">
     var myData = new Vue({
         el: "#data",
@@ -984,20 +980,74 @@
             })
         },
         data: {
+            ly,
             items:{},
             commodityAll:{},
+            item:{},    //点击购物时，该商品数据
+            num: 1,     //数量
         },
         methods:{
+            decrement() {   //减少商品
+                if (this.num > 1) {
+                    this.num--;
+                }
+            },
+            increment() { //增加商品
+                this.num++;
+            },
             goFind(id) {
                 ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
                     this.items = resp.data;
                 })
             },
-        },
-        methods: {
             search() {
                 window.location = 'search.html?key=' + this.key;
             },
+            addCart(cid) {  //添加购物车
+                // 判断是否登录
+                this.item = this.items.find(i => i.id === cid); //查找到该商品
+                ly.verifyUser().then(() => {
+                    // 已登录
+                    ly.http.post("/cart", {
+                        id: this.item.id,
+                        title: this.item.title,
+                        image: this.item.image,
+                        price: this.item.price,
+                        num:this.num,
+                        stock:this.item.num,//商品库存
+                        sellPoint:this.item.sellPoint
+                    }).then(() => {
+                        // 跳转到购物车列表页
+                        window.location.href = "http://www.leshang.com/cart.html";
+                    }).catch(() => {
+                        alert("添加购物车失败，请重试！");
+                    })
+                }).catch(() => {
+                    // 获取以前的购物车
+                    const carts = ly.store.get("carts") || [];
+                    // 获取与当前商品id一致的购物车数据
+                    const cart = carts.find(i => i.id === cid); //查找到该商品
+                    if (cart) {
+                        // 存在，修改数量
+                        cart.num += this.num;
+                    } else {
+                        // 不存在，新增
+                        carts.push({
+                            id: this.item.id,
+                            title: this.item.title,
+                            image: this.item.image,
+                            price: this.item.price,
+                            num:this.num,
+                            stock:this.item.num,    //商品库存
+                            sellPoint:this.item.sellPoint
+                        })
+                    }
+                    // 未登录
+                    ly.store.set("carts", carts);
+                    // 跳转到购物车列表页
+                    window.location.href = "http://www.leshang.com/cart.html";
+                })
+            }
         },
         components:{
             // lsTop:() => import('./assets/js/pages/lstop.js')
