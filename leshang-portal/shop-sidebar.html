@@ -1,6 +1,6 @@
 ﻿<!doctype html>
 <html class="no-js" lang="zxx">
- 
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,12 +55,15 @@
     <!-- Preloader End -->
 
     <!-- Main Wrapper Start -->
-    <div class="wrapper" id="commodityAll">
+    <div class="wrapper">
         <!-- Header Area Start -->
         <!--页面顶部，由js动态加载-->
         <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
-        <div class="nav-top"></div>
-        <script type="text/javascript">$(".nav-top").load("module/header.html");</script>
+        <!-- 头部栏位 -->
+        <div id="nav-top">
+            <shortcut/>
+        </div>
+
         <!-- Header Area End -->
 
         <!-- Breadcrumb area Start -->
@@ -223,8 +226,8 @@
                 </form>
             </div>
         </div>
-        <!-- Search from End --> 
-        
+        <!-- Search from End -->
+
         <!-- Side Navigation Start -->
         <aside class="side-navigation" id="sideNav">
             <div class="side-navigation-wrapper">
@@ -391,7 +394,7 @@
         <!-- Global Overlay Start -->
         <div class="zuka-global-overlay"></div>
         <!-- Global Overlay End -->
- 
+
         <!-- Modal Start -->
         <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-dialog" role="document">
@@ -525,7 +528,15 @@
 
     <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="assets/js/revoulation.js"></script>
-
+    <script type="text/javascript">
+        var header = new Vue({
+            el:"#nav-top",
+            name:"shop-sidebar",
+            components:{
+                shortcut:() => import('./assets/js/pages/shop.js')
+            }
+        });
+    </script>
 </body>
 
 </html>

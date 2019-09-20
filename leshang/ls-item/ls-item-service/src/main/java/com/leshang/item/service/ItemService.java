@@ -13,10 +13,6 @@ public interface ItemService {
 
     ZkItem finditemById(Long id);
 
-    List<ZkItemCat> queryAllCat();
-
-    Integer queryItemCountByCatId(Long cid);
-
     List<ZkItem> queryItemsByCatId(Long id);
 
     List<ZkItem> queryItemsByPriceASC();

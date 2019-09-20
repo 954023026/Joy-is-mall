@@ -64,6 +64,7 @@
     <script type="text/javascript">
         var indexVm = new Vue({
             el:"#nav-top",
+            name:"ls-index",
             components:{
                 shortcut:() => import('./assets/js/pages/shop.js')
             }
@@ -1055,22 +1056,7 @@
 
 
 <script type="text/javascript">
-    /*var app = new Vue({
-        el: "#data",
-        created() {
-            //获取请求参数
-            ly.http.post("/search/page",{"key":"手机"}).then(resp => {
 
-            })
-        },
-        data: {
-            items:{},
-        },
-        components:{
-            // lsTop:() => import('./assets/js/pages/lstop.js')
-        }
-
-    })*/
 </script>
 </body>
 

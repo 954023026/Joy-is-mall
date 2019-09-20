@@ -516,6 +516,16 @@ axios.defaults.baseURL = "http://api.leshang.com/api";
 axios.defaults.timeout = 5000;
 axios.defaults.withCredentials = true
 
+const data = new Vue({
+    data() {
+        return{
+            items:{},
+            commodityAll:{},
+        }
+    }
+})
+
+
 // 配置对象
 const ly = leyou = {
     /**

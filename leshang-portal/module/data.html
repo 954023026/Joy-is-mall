@@ -1,5 +1,4 @@
 <!--展示数据抽取出页面-->
-<script src="assets/js/model/cartModel.js"></script>
 <section class="product-tab-area pt--10 pt-sm--5 pb--45 pb-md--25 pb-sm--5" id="data">
     <div class="container-fluid">
         <div class="row mb--30 mb-md--25">
@@ -970,19 +969,16 @@
 <script type="text/javascript">
     var myData = new Vue({
         el: "#data",
+        name:"ls-data",
         created() {
             //获取请求参数
             ly.http.get("/item/").then(resp => {
                 this.items = resp.data.items;
-            }),
-            ly.http.get("/item/getCats").then(resp => {
-                this.commodityAll = resp.data;
             })
         },
         data: {
             ly,
             items:{},
-            commodityAll:{},
             item:{},    //点击购物时，该商品数据
             num: 1,     //数量
         },
@@ -999,9 +995,6 @@
                 ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
                     this.items = resp.data;
                 })
-            },
-            search() {
-                window.location = 'search.html?key=' + this.key;
             },
             addCart(cid) {  //添加购物车
                 // 判断是否登录
@@ -1049,9 +1042,6 @@
                 })
             }
         },
-        components:{
-            // lsTop:() => import('./assets/js/pages/lstop.js')
-        }
 
     })
 </script>

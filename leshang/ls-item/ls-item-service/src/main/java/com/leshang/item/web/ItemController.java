@@ -55,18 +55,7 @@ public class ItemController {
     public ResponseEntity<ZkItem> queryItemsById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(itemService.finditemById(id));
     }
-    /**
-     * 获取商品类别
-     * @return
-     */
-    @GetMapping("/getCats")
-    public ResponseEntity<List<ZkItemCat>> queryAllCats() {
-        List<ZkItemCat> zkItemCats = itemService.queryAllCat();
-        for (ZkItemCat zkItemCat : zkItemCats) {
-            zkItemCat.setSortOrder(itemService.queryItemCountByCatId(zkItemCat.getId()));
-        }
-        return ResponseEntity.ok(zkItemCats);
-    }
+
 
     @GetMapping("/getItemsByCid")
     public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id) {
