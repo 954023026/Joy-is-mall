@@ -564,7 +564,7 @@
                                         <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
                                     </div>
                                     <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart.html'">
-                                        Add To Cart
+                                       加入购物车
                                     </button>
                                     <a href="wishlist.html" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
                                     <a href="compare.html" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
@@ -712,6 +712,19 @@
                     // 未登录购物车
                     this.carts.splice(i, 1);
                     ly.store.set("carts", this.carts);
+                })
+            },
+            clearCart(){
+                ly.verifyUser().then(res =>{
+                    if(confirm("您是否要清空购物车？")){
+                        ly.http.get("/cart/").then(() => {
+                            ly.store.set("carts",[]);
+                        })
+                    }
+                }).catch(()=>{
+                    // 未登录购物车
+                    this.carts.splice(i, 1);
+                    ly.store.set("carts",[]);
                 })
             },
             stringPrice(price){

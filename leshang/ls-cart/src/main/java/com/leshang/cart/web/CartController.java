@@ -2,6 +2,7 @@ package com.leshang.cart.web;
 
 import com.leshang.cart.pojo.Cart;
 import com.leshang.cart.service.CartService;
+import lombok.Cleanup;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -62,6 +63,11 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @PostMapping
+    public ResponseEntity<Void> clearCart(@RequestBody Cart cart){
+        cartService.clearCart(cart);
+        return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
     /**
      * 合并购物车

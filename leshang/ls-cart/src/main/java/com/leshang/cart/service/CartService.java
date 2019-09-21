@@ -15,4 +15,6 @@ public interface CartService {
     void deleteCart(Long skuId);
 
     void addLocal(List<Cart> cart);
+
+    void clearCart(Cart cart);
 }
