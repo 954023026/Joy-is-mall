@@ -19,6 +19,7 @@ public enum ExceptionEnum {
     ITEM_NOT_FOND(404,"商品没查询到！"),
     UPDATE_BRAND_FAILED(500, "品牌更新失败"),
     SPEC_PARAM_NOT_FOUND(404,"商品规格组没查到"),
+    CATEGORY_NOT_FOND(404,"商品分类没查询到！"),
 
 
     BRAND_NOT_FOUND(404,"品牌不存在！"),

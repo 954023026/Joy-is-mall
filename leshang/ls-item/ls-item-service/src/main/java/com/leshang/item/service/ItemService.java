@@ -7,19 +7,12 @@ import com.leshang.common.vo.PageResult;
 import java.util.List;
 
 public interface ItemService {
-    List<ZkItem> queryItemAll();
 
     PageResult<ZkItem> queryItemsPage(Integer page, Integer rows, Integer status, String key, Integer cid);
 
-    ZkItem finditemById(Long id);
+    List<ZkItem> queryItemsByCidAndPriceSort(String way, Long cid);
 
-    List<ZkItemCat> queryAllCat();
+    List<ZkItem> queryItemsByCidAndPriceSort(Long cid);
 
-    Integer queryItemCountByCatId(Long cid);
-
-    List<ZkItem> queryItemsByCatId(Long id);
-
-    List<ZkItem> queryItemsByPriceASC();
-
-    List<ZkItem> queryItemsByPriceDESC();
+    ZkItem queryItemsById(Long id);
 }

@@ -73,10 +73,10 @@ const shortcut = {
                         <!-- Logo End Here -->
                     </div>
                     <div class="col-lg-6 d-lg-block d-none">
-                        <form action="#" class="searchform searchform-3">
-                            <input type="text" name="search" id="search" class="searchform__input"
+                        <form action="shop-sidebar.html" class="searchform searchform-3">
+                             <input type="text" name="key" id="search"  v-model='key'  class="searchform__input"
                                    placeholder="Search Products">
-                            <button type="submit" class="searchform__submit"><i class="dl-icon-search1"></i></button>
+                            <button type="button" @click.prevent='search' class="searchform__submit"><i class="dl-icon-search1"></i></button>
                         </form>
                     </div>
                     <div class="col-lg-3 col-6">
@@ -765,7 +765,9 @@ const shortcut = {
                 username:'zhou',
                 password:'123456'
             },
-            msg:''
+            msg:'',
+            key: "",
+            query: location.search
         }
 
     },
@@ -780,7 +782,10 @@ const shortcut = {
     methods: {
         gotoLogin() {
             window.location = "login.html?returnUrl=" + window.location;
-        }
+        },
+        search() {
+            window.location = 'shop-sidebar.html?key=' + this.key;
+        },
     }
 };
 export default shortcut;

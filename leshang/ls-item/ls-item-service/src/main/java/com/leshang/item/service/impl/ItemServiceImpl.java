@@ -32,11 +32,7 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private ZkItemCatMapper zkItemCatMapper;
 
-    @Override
-    public List<ZkItem> queryItemAll() {
-        PageHelper.startPage(2,14);
-        return zkItemMapper.selectAll();
-    }
+    private static final String SORT = "ASC";
 
     @Override
     public PageResult<ZkItem> queryItemsPage(Integer page, Integer rows, Integer status, String key, Integer cid) {
@@ -67,64 +63,34 @@ public class ItemServiceImpl implements ItemService {
         }
         //解析分页结果
         PageInfo<ZkItem> info = new PageInfo<>(zkItems);
-        return new PageResult<>(info.getTotal(),(long)info.getPages(), zkItems);
+        return new PageResult<>(info.getTotal(), (long) info.getPages(), zkItems);
     }
-
     /**
-     * 根据id获取商品信息
-     * @param id 商品id
+     * 查找该商品类别下的所有商品,并排序
+     *
+     * @param cid
      * @return
      */
     @Override
-    public ZkItem finditemById(Long id) {
-        ZkItem zkItem=new ZkItem();
-        zkItem.setId(id);
-        return zkItemMapper.selectOne(zkItem);
-    }
-
-    @Override
-    public List<ZkItemCat> queryAllCat() {
-        List<ZkItemCat> zkItemCats = zkItemCatMapper.selectAll();//获取商品所有类别
-        return zkItemCats;
-    }
-
-    /**
-     * 获取当前商品类别下的商品数量
-     * @param cid 类别id
-     * @return
-     */
-    @Override
-    public Integer queryItemCountByCatId(Long cid) {
+    public List<ZkItem> queryItemsByCidAndPriceSort(String way, Long cid) {
         Example example = new Example(ZkItem.class);
         //搜索字段过滤
-        if (cid != null){
-            example.createCriteria().andEqualTo("cid",cid);
+        Example.Criteria criteria = example.createCriteria();
+        if (null != cid && cid != 0) {
+            criteria.andEqualTo("cid", cid);
         }
-        return zkItemMapper.selectCountByExample(example);
-    }
-
-    /**
-     * 查找该商品类别下的所有商品
-     * @param id
-     * @return
-     */
-    @Override
-    public List<ZkItem> queryItemsByCatId(Long id) {
-        ZkItem item=new ZkItem();
-        item.setCid(id);
-        List<ZkItem> itemList = zkItemMapper.select(item);
-        return itemList;
+        //默认排序
+        example.setOrderByClause("price " + way);
+        return zkItemMapper.selectByExample(example);
     }
 
     @Override
-    public List<ZkItem> queryItemsByPriceASC() {
-        List<ZkItem> zkItems = zkItemMapper.queryItemsByPriceASC();
-        return zkItems;
+    public List<ZkItem> queryItemsByCidAndPriceSort(Long cid) {
+        return queryItemsByCidAndPriceSort(SORT,cid);
     }
 
     @Override
-    public List<ZkItem> queryItemsByPriceDESC() {
-        List<ZkItem> zkItems = zkItemMapper.queryItemsByPriceDESC();
-        return zkItems;
+    public ZkItem queryItemsById(Long id) {
+        return zkItemMapper.selectByPrimaryKey(id);
     }
 }

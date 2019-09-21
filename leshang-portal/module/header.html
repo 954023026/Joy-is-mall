@@ -73,9 +73,9 @@
                     </div>
                     <div class="col-lg-6 d-lg-block d-none">
                         <form action="#" class="searchform searchform-3">
-                            <input type="text" name="search" id="search" class="searchform__input"
+                            <input type="text" name="search" id="search"  v-model='key'  class="searchform__input"
                                    placeholder="Search Products">
-                            <button type="submit" class="searchform__submit"><i class="dl-icon-search1"></i></button>
+                            <button type="button" @click.prevent='search' class="searchform__submit"><i class="dl-icon-search1"></i></button>
                         </form>
                     </div>
                     <div class="col-lg-3 col-6">
@@ -759,27 +759,23 @@
                     username:'zhou',
                     password:'123456'
                 },
-                msg:''
+                msg:'',
+                key: "",
+                query: location.search
             }
 
         },
         data:{
-            commodityAll:{}
         },
         created() {
-            ly.http.post("/auth/login", ly.stringify(this.form));
-
-            ly.http("/auth/verify")
-                .then(resp => {
-                    this.user = resp.data;
-                }),
-                ly.http.get("/item/getCats").then(resp => {
-                    this.commodityAll = resp.data;
-                })
         },
         methods: {
             gotoLogin() {
                 window.location = "login.html?returnUrl=" + window.location;
+            },
+            search() {
+                console.log(this.key)
+                window.location = 'product-details.html?key=' + this.key;
             },
         }
     })

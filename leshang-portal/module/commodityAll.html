@@ -21,10 +21,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="shop-toolbar__right">
-                                        <a href="#" class="product-filter-btn shop-toolbar__btn">
-                                            <span>过滤器</span>
-                                            <i></i>
-                                        </a>
                                         <div class="product-ordering">
                                             <a href="" class="product-ordering__btn shop-toolbar__btn">
                                                 <span>按排序</span>
@@ -203,7 +199,7 @@
                                         <figure class="product-image">
                                             <div class="product-image--holder">
                                                 <!--获取id当页面详情跳转页-->
-                                                <a :href="'www.leshang.com/item/'+item.id+'.html'">
+                                                <a :href="'/item/'+item.id+'.html'">
                                                     <img :src="item.image" alt="Product Image" class="primary-image">
                                                     <img :src="item.image" alt="Product Image" class="secondary-image">
                                                 </a>
@@ -245,7 +241,7 @@
                                         <figure class="product-image">
                                             <div class="product-image--holder">
                                                 <!--获取id当页面详情跳转页 http://www.leshang.com/item/45000.html-->
-                                                <a :href="'http://www.leshang.com/item/'+item.id+'.html'">
+                                                <a :href="'/item/'+item.id+'.html'">
                                                     <img :src="item.image" alt="Product Image" class="primary-image">
                                                     <img :src="item.image" alt="Product Image" class="secondary-image">
                                                     <div class="product-overlay"></div>
@@ -306,9 +302,9 @@
                         <div class="product-widget categroy-widget mb--35 mb-md--30">
                             <h3 class="widget-title">Categories</h3>
                             <ul class="prouduct-categories product-widget__list">
-                                <li v-for="cat in commodityAll" :key="cat.id" >
+                                <li v-for="cat in commodity" :key="cat.id" >
                                     <a v-on:click="goFind(cat.id)">{{cat.name}}</a>
-                                    <span class="count">({{cat.sortOrder}})</span>
+                                    <span class="count">({{cat.itemNum}})</span>
                                 </li>
                             </ul>
                         </div>
@@ -350,7 +346,7 @@
                         <div class="product-widget tag-widget mb--35 mb-md--30">
                             <h3 class="widget-title">Categories</h3>
                             <div class="tagcloud">
-                                <a v-on:click="goFind(cat.id)" v-for="cat in commodityAll" :key="cat.id">{{cat.name}}</a>
+                                <a v-on:click="goFind(cat.id)" v-for="cat in commodity" :key="cat.id">{{cat.name}}</a>
                             </div>
                         </div>
                         <!-- Category Widget Start -->
@@ -382,34 +378,98 @@
 <script type="text/javascript">
     var content = new Vue({
         el: "#content",
-        created() {
-            //获取请求参数
-            ly.http.get("/item/").then(resp => {
-                this.items = resp.data.items;
-            }),
-            ly.http.get("/item/getCats").then(resp => {
-                this.commodityAll = resp.data;
-            })
-        },
+        name:"commodity",
         data: {
             items:{},
-            commodityAll:{},
+            commodity:{},
+            cType:0,   //当前类别选中的类别
+            ly,
+            search: {},
+            goodsList: [],
+            total: 0,
+            totalPage: 0,
+            selectedSku:{},
+            filters:[],//过滤项
         },
-        methods:{
-            goFind(id) {
-                ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
+        created() {
+            //获取请求参数
+            const search = ly.parse(location.search.substring(1))
+            //默认页给1
+            search.page = parseInt(search.page) || 1;
+            console.log(search);
+            this.search = search;
+            if (!this.search.key) {
+                ly.http.get("/item/").then(resp => {
+                    this.items = resp.data.items;
+                })
+            }else{
+                this.loadData();//搜索发起请求
+            }
+            //查询分类
+            ly.http.get("/item-service/itemCat").then(resp => {
+                this.commodity = resp.data;
+            })
+
+        },
+        watch:{
+            search:{
+                deep:true,
+                handler(val,oldVal){
+                    // this.loadData();
+                    //把请求参数写到url中
+                    if (!oldVal || !oldVal.key){
+                        return;
+                    }
+                    location.search = "?"+ly.stringify(this.search)
+                }
+
+            }
+        }
+        ,
+        methods: {
+            loadData() {
+                //发送后台
+                ly.http.post("/search/page", this.search).then(resp => {
+                    //保存分页结果
+                    this.total = resp.data.total;
+                    this.totalPage= resp.data.totalPage;
+                    this.items = resp.data.items;
+                    console.log(this.items)
+                    //保存当前页商品
+                    this.goodsList = resp.data.items;
+                    //我们获取聚合结果，形参过滤项
+                }).catch(error => {
+
+                })
+            },
+            index(i){
+                if (this.search.page <= 3 || this.totalPage < 5 ){
+                    return i;
+                }else if(this.search.page >= this.totalPage - 2){
+                    return this.totalPage - 5 + i;
+                }else{
+                    return i + this.search.page - 3;
+                }
+            },
+            prePage(){
+                if (this.search.page > 1) this.search.page--;
+
+            },
+            nextPage(){
+                if (this.search.page <this.totalPage) this.search.page++;
+            },
+            goFind(cid) {
+                ly.http.get("/item/cid?cid="+cid).then(resp => {
+                    this.cType = cid;
                     this.items = resp.data;
                 })
             },
-            orderByPrice(orderWay){
-                ly.http.get("/item/queryItemsByPrice?orderWay="+orderWay).then(resp => {
+            orderByPrice(way){
+                ly.http.get("/item/sort/"+way+"/"+this.cType).then(resp => {
                     this.items = resp.data;
                 })
             }
         },
-        components:{
-            // lsTop:() => import('./assets/js/pages/lstop.js')
-        }
 
     })
 
