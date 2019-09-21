@@ -1,7 +1,6 @@
 package com.leshang.item.web;
 
 import com.leshang.item.pojo.ZkItem;
-import com.leshang.item.pojo.ZkItemCat;
 import com.leshang.item.service.ItemService;
 import com.leshang.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,25 +50,22 @@ public class ItemController {
      * @param id 商品id
      * @return
      */
-    @GetMapping("/findItemById/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<ZkItem> queryItemsById(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(itemService.finditemById(id));
+        return ResponseEntity.ok(itemService.queryItemsById(id));
     }
 
 
-    @GetMapping("/getItemsByCid")
-    public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long id) {
-        return ResponseEntity.ok(itemService.queryItemsByCatId(id));
+    @GetMapping("/cid")
+    public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long cid) {
+        return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(cid));
     }
 
-    @GetMapping("/queryItemsByPrice")
-    public ResponseEntity<List<ZkItem>> queryItemsByPrice(String orderWay){
-        List<ZkItem> zkItems=null;
-        if(orderWay.equals("ASC")){
-            zkItems = itemService.queryItemsByPriceASC();
-        }else{
-            zkItems = itemService.queryItemsByPriceDESC();
-        }
-        return ResponseEntity.ok(zkItems);
+    @GetMapping("/sort/{way}/{cid}")
+    public ResponseEntity<List<ZkItem>> queryItemsByPriceSort(
+            @PathVariable(value = "way") String way,
+            @PathVariable(value = "cid", required = false) Long cid
+    ){
+        return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(way,cid));
     }
 }

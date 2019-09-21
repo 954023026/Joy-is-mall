@@ -9,11 +9,9 @@ import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
 import com.leshang.item.vo.ZkItemCatVo;
 import com.leshang.search.client.ItemCatClient;
-import com.leshang.search.client.ItemClient;
 import com.leshang.search.pojo.Items;
 import com.leshang.search.pojo.SearchRequest;
 import com.leshang.search.pojo.SearchResult;
-import com.leshang.search.repository.GoodsRepository;
 import com.leshang.search.service.SearchService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +26,6 @@ import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
 import org.springframework.data.elasticsearch.core.query.FetchSourceFilter;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -45,9 +42,6 @@ public class SearchServiceImpl implements SearchService {
 
     @Autowired
     private ItemCatClient itemCatClient;
-
-    @Autowired
-    private ItemClient itemClient;
 
     @Autowired
     private ElasticsearchTemplate template;

@@ -21,10 +21,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="shop-toolbar__right">
-                                        <a href="#" class="product-filter-btn shop-toolbar__btn">
-                                            <span>过滤器</span>
-                                            <i></i>
-                                        </a>
                                         <div class="product-ordering">
                                             <a href="" class="product-ordering__btn shop-toolbar__btn">
                                                 <span>按排序</span>
@@ -386,6 +382,7 @@
         data: {
             items:{},
             commodity:{},
+            cType:0,   //当前类别选中的类别
             ly,
             search: {},
             goodsList: [],
@@ -461,13 +458,14 @@
             nextPage(){
                 if (this.search.page <this.totalPage) this.search.page++;
             },
-            goFind(id) {
-                ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
+            goFind(cid) {
+                ly.http.get("/item/cid?cid="+cid).then(resp => {
+                    this.cType = cid;
                     this.items = resp.data;
                 })
             },
-            orderByPrice(orderWay){
-                ly.http.get("/item/queryItemsByPrice?orderWay="+orderWay).then(resp => {
+            orderByPrice(way){
+                ly.http.get("/item/sort/"+way+"/"+this.cType).then(resp => {
                     this.items = resp.data;
                 })
             }

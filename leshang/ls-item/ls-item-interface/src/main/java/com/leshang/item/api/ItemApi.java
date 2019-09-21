@@ -22,7 +22,7 @@ public interface ItemApi {
      * @param id 商品id
      * @return
      */
-    @GetMapping("findItemById/{id}")
+    @GetMapping("id/{id}")
     public ZkItem queryItemsById(@PathVariable("id") Long id);
 
     /**
@@ -54,11 +54,11 @@ public interface ItemApi {
 
     /**
      * 根据商品分类id，查询商品
-     * @param id
+     * @param cid
      * @return
      */
-    @GetMapping("/getItemsByCid")
-    public List<ZkItem> queryItemsByCatId(Long id);
+    @GetMapping("/cid")
+    public List<ZkItem> queryItemsByCatId(Long cid);
 
 
 }

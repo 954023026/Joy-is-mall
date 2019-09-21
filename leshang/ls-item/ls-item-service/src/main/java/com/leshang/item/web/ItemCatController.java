@@ -23,7 +23,7 @@ public class ItemCatController {
     @Autowired
     private ItemCatService itemCatService;
     /**
-     *
+     *  根据分类id查询该id下所有分类
      * @return
      */
     @GetMapping("/cid")

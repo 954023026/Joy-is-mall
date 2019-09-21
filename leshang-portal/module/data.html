@@ -10,7 +10,7 @@
             <div class="col-12">
                 <div class="product-tab tab-style-4">
                     <div class="nav nav-tabs product-tab__head mb--30 mb-sm--5" id="food-product-tab" role="tablist">
-                        <a class="product-tab__link nav-link active" id="nav-food-all-tab" data-toggle="tab" href="#nav-food-all" role="tab" aria-selected="true"   v-for="cat in commodityAll" :key="cat.id">
+                        <a class="product-tab__link nav-link active" id="nav-food-all-tab" data-toggle="tab" href="#nav-food-all" role="tab" aria-selected="true"   v-for="cat in cats" :key="cat.id">
                             <span v-on:click="goFind(cat.id)">{{cat.name}}</span>
                         </a>
                     </div>
@@ -975,9 +975,14 @@
             ly.http.get("/item/").then(resp => {
                 this.items = resp.data.items;
             })
+            //查询分类
+            ly.http.get("/item-service/itemCat").then(resp => {
+                this.cats = resp.data;
+            })
         },
         data: {
             ly,
+            cats:{},    //商品分类
             items:{},
             item:{},    //点击购物时，该商品数据
             num: 1,     //数量
@@ -991,8 +996,9 @@
             increment() { //增加商品
                 this.num++;
             },
-            goFind(id) {
-                ly.http.get("/item/getItemsByCid?id="+id).then(resp => {
+            goFind(cid) {
+                //查询分类下所有商品
+                ly.http.get("/item/cid?cid="+cid).then(resp => {
                     this.items = resp.data;
                 })
             },
