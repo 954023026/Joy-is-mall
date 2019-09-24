@@ -1,0 +1,110 @@
+<div id="cart">
+    <aside :class="ly.show?'mini-cart open':'mini-cart'" id="miniCart">
+        <div class="mini-cart-wrapper">
+            <a href="" class="btn-close" @click.prevent="ly.minCart"><i class="dl-icon-close"></i></a>
+            <div class="mini-cart-inner">
+                <h5 class="mini-cart__heading mb--40 mb-lg--30">购物车</h5>
+                <div class="mini-cart__content">
+                    <ul class="mini-cart__list" >
+                        <li class="mini-cart__product" v-for="(cart,i) in carts" :key="i">
+                            <a href="#" class="remove-from-cart remove" @click.prevent="deleteCart(i)" >
+                                <i class="dl-icon-close"></i>
+                            </a>
+                            <div class="mini-cart__product__image">
+                                <img :src="cart.image" alt="products">
+                            </div>
+                            <div class="mini-cart__product__content">
+                                <a class="mini-cart__product__title" href="single-product.html" v-text="cart.title"></a>
+                                <span class="mini-cart__product__quantity" v-text="cart.num+' x '+cart.price+'.00'"></span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="mini-cart__total">
+                        <span>小计:</span>
+                        <span class="ammount" v-text="totalPrice+'.00'"></span>
+                    </div>
+                    <div class="mini-cart__buttons">
+                        <a href="cart.html" class="btn btn-fullwidth btn-style-1">查看购物车</a>
+                        <a href="checkout.html" class="btn btn-fullwidth btn-style-1">结算</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Mini Cart End -->
+
+    <!-- Global Overlay Start -->
+    <div :class="ly.show?'zuka-global-overlay overlay-open':'zuka-global-overlay'" @click.prevent="ly.minCart"></div>
+    <!-- Global Overlay End -->
+</div>
+<script type="text/javascript">
+    var lsMinCart = new Vue({
+        el: "#cart",
+        name:"ls-minCart",
+        data: {
+            ly,
+            cart,
+            carts: [],// 购物车数据
+            selected: [],
+            freight: 20,    //运费
+        },
+        created() {
+            this.loadCarts();
+        },
+        methods: {
+            loadCarts() {
+                // 先判断登录状态
+                ly.verifyUser().then(res => {
+                    // 登陆状态，查看本次localStorage是否存有购物车信息
+                    const localCarts = ly.store.get("carts");
+                    // 如果本地存有购物车信息，则发送至后台保存，然后删除本地的
+                    if (localCarts) {
+                        ly.http.post("/cart/addLocal", localCarts)
+                            .then(() => {
+                                ly.store.del("carts");
+                                this.getCartList();
+                            });
+                    } else {
+                        this.getCartList();
+                    }
+                }).catch(() => {
+                    // 未登录
+                    this.carts = ly.store.get("carts") || [];
+                    this.selected = this.carts;
+                })
+            },
+            getCartList(){
+                ly.http.get("/cart").then(({data}) => {
+                    // 已登录
+                    this.carts = data || [];
+                    this.cartNum()
+                    this.selectAll = true;
+                });
+            },
+            deleteCart(i) {
+                ly.verifyUser().then(res => {
+                    // TODO，已登录购物车
+                    ly.http.delete("/cart/"+this.carts[i].id).then(() => {
+                        this.carts.splice(i,1)
+                        this.cartNum()
+                    })
+                }).catch(() => {
+                    // 未登录购物车
+                    this.carts.splice(i, 1);
+                    ly.store.set("carts", this.carts);
+                })
+            }
+        },
+        computed: {
+            //计算总价格
+            totalPrice() {
+                return this.carts.reduce((c1, c2) => c1 + c2.num * c2.price, 0);
+            },
+            cartNum(){
+                cart.num = this.carts.length;
+                cart.carts = this.carts;
+            }
+        }
+    })
+</script>

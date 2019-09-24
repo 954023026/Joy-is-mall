@@ -132,15 +132,8 @@
                                 </div>
                             </div>
                             <div class="row no-gutters border-top pt--20 mt--20">
-                                <div class="col-sm-6">
-                                    <div class="coupon">
-                                        <input type="text" id="coupon" name="coupon" class="cart-form__input" placeholder="Coupon Code">
-                                        <button type="submit" class="cart-form__btn">Apply Coupon</button>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 text-sm-right">
-                                    <button type="submit" class="cart-form__btn">Clear Cart</button>
-                                    <button type="submit" class="cart-form__btn">Update Cart</button>
+                                <div class="col-sm-12 text-sm-left">
+                                    <button type="button" class="cart-form__btn" @click.prevent="clearCart">清空</button>
                                 </div>
                             </div>
                         </form>
@@ -425,78 +418,43 @@
     <!-- Side Navigation End -->
 
     <!-- Mini Cart Start -->
-    <aside class="mini-cart" id="miniCart">
+    <aside :class="ly.show?'mini-cart open':'mini-cart'" id="miniCart">
         <div class="mini-cart-wrapper">
-            <a href="" class="btn-close"><i class="dl-icon-close"></i></a>
+            <a href="" class="btn-close" @click.prevent="ly.minCart"><i class="dl-icon-close"></i></a>
             <div class="mini-cart-inner">
-                <h5 class="mini-cart__heading mb--40 mb-lg--30">Shopping Cart</h5>
+                <h5 class="mini-cart__heading mb--40 mb-lg--30">购物车</h5>
                 <div class="mini-cart__content">
-                    <ul class="mini-cart__list">
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
+                    <ul class="mini-cart__list" >
+                        <li class="mini-cart__product" v-for="(cart,i) in carts" :key="i">
+                            <a href="#" class="remove-from-cart remove" @click.prevent="deleteCart(i)" >
                                 <i class="dl-icon-close"></i>
                             </a>
                             <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-26-1-70x88.jpg" alt="products">
+                                <img :src="cart.image" alt="products">
                             </div>
                             <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Atlin Designs Mid Century Club Chair</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-30-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-29-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-31-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
+                                <a class="mini-cart__product__title" href="single-product.html" v-text="cart.title"></a>
+                                <span class="mini-cart__product__quantity" v-text="cart.num+' x '+cart.price+'.00'"></span>
                             </div>
                         </li>
                     </ul>
                     <div class="mini-cart__total">
-                        <span>Subtotal:</span>
-                        <span class="ammount">&pound;98.00</span>
+                        <span>小计:</span>
+                        <span class="ammount" v-text="totalPrice+'.00'"></span>
                     </div>
                     <div class="mini-cart__buttons">
-                        <a href="cart.html" class="btn btn-fullwidth btn-style-1">View Cart</a>
-                        <a href="checkout.html" class="btn btn-fullwidth btn-style-1">Checkout</a>
+                        <a href="cart.html" class="btn btn-fullwidth btn-style-1">查看购物车</a>
+                        <a href="checkout.html" class="btn btn-fullwidth btn-style-1">结算</a>
                     </div>
                 </div>
             </div>
         </div>
     </aside>
+
     <!-- Mini Cart End -->
 
     <!-- Global Overlay Start -->
-    <div class="zuka-global-overlay"></div>
+    <div :class="ly.show?'zuka-global-overlay overlay-open':'zuka-global-overlay'" @click.prevent="ly.minCart"></div>
     <!-- Global Overlay End -->
 
     <!-- Modal Start -->
@@ -634,11 +592,12 @@
 <!-- REVOLUTION ACTIVE JS FILES -->
 <script src="assets/js/revoulation.js"></script>
 <script type="text/javascript">
-    var cart = new Vue({
+    var myCart = new Vue({
         el:"#cart-app",
         name:"ls-cart",
         data: {
             ly,
+            cart,
             carts: [],// 购物车数据
             selected: [],
             freight: 20,    //运费
@@ -672,6 +631,7 @@
                 ly.http.get("/cart").then(({data}) => {
                     // 已登录
                     this.carts = data || [];
+                    this.cartNum()
                     this.selectAll = true;
                 });
             },
@@ -707,6 +667,7 @@
                 ly.verifyUser().then(res => {
                     // TODO，已登录购物车
                     ly.http.delete("/cart/"+this.carts[i].id).then(() => {
+                        this.cartNum()
                         this.carts.splice(i,1)
                     })
                 }).catch(() => {
@@ -718,7 +679,9 @@
             clearCart(){
                 ly.verifyUser().then(res =>{
                     if(confirm("您是否要清空购物车？")){
-                        ly.http.get("/cart/").then(() => {
+                        ly.http.get("/cart/clear").then(() => {
+                            this.carts.splice(0,this.carts.length)
+                            this.cartNum()
                             ly.store.set("carts",[]);
                         })
                     }
@@ -730,13 +693,18 @@
             },
             stringPrice(price){
                 return "$ "+price+".00";
-            }
+            },
+
         },
         computed: {
             //计算总价格
             totalPrice() {
                 return this.carts.reduce((c1, c2) => c1 + c2.num * c2.price, 0);
             },
+            cartNum(){
+                cart.num = this.carts.length;
+                cart.carts = this.carts;
+            }
 
         },
         components:{

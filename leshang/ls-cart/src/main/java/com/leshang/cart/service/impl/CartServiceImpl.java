@@ -110,14 +110,14 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void clearCart(Cart cart){
+    public void clearCart(){
         //获取登录用户
         UserInfo user = UserInterceptor.getUser();
         //key
         String key = KEY_PREFIX + user.getId();
 
         //清空
-        redisTemplate.opsForHash().delete(key,cart.toString());
+        redisTemplate.delete(key);
     }
 
     @Override

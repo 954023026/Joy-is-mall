@@ -63,9 +63,13 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @PostMapping
-    public ResponseEntity<Void> clearCart(@RequestBody Cart cart){
-        cartService.clearCart(cart);
+    /**
+     * 清空购物车
+     * @return
+     */
+    @GetMapping("/clear")
+    public ResponseEntity<Void> clearCart(){
+        cartService.clearCart();
         return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

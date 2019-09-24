@@ -22,7 +22,7 @@ const lyTop = {
                         </div> \
                         <div class='hotwords'> \
                             <ul> \
-                                <li class='f-item'>乐尚首发</li> \
+                                <li class='f-item'>乐优首发</li> \
                                 <li class='f-item'>亿元优惠</li> \
                                 <li class='f-item'>9.9元团购</li> \
                                 <li class='f-item'>每满99减30</li> \
@@ -50,7 +50,7 @@ const lyTop = {
                 </div> \
                 <div class='yui3-g NavList'> \
                     <div class='yui3-u Left all-sort'> \
-                        <h4>乐尚精品</h4> \
+                        <h4>乐优精品</h4> \
                     </div> \
                     <div class='yui3-u Center navArea'> \
                         <ul class='nav'> \

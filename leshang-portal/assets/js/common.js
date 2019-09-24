@@ -517,7 +517,20 @@ axios.defaults.timeout = 5000;
 axios.defaults.withCredentials = true
 
 // 配置对象
+const cart = {
+    num:0,
+    carts:[],
+
+}
+
+
+// 配置对象
 const ly = leyou = {
+    show: false, //购物车边栏展示控制
+    minCart() {
+        ly.show = ly.show ? false : true;
+    },
+
     /**
      * 对encodeURI()编码过的 URI 进行解码。并且获取其中的指定参数
      * @param name

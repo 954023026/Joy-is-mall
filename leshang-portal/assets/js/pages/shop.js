@@ -105,17 +105,11 @@ const shortcut = {
                                 </ul>
                             </li>
                             <li class="header-toolbar__item">
-                                <a href="#miniCart" class="mini-cart-btn mini-cart-btn-3 toolbar-btn">
+                                <a href="#miniCart" @click.prevent="ly.minCart" class="mini-cart-btn mini-cart-btn-3 toolbar-btn">
                                     <i class="dl-icon-cart25"></i>
-                                    <sup class="mini-cart-count">2</sup>
+                                    <sup class="mini-cart-count" v-if="cart.num>0" v-text="cart.num"></sup>
                                 </a>
                             </li>
-                            <!--<li class="header-toolbar__item d-none d-lg-block">
-                                <a href="#sideNav" class="toolbar-btn">
-                                            <span class="hamburger-icon">
-                                            </span>
-                                </a>
-                            </li>-->
                             <li class="header-toolbar__item d-lg-none">
                                 <a href="#searchForm" class="search-btn toolbar-btn">
                                     <i class="dl-icon-search1"></i>
@@ -123,8 +117,8 @@ const shortcut = {
                             </li>
                             <li class="header-toolbar__item d-lg-none">
                                 <a href="#mobileMenu" class="toolbar-btn menu-btn">
-                                            <span class="hamburger-icon">
-                                            </span>
+                                    <span class="hamburger-icon">
+                                    </span>
                                 </a>
                             </li>
                         </ul>
@@ -756,18 +750,19 @@ const shortcut = {
             </nav>
         </div>
     </div>
-</header>`,
+</header>
+`,
     name: "shortcut",   //页面头部
     data() {
         return {
             user: null,
-            form:{
-                username:'zhou',
-                password:'123456'
+            form: {
+                username: 'zhou',
+                password: '123456'
             },
-            msg:'',
-            key: "",
-            query: location.search
+            query: location.search,
+            ly,
+            cart
         }
 
     },
@@ -786,6 +781,7 @@ const shortcut = {
         search() {
             window.location = 'shop-sidebar.html?key=' + this.key;
         },
+
     }
 };
 export default shortcut;

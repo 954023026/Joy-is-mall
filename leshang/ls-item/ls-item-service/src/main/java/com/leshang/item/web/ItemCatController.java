@@ -28,8 +28,8 @@ public class ItemCatController {
      */
     @GetMapping("/cid")
     public ResponseEntity<ZkItemCat> queryCatById(@RequestParam("id") Long id){
-        return ResponseEntity.ok(itemCatService.queryCatById(id));
-    }
+                return ResponseEntity.ok(itemCatService.queryCatById(id));
+            }
 
     /**
      *  根据分类id集合查询分类

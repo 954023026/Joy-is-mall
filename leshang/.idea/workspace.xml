@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64a16e60-c0cd-407a-8a17-a29368594a13" name="Default Changelist" comment="代码">
+    <list default="true" id="64a16e60-c0cd-407a-8a17-a29368594a13" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../leshang-portal/checkout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../leshang-portal/module/minCart.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../leshang-portal/my-account.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/module/commodityAll.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/module/commodityAll.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/person-collect.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/person-footmark.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/register.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/seckill-index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/shop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/shortcut.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/top.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/top.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/cart.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../leshang-portal/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../leshang-portal/module/data.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/module/data.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-item/ls-item-interface/src/main/java/com/leshang/item/api/ItemApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-interface/src/main/java/com/leshang/item/api/ItemApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/mapper/ZkItemMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/mapper/ZkItemMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/ItemService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/impl/ItemServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/impl/ItemServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/service/impl/SearchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/service/impl/SearchServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-order/src/main/java/com/leshang/config/JwtProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-order/src/main/java/com/leshang/config/MvcConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ls-order/src/main/java/com/leshang/order/interceptor/LoginInterceptor.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -47,11 +59,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-300">
-              <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+            <state relative-caret-position="168">
+              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -59,11 +71,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ls-sms/pom.xml">
+          <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="866">
-              <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+            <state relative-caret-position="638">
+              <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1584">
+              <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2420">
+              <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,7 +188,6 @@
         <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/ls-page/src/main/java/com/leshang/page/web/PageController.java" />
         <option value="$PROJECT_DIR$/ls-page/src/main/resources/templates/product-details.html" />
-        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java" />
         <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/LyCartApplication.java" />
         <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/LsCartApplication.java" />
         <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/interceptor/UserInterceptor.java" />
@@ -153,8 +195,6 @@
         <option value="$PROJECT_DIR$/ls-cart/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/config/JwtProperties.java" />
         <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/pojo/Cart.java" />
-        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java" />
-        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java" />
         <option value="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/LySearchService.java" />
         <option value="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/LsSearchService.java" />
         <option value="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/client/CategoryClient.java" />
@@ -181,11 +221,14 @@
         <option value="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/pojo/SearchResult.java" />
         <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/mapper/ZkItemMapper.java" />
         <option value="$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/service/impl/SearchServiceImpl.java" />
-        <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java" />
         <option value="$PROJECT_DIR$/ls-item/ls-item-interface/src/main/java/com/leshang/item/api/ItemApi.java" />
         <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/ItemService.java" />
         <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/service/impl/ItemServiceImpl.java" />
         <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java" />
+        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java" />
+        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java" />
+        <option value="$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java" />
       </list>
     </option>
   </component>
@@ -232,10 +275,10 @@
     <option name="vmOptions" value="-DarchetypeCatalog=internal" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="116" />
-    <option name="y" value="32" />
-    <option name="width" value="1665" />
-    <option name="height" value="1049" />
+    <option name="x" value="295" />
+    <option name="y" value="55" />
+    <option name="width" value="1495" />
+    <option name="height" value="985" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -247,12 +290,114 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
               <item name="leshang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+              <item name="interceptor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-cart" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="cart" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
@@ -310,16 +455,43 @@
               <item name="item" type="462c0819:PsiDirectoryNode" />
               <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-order" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-order" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-order" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-registry" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-sms" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="MyBatisLogPluginindexNum" value="5684" />
+    <property name="MyBatisLogPluginindexNum" value="8506" />
     <property name="MyBatisLogPluginparameters" value="Parameters:" />
     <property name="MyBatisLogPluginpreparing" value="Preparing:" />
     <property name="MyBatisLogPluginrunning" value="true" />
@@ -499,7 +671,11 @@
       <workItem from="1568977775276" duration="10501000" />
       <workItem from="1569027871617" duration="352000" />
       <workItem from="1569028237828" duration="15000" />
-      <workItem from="1569048845954" duration="5409000" />
+      <workItem from="1569048845954" duration="7985000" />
+      <workItem from="1569126083564" duration="2287000" />
+      <workItem from="1569200853850" duration="4066000" />
+      <workItem from="1569234053476" duration="649000" />
+      <workItem from="1569287020667" duration="1071000" />
     </task>
     <task id="LOCAL-00001" summary="乐尚商城基本架构">
       <created>1567684562814</created>
@@ -557,7 +733,14 @@
       <option name="project" value="LOCAL" />
       <updated>1568992113783</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="页面及代码细微修改，代码的优化">
+      <created>1569054924679</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1569054924679</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -593,13 +776,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131896000" />
+    <option name="totallyTimeSpent" value="142545000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49463806" visible="true" weight="0.16957104" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49463806" visible="true" weight="0.17962466" />
       <window_info id="Structure" order="1" sideWeight="0.5053619" side_tool="true" weight="0.23324397" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -618,17 +801,17 @@
       <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4781297" side_tool="true" weight="0.27083334" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4899464" side_tool="true" weight="0.42091152" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.29624665" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="14" sideWeight="0.49865952" visible="true" weight="0.42091152" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.51005363" weight="0.40348527" />
       <window_info anchor="bottom" id="JRebel Console" order="15" side_tool="true" />
       <window_info anchor="bottom" id="Spring" order="16" sideWeight="0.49932975" weight="0.3297587" />
       <window_info anchor="bottom" id="Java Enterprise" order="17" weight="0.3297587" />
       <window_info anchor="bottom" id="Messages" order="18" sideWeight="0.49932975" weight="0.35924932" />
       <window_info anchor="bottom" id="MyBatis Log" order="19" weight="0.3069705" />
-      <window_info anchor="bottom" x="21" y="311" width="1492" height="246" id="Run Dashboard" order="20" sideWeight="0.49932975" weight="0.3324397" />
+      <window_info active="true" anchor="bottom" x="21" y="311" width="1492" height="246" id="Run Dashboard" order="20" sideWeight="0.49932975" visible="true" weight="0.34852546" />
       <window_info anchor="bottom" id="Inspection Results" order="21" sideWeight="0.5218703" weight="0.32916668" />
       <window_info anchor="right" id="JRebel Setup Guide" order="0" weight="0.3297587" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -704,7 +887,8 @@
     <MESSAGE value="商品详情页面搭建完成" />
     <MESSAGE value="登录后台测试完成" />
     <MESSAGE value="商品搜索功能实现及页面调整" />
-    <option name="LAST_COMMIT_MESSAGE" value="商品搜索功能实现及页面调整" />
+    <MESSAGE value="页面及代码细微修改，代码的优化" />
+    <option name="LAST_COMMIT_MESSAGE" value="页面及代码细微修改，代码的优化" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -728,44 +912,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/pojo/Cart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/interceptor/UserInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-418">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/config/MvcConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="110" column="5" selection-start-line="110" selection-start-column="5" selection-end-line="110" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/client/GoodsClient.java" />
     <entry file="file://$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/client/SpecificationClient.java" />
     <entry file="file://$PROJECT_DIR$/ls-search/src/main/java/com/leshang/search/client/CategoryClient.java" />
     <entry file="file://$PROJECT_DIR$/ls-search/pom.xml">
@@ -1092,16 +1238,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="59" column="75" selection-start-line="59" selection-start-column="75" selection-end-line="59" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../leshang-portal/module/commodityAll.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1078">
@@ -1109,20 +1245,57 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java">
+    <entry file="file://$PROJECT_DIR$/ls-order/src/main/java/com/leshang/order/interceptor/LoginInterceptor.java" />
+    <entry file="file://$PROJECT_DIR$/ls-order/src/main/java/com/leshang/config/JwtProperties.java" />
+    <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        <state relative-caret-position="387">
+          <caret line="39" column="70" selection-start-line="39" selection-start-column="70" selection-end-line="39" selection-end-column="70" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemController.java">
+    <entry file="file://$PROJECT_DIR$/ls-item/ls-item-service/src/main/java/com/leshang/item/web/ItemCatController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="866">
-          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        <state relative-caret-position="168">
+          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-sms/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="638">
+          <caret line="29" column="20" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/web/CartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1584">
+          <caret line="82" column="20" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/CartService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-cart/src/main/java/com/leshang/cart/service/impl/CartServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2420">
+          <caret line="123" column="43" selection-start-line="123" selection-start-column="43" selection-end-line="123" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

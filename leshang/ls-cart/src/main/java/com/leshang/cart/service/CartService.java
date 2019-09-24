@@ -16,5 +16,5 @@ public interface CartService {
 
     void addLocal(List<Cart> cart);
 
-    void clearCart(Cart cart);
+    void clearCart();
 }

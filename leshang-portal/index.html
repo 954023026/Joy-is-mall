@@ -52,15 +52,15 @@
 <!-- Preloader End -->
 
 <!-- Main Wrapper Start -->
-<div class="wrapper" id="account">
+<div class="wrapper">
     <!-- Header Area Start -->
     <!--页面顶部，由js动态加载-->
 
 
     <!-- 头部栏位 -->
-    <div id="nav-top">
+    <header class="header header-st yle-3" id="nav-top">
         <shortcut/>
-    </div>
+    </header>
     <script type="text/javascript">
         var indexVm = new Vue({
             el:"#nav-top",
@@ -849,190 +849,17 @@
     <!-- Footer End -->
 
     <!-- Search from Start -->
-    <div class="searchform__popup" id="searchForm">
-        <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
-        <div class="searchform__body">
-            <p>开始键入并按Enter进行搜索</p>
-            <form class="searchform">
-                <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                <button type="submit" class="searchform__submit"><i class="dl-icon-search10"></i></button>
-            </form>
-        </div>
-    </div>
     <!-- Search from End -->
 
     <!-- Side Navigation Start -->
-    <aside class="side-navigation" id="sideNav">
-        <div class="side-navigation-wrapper">
-            <div class="side-navigation-inner">
-                <div class="widget mb--30">
-                    <ul class="sidenav-menu">
-                        <li><a href="about-us.html">关于我们</a></li>
-                        <li><a href="shop-collections.html">宣传册</a></li>
-                        <li><a href="contact-us.html">我们的服务</a></li>
-                        <li><a href="#">从属节目</a></li>
-                        <li><a href="#">为Zuka工作</a></li>
-                    </ul>
-                </div>
-                <div class="widget mb--30">
-                    <div class="banner-box banner-type-1 banner-hover-1">
-                        <div class="banner-inner">
-                            <div class="banner-image">
-                                <img src="assets/img/banner/menu-humberger.jpg" alt="Banner">
-                            </div>
-                            <div class="banner-info">
-                                <a class="banner-title-1 text-uppercase" href="shop-sidebar.html">新</a>
-                            </div>
-                            <a class="banner-link banner-overlay" href="shop-sidebar.html">新</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget mb--30">
-                    <div class="text-widget">
-                        <p>
-                            <a href="#">(+612) 2531 5600</a>
-                            <a href="mailto:info@la-studioweb.com">info@la-studioweb.com</a>
-                            柯林西街1622号邮政信箱
-                        </p>
-                    </div>
-                </div>
-                <div class="widget mb--5">
-                    <div class="text-widget google-map-link">
-                        <p>
-                            <a href="https://www.google.com/maps" target="_blank">谷歌地图</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="text-widget">
-                        <!-- Social Icons Start Here -->
-                        <ul class="social social-small">
-                            <li class="social__item">
-                                <a href="twitter.com" class="social__link">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="plus.google.com" class="social__link">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="facebook.com" class="social__link">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="youtube.com" class="social__link">
-                                    <i class="fa fa-youtube"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="instagram.com" class="social__link">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- Social Icons End Here -->
-                    </div>
-                </div>
-                <div class="widget mtb--15">
-                    <div class="text-widget">
-                        <p>
-                            <img src="assets/img/others/payments.png" alt="payment">
-                        </p>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="text-widget">
-                        <p class="copyright-text">&copy; 2019ZuKa店版权所有s <a href="http://www.bootstrapmb.com/" title="bootstrapmb">Reserved</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
+
     <!-- Side Navigation End -->
 
     <!-- Mini Cart Start -->
-    <aside class="mini-cart" id="miniCart">
-        <div class="mini-cart-wrapper">
-            <a href="" class="btn-close"><i class="dl-icon-close"></i></a>
-            <div class="mini-cart-inner">
-                <h5 class="mini-cart__heading mb--40 mb-lg--30">购物车</h5>
-                <div class="mini-cart__content">
-                    <ul class="mini-cart__list">
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-26-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Atlin Designs Mid Century Club Chair</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-30-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-29-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                        <li class="mini-cart__product">
-                            <a href="#" class="remove-from-cart remove">
-                                <i class="dl-icon-close"></i>
-                            </a>
-                            <div class="mini-cart__product__image">
-                                <img src="assets/img/products/prod-31-1-70x88.jpg" alt="products">
-                            </div>
-                            <div class="mini-cart__product__content">
-                                <a class="mini-cart__product__title" href="single-product.html">Waxed-effect pleated skirt</a>
-                                <span class="mini-cart__product__quantity">1 x &pound;49.00</span>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="mini-cart__total">
-                        <span>Subtotal:</span>
-                        <span class="ammount">&pound;98.00</span>
-                    </div>
-                    <div class="mini-cart__buttons">
-                        <a href="cart.html" class="btn btn-fullwidth btn-style-1">查看购物车</a>
-                        <a href="checkout.html" class="btn btn-fullwidth btn-style-1">结算</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
-    <!-- Mini Cart End -->
-
-    <!-- Global Overlay Start -->
-    <div class="zuka-global-overlay"></div>
-    <!-- Global Overlay End -->
-
+    <dic class="minCart"></dic>
+    <script type="text/javascript">$(".minCart").load("module/minCart.html");</script>
     <!-- Modal Start -->
     <!-- Modal End -->
-
-
-
 </div>
 <!-- Main Wrapper End -->
 

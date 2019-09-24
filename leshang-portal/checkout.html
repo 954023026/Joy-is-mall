@@ -1,0 +1,377 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Seta description">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/img/icon.png">
+
+    <!-- Title -->
+    <title>确认收货</title>
+
+    <!-- ************************* CSS Files ************************* -->
+
+    <!-- All Plugins CSS  -->
+    <link rel="stylesheet" href="/assets/css/plugins.css">
+
+    <!-- Revoulation CSS  -->
+    <link rel="stylesheet" href="/assets/css/revoulation.css">
+
+    <!-- style CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <!-- modernizr JS
+    ============================================ -->
+    <script src="/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <!--[if lt IE 9]>
+    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- ************************* Vue Files ************************* -->
+    <script src="assets/js/vue/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script>Vue.config.productionTip = false</script>
+</head>
+
+<body class="default-color">
+
+    <!-- Preloader Start -->
+    <div class="zuka-preloader active">
+        <div class="zuka-preloader-inner h-100 d-flex align-items-center justify-content-center">
+            <div class="zuka-child zuka-bounce1"></div>
+            <div class="zuka-child zuka-bounce2"></div>
+            <div class="zuka-child zuka-bounce3"></div>
+        </div>
+    </div>
+    <!-- Preloader End -->
+
+    <!-- Main Wrapper Start -->
+    <div class="wrapper">
+        <!-- Header Area Start -->
+        <!-- 头部栏位 -->
+        <header class="header header-st yle-3" id="nav-top">
+            <shortcut/>
+        </header>
+        <script type="text/javascript">
+            var indexVm = new Vue({
+                el:"#nav-top",
+                components:{
+                    shortcut:() => import('./assets/js/pages/shop.js')
+                }
+            });
+        </script>
+        <!-- Header Area End -->
+        <!-- Breadcrumb area Start -->
+        <div class="breadcrumb-area pt--40 pb--30 pb-md--20">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="page-title">结算</h1>
+                        <ul class="breadcrumb justify-content-center">
+                            <li><a href="index">主页</a></li>
+                            <li class="current"><span>结算</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb area End -->
+
+        <!-- Main Content Wrapper Start -->
+
+        <div id="content" class="main-content-wrapper">
+            <div class="page-content-inner">
+                <div class="container">
+                    <div class="row pt--50 pt-md--40 pt-sm--20">
+                        <div class="col-12">
+                            <!-- User Action Start -->
+                            <div class="user-actions user-actions__coupon">
+                                <div class="message-box mb--30 mb-sm--20">
+                                    <p><i class="fa fa-exclamation-circle"></i><a class="expand-btn" href="#coupon_info">请填写好信息</a></p>
+                                </div>
+                            </div>
+                            <!-- User Action End -->
+                        </div>
+                    </div>
+                    <div class="row pb--80 pb-md--60 pb-sm--40">
+                        <!-- Checkout Area Start -->
+                        <div class="col-lg-6">
+                            <div class="checkout-title mt--10">
+                                <h2>填写信息</h2>
+                            </div>
+                            <div class="checkout-form">
+                                <form action="/order/submitOrder" class="form form--checkout" id="form" method="post">
+                                    <div class="form-row mb--30">
+                                        <div class="form__group col-md-6 mb-sm--30">
+                                            <label for="billing_fname" class="form__label form__label--2">收货人姓名<span class="required">*</span></label>
+                                            <input type="text" name="receiverName" id="billing_fname" class="form__input form__input--2" value="<c:if test="${not empty sessionScope.user.username}">${sessionScope.user.username}</c:if>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb--30">
+                                        <div class="form__group col-12">
+                                            <label for="billing_country" class="form__label form__label--2">城市 <span class="required">*</span></label>
+                                            <select id="billing_country" name="receiverState" class="form__input form__input--2 nice-select" >
+                                                <option value="">搜索..</option>
+                                                <c:forEach items="${chengshi}" var="cs">
+                                                    <option value="${cs.areaName}" <c:if test="${not empty user.stat1}"><c:if test="${cs.areaName == user.stat1}">selected="selected"</c:if></c:if>>${cs.areaName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb--30">
+                                        <div class="form__group col-12">
+                                            <label for="billing_country" class="form__label form__label--2">省份 <span class="required">*</span></label>
+                                            <select id="receiver_city" name="receiverCity" class="form__input form__input--2 nice-select">
+                                                <option value="">搜索..</option>
+                                                <c:forEach items="${shengfen}" var="cs">
+                                                    <option value="${cs.areaName}" <c:if test="${not empty user.stat1}"><c:if test="${cs.areaName == user.stat2}">selected="selected"</c:if></c:if>>${cs.areaName}</option>
+                                                </c:forEach>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb--30">
+                                        <div class="form__group col-12">
+                                            <label for="billing_streetAddress" class="form__label form__label--2">街道地址 <span class="required">*</span></label>
+                                            <input type="text" name="receiverAddress" id="billing_streetAddress" class="form__input form__input--2 mb--30" placeholder="" value="<c:if test="${ not empty user.stat3}">${user.stat3}</c:if>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row mb--30">
+                                        <div class="form__group col-12">
+                                            <label for="billing_phone" class="form__label form__label--2">手机号码 <span class="required">*</span></label>
+                                            <input type="text" name="receiverMobile" id="billing_phone" class="form__input form__input--2" value="<c:if test="${ not empty user.phone}">${user.phone}</c:if>">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form__group col-12">
+                                            <label for="orderNotes" class="form__label form__label--2">订单备注</label>
+                                            <textarea class="form__input form__input--2 form__input--textarea" id="orderNotes" name="receiverDistrict" placeholder="关于你的订单的说明，例如:特别交货说明。"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
+                            <div class="order-details">
+                                <div class="checkout-title mt--10">
+                                    <h2>你的订单</h2>
+                                </div>
+                                <div class="table-content table-responsive mb--30">
+                                    <table class="table order-table order-table-2">
+                                        <thead>
+                                            <tr>
+                                                <th>产品</th>
+                                                <th class="text-right">总计</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach items="${sessionScope.cart.cartItems}" var="items">
+                                            <tr>
+                                                <th>${items.product.title}
+                                                    <strong><span>&#10005;</span>${items.num}</strong>
+                                                </th>
+                                                <td class="text-right">$${items.subTotal}.0</td>
+                                            </tr>
+                                        </c:forEach>
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="cart-subtotal">
+                                                <th>总价</th>
+                                                <td class="text-right">$${sessionScope.cart.total}.0</td>
+                                            </tr>
+                                            <tr class="shipping">
+                                                <th>运费</th>
+                                                <td class="text-right">
+                                                    <span>$20.00</span>
+                                                </td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <th>合计订单; </th>
+                                                <td class="text-right"><span class="order-total-ammount">$${sessionScope.cart.total+20}.0</span></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="checkout-payment">
+                                        <div class="payment-group mt--20">
+                                            <p class="mb--15">您的个人数据将用于处理您的订单，支持您在整个网站的体验，以及我们的隐私政策中描述的其他目的。</p>
+                                            <button type="button" class="btn btn-fullwidth btn-style-1" onclick="submit()">提交订单</button>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Checkout Area End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Content Wrapper Start -->
+        <script type="text/javascript">
+            var checkout = new Vue({
+                el: "#content",
+                name: "ls-checkout",
+                data: {}
+            })
+        </script>
+        <!-- Footer Start -->
+        <footer class="footer"></footer>
+        <script type="text/javascript">$(".footer").load("module/footer.html");</script>
+        <!-- Footer End -->
+
+        <!-- Search from Start -->
+        <!-- Search from End -->
+
+        <!-- Side Navigation Start -->
+        <!-- Side Navigation End -->
+
+        <!-- Mini Cart Start -->
+        <dic class="minCart"></dic>
+        <script type="text/javascript">$(".minCart").load("module/minCart.html");</script>
+        <!-- Mini Cart End -->
+
+        <!-- Global Overlay Start -->
+        <!-- Global Overlay End -->
+
+        <!-- Modal Start -->
+        <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true"><i class="dl-icon-close"></i></span>
+                </button>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="zuka-element-carousel product-image-carousel nav-vertical-center nav-style-1"
+                                data-slick-options='{
+                                    "slidesToShow": 1,
+                                    "slidesToScroll": 1,
+                                    "arrows": true,
+                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "dl-icon-left" },
+                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "dl-icon-right" }
+                                }'
+                        >
+                            <div class="product-image">
+                                <div class="product-image--holder">
+                                    <a href="single-product">
+                                        <img src="/assets/img/products/prod-7-1.jpg" alt="Product Image" class="primary-image">
+                                    </a>
+                                </div>
+                                <span class="product-badge sale">sale</span>
+                            </div>
+                            <div class="product-image">
+                                <div class="product-image--holder">
+                                    <a href="single-product">
+                                        <img src="/assets/img/products/prod-7-2.jpg" alt="Product Image" class="primary-image">
+                                    </a>
+                                </div>
+                                <span class="product-badge sale">sale</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="modal-box product-summary">
+                            <div class="product-top-meta d-flex justify-content-between flex-sm-row flex-column-reverse">
+                                <div class="product-rating d-flex">
+                                    <div class="star-rating star-five">
+                                        <span>Rated <strong class="rating">5.00</strong> out of 5</span>
+                                    </div>
+                                    <a href="" class="review-link">评价</a>
+                                </div>
+                                <div class="product-navigation">
+                                    <a href="#" class="prev"><i class="dl-icon-left"></i></a>
+                                    <a href="#" class="next"><i class="dl-icon-right"></i></a>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <h3 class="product-title mb--30 mb-md--20">Fake News Network Abstract Novelty T-Shirt</h3>
+                            <div class="product-price-wrapper mb--30 mb-md--20">
+                                <span class="product-price-old">
+                                    <span class="money">&pound;60.00</span>
+                                </span>
+                                <span class="money">&pound;49.00</span>
+                            </div>
+                            <p class="product-short-description mb--30 mb-md--20">Zuka 2019 流行单品,舒适百搭,全场购物满额享优惠!时尚,简约,优雅,舒适的穿搭体验,尽在Zuka祖卡官方旗舰店!</p>
+                            <div class="product-action d-flex flex-row align-items-center mb--20">
+                                <div class="quantity mr--20">
+                                    <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
+                                </div>
+                                <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart'">
+                                    加入购物车
+                                </button>
+                                <a href="wishlist" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
+                                <a href="compare" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
+                            </div>
+                            <div class="product-extra mb--20">
+                                <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>相似</a>
+                            </div>
+                            <div class="product-summary-footer">
+                                <div class="product-meta mb--20">
+                                    <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF. LA-887</span></span>
+                                    <span class="posted_in font-size-12">分类: <a href="shop-sidebar" rel="tag">时尚</a></span>
+                                </div>
+                                <div class="product-share-box">
+                                    <span class="font-size-12">分享</span>
+                                    <!-- Social Icons Start Here -->
+                                    <ul class="social social-small">
+                                        <li class="social__item">
+                                            <a href="facebook.com" class="social__link">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="twitter.com" class="social__link">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="plus.google.com" class="social__link">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li class="social__item">
+                                            <a href="plus.google.com" class="social__link">
+                                                <i class="fa fa-pinterest-p"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <!-- Social Icons End Here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal End -->
+
+    </div>
+    <!-- Main Wrapper End -->
+
+
+    <!-- ************************* JS Files ************************* -->
+
+    <!-- All Plugins Js -->
+    <script src="/assets/js/plugins.js"></script>
+
+    <!-- Main JS -->
+    <script src="/assets/js/main.js"></script>
+
+    <!-- REVOLUTION JS FILES -->
+    <script src="/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
+    <script src="/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
+
+    <!-- REVOLUTION ACTIVE JS FILES -->
+    <script src="/assets/js/revoulation.js"></script>
+
+</body>
+
+</html>
