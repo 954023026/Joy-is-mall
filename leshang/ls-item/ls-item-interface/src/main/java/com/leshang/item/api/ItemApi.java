@@ -1,12 +1,11 @@
 package com.leshang.item.api;
 
+import com.leshang.common.dto.CartDto;
 import com.leshang.common.vo.PageResult;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -60,5 +59,20 @@ public interface ItemApi {
     @GetMapping("/cid")
     public List<ZkItem> queryItemsByCatId(Long cid);
 
+    /**
+     * 根据商品的id查询所有商品
+     * @param ids
+     * @return
+     */
+    @GetMapping("/list/ids")
+    public List<ZkItem> queryItemByIds(@RequestParam("ids") List<Long> ids);
+
+    /**
+     * 减少库存接口
+     * @param carts
+     * @return
+     */
+    @PostMapping("stock/decrese")
+    public Void decreseStock(@RequestBody List<CartDto> carts);
 
 }

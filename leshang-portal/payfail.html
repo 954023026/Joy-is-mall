@@ -1,0 +1,92 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <title>乐尚商城-支付失败页</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <!--For Plugins external css-->
+        <!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="assets/css/style.css">
+
+        <!-- All Plugins CSS  -->
+        <link rel="stylesheet" href="assets/css/plugins.css">
+
+        <!-- Revoulation CSS  -->
+        <link rel="stylesheet" href="assets/css/revoulation.css">
+
+        <!-- style CSS -->
+        <link rel="stylesheet" href="assets/css/main.css">
+
+        <link rel="stylesheet" href="assets/css/pay.css">
+        <script type="text/javascript" src="assets/plugins/jquery/jquery.min.js"></script>
+        <script src="assets/js/vue/vue.js"></script>
+        <script src="assets/js/axios.min.js"></script>
+        <script src="assets/js/common.js"></script>
+        <script>Vue.config.productionTip = false</script>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar-collapse" style="background:#f1f2f7">
+
+        <div class="culmn" id="error">
+            <!--Home page style-->
+            <!-- 头部栏位 -->
+            <header class="header header-st yle-3">
+                <shortcut/>
+            </header>
+
+            <!--Featured Section-->
+            <section id="features" class="features">
+                <div class="container">
+                    <div style="display: compact">
+                        <div class="main_features p-top-100">
+                            
+                            <div class="gray-box">
+                                <div class="title">
+                                  <h2>支付失败</h2>
+                                </div>
+                                <!--内容-->
+                                <div>
+                                    <div class="content" style="min-height:28vw">
+                                        <p class=""><i class="fa fa-times-circle icon-error" aria-hidden="true"></i>&nbsp;&nbsp;支付失败，请稍后再试</p>
+                                        <input type="text" class="main-btn mybtn" value="回到支付页" onclick="submit1()" readonly>
+                                        <input type="text" class="main-btn mybtn" value="继续购物" onclick="submit2()" readonly>
+                                    </div>
+                                </div>
+                                  
+                              </div>
+
+                        </div>
+                    </div><!-- End off row -->
+                </div><!-- End off container -->
+            </section><!-- End off Featured Section-->
+
+            <!-- scroll up-->
+            <div class="scrollup">
+                <a href="#"><i class="fa fa-chevron-up"></i></a>
+            </div><!-- End off scroll up -->
+
+        </div>
+        <footer class="footer"></footer>
+        <script type="text/javascript">$(".footer").load("module/footer.html");</script>
+        <!-- JS includes -->
+
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script type="text/javascript">
+            var confirm = new Vue({
+                el:"#error",
+                name:"ls-payfail",
+                components:{
+                    shortcut:() => import('./assets/js/pages/shop.js')
+                }
+            });
+        </script>
+    </body>
+</html>

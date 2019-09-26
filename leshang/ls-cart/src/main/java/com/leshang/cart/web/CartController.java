@@ -64,6 +64,17 @@ public class CartController {
     }
 
     /**
+     * 删除已购买的购物车商品
+     * @param ids
+     * @return
+     */
+    @DeleteMapping("delete")
+    public ResponseEntity<Void> deleteCart(@RequestParam("ids") List<Long> ids){
+        cartService.deleteByIdsCart(ids);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /**
      * 清空购物车
      * @return
      */
@@ -83,5 +94,7 @@ public class CartController {
         cartService.addLocal(cart);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+
 
 }

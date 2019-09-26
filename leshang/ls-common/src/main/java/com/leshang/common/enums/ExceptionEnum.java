@@ -44,7 +44,20 @@ public enum ExceptionEnum {
     UNAUTHORIZED(403,"未授权"),
 
     CART_NOT_FOUND(404,"购物车为空！"),
+
+    ORDER_NOT_FOUND(404,"订单不存在！"),
+    ORDER_DETAIL_NOT_FOUND(404,"订单详情不存在！"),
+    ORDER_STATUS_NOT_FOUND(404,"订单状态不存在！"),
+    WX_PAY_ORDER_FALI(500,"微信下单失败"),
+    ORDER_STATUS_ERROR(400, "订单状态有误"),
+    INVALID_SIGN_ERROR(400, "无效的签名异常"),
+    INVALID_ORDER_PARAM(400, "订单参数异常"),
+    UPDATE_ORDERSTATUS_ERROR(500, "更新订单状态失败"),
+    CREATE_ORDER_ERROR(500,"创建订单失败！"),
+    STOCK_NOT_ENOUGH(500,"库存不足！"),
+
     ;
+
 
     private int code;
     private String msg;

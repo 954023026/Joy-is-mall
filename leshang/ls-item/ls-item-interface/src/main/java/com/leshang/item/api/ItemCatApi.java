@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("itemCat")
 public interface ItemCatApi {
     /**
-     *    查询分类
+     *   查询分类
      * @return
      */
     @GetMapping("cid")

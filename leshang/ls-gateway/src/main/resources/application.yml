@@ -24,6 +24,7 @@ zuul:
     user-service: /user/**
     auth-service: /auth/**
     cart-service: /cart/**
+    order-service: /order/**
     #controller的路径为upload/image,网关的路径前缀为upload，访问地址就会变为/upload/upload/image,所以设置网关忽略前缀
     upload-service:
       path: /upload/**

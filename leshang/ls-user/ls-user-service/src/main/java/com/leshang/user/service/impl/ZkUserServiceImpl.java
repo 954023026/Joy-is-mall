@@ -3,7 +3,9 @@ package com.leshang.user.service.impl;
 import com.leshang.common.enums.ExceptionEnum;
 import com.leshang.common.exception.LyException;
 import com.leshang.common.utils.NumberUtils;
+import com.leshang.user.mapper.AreasMapper;
 import com.leshang.user.mapper.UserMapper;
+import com.leshang.user.pojo.ZkAreas;
 import com.leshang.user.pojo.ZkUser;
 import com.leshang.user.service.ZkUserService;
 import com.leshang.user.utils.CodecUtils;
@@ -12,9 +14,11 @@ import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -28,6 +32,8 @@ public class ZkUserServiceImpl implements ZkUserService {
 
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private AreasMapper areasMapper;
     @Autowired
     private AmqpTemplate amqpTemplate;
     @Autowired
@@ -92,5 +98,10 @@ public class ZkUserServiceImpl implements ZkUserService {
     @Override
     public Boolean checkData(String data, Integer type) {
         return null;
+    }
+
+    @Override
+    public List<ZkAreas> queryAddress() {
+        return areasMapper.selectAll();
     }
 }

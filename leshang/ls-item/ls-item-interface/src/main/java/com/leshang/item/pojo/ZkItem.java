@@ -19,16 +19,12 @@ public class ZkItem implements Serializable {
     private String sellPoint;
 
     private Long price;
-
+    @Transient
     private Integer num;
-
-    private String barcode;
 
     private String image;
 
     private Long cid;
-    @Transient
-    private String cName;
 
     private Byte status;
 

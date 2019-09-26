@@ -1,5 +1,6 @@
 package com.leshang.user.web;
 
+import com.leshang.user.pojo.ZkAreas;
 import com.leshang.user.pojo.ZkUser;
 import com.leshang.user.service.ZkUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * 描述:
@@ -62,5 +64,15 @@ public class UserController {
     ){
         return ResponseEntity.ok(userService.queruUserByUsernameAndPassword(username,password));
     }
+
+    /**
+     * 省市区信息
+     * @return
+     */
+    @GetMapping("address")
+    public ResponseEntity<List<ZkAreas>> queryAddress(){
+        return  ResponseEntity.ok(userService.queryAddress());
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.leshang.item.service;
 
+import com.leshang.common.dto.CartDto;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
 import com.leshang.common.vo.PageResult;
@@ -15,4 +16,9 @@ public interface ItemService {
     List<ZkItem> queryItemsByCidAndPriceSort(Long cid);
 
     ZkItem queryItemsById(Long id);
+
+    List<ZkItem> queryItemByIds(List<Long> ids);
+
+    void decreaseStock(List<CartDto> carts);
+
 }

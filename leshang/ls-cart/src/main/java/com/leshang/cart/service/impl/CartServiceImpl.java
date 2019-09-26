@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -118,6 +119,16 @@ public class CartServiceImpl implements CartService {
 
         //清空
         redisTemplate.delete(key);
+    }
+
+    @Override
+    public void deleteByIdsCart(List<Long> ids) {
+        //获取登录用户
+        UserInfo user = UserInterceptor.getUser();
+        //key
+        String key = KEY_PREFIX + user.getId();
+        //删除
+        redisTemplate.opsForHash().delete(key, Arrays.toString(ids.toArray()));
     }
 
     @Override

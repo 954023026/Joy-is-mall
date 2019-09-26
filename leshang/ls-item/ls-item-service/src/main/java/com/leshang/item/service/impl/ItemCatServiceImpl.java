@@ -2,8 +2,10 @@ package com.leshang.item.service.impl;
 
 import com.leshang.item.mapper.ZkItemCatMapper;
 import com.leshang.item.mapper.ZkItemMapper;
+import com.leshang.item.mapper.ZkStockMapper;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.pojo.ZkItemCat;
+import com.leshang.item.pojo.ZkStock;
 import com.leshang.item.service.ItemCatService;
 import com.leshang.item.vo.ZkItemCatVo;
 import org.springframework.beans.BeanUtils;
@@ -24,24 +26,24 @@ import java.util.List;
 public class ItemCatServiceImpl implements ItemCatService {
 
     @Autowired
-    private ZkItemCatMapper zkItemCatMapper;
+    private ZkItemCatMapper itemCatMapper;
     @Autowired
-    private ZkItemMapper zkItemMapper;
+    private ZkItemMapper itemMapper;
 
     @Override
     public ZkItemCat queryCatById(Long id) {
-        return zkItemCatMapper.selectByPrimaryKey(id);
+        return itemCatMapper.selectByPrimaryKey(id);
     }
 
     @Override
     public List<ZkItemCatVo> queryItemCatByIds(List<Long> ids) {
-        return CopyItemCatVo(zkItemCatMapper.selectByIdList(ids));
+        return CopyItemCatVo(itemCatMapper.selectByIdList(ids));
     }
 
     @Override
     public List<ZkItemCatVo> queryAllCat() {
         //获取商品所有类别
-        return CopyItemCatVo(zkItemCatMapper.selectAll());
+        return CopyItemCatVo(itemCatMapper.selectAll());
     }
 
     //封装需要展示的数据，并查询该分类下商品数量
@@ -69,6 +71,6 @@ public class ItemCatServiceImpl implements ItemCatService {
         if (cid != null) {
             example.createCriteria().andEqualTo("cid", cid);
         }
-        return zkItemMapper.selectCountByExample(example);
+        return itemMapper.selectCountByExample(example);
     }
 }

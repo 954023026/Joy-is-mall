@@ -1,9 +1,11 @@
 package com.leshang.item.web;
 
+import com.leshang.common.dto.CartDto;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.item.service.ItemService;
 import com.leshang.common.vo.PageResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -61,11 +63,38 @@ public class ItemController {
         return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(cid));
     }
 
+    /**
+     * 排序，根据价格，分类id
+     * @param way
+     * @param cid
+     * @return
+     */
     @GetMapping("/sort/{way}/{cid}")
     public ResponseEntity<List<ZkItem>> queryItemsByPriceSort(
             @PathVariable(value = "way") String way,
             @PathVariable(value = "cid", required = false) Long cid
     ){
         return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(way,cid));
+    }
+
+    /**
+     * 根据商品的id查询所有商品
+     * @param ids
+     * @return
+     */
+    @GetMapping("/list/ids")
+    public ResponseEntity<List<ZkItem>> queryItemByIds(@RequestParam("ids") List<Long> ids){
+        return ResponseEntity.ok(itemService.queryItemByIds(ids));
+    }
+
+    /**
+     * 减少库存
+     * @param carts
+     * @return
+     */
+    @PostMapping("stock/decrese")
+    public ResponseEntity<Void> decreseStock(@RequestBody List<CartDto> carts){
+        itemService.decreaseStock(carts);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

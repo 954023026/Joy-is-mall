@@ -760,6 +760,8 @@ const shortcut = {
                 username: 'zhou',
                 password: '123456'
             },
+            msg: '',
+            key: "",
             query: location.search,
             ly,
             cart

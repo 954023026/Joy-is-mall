@@ -1,0 +1,37 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql:///zuka?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: sasa
+  jackson:
+    default-property-inclusion: non_null
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+mybatis:
+  type-aliases-package: com.leyou.order.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+ls:
+  jwt:
+    pubKeyPath: D:/coding/rsa/rsa.pub # 公钥地址
+    cookieName: LS_TOKEN # cookie的名称
+  worker:
+    workedId: 1
+    dataCenterId: 1
+  pay:   #微信
+    appID: wx0609f8351dca9750
+    mchID: 1536725911
+    key: txjavayingmulaoshi01234567891234
+    httpConnectTimeoutMs: 1000
+    httpReadTimeoutMs: 8000
+    notifyUrl: http://s2i5ng.natappfree.cc/notify/wxpay
