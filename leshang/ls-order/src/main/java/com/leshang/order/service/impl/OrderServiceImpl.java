@@ -1,10 +1,13 @@
 package com.leshang.order.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.leshang.common.dto.CartDto;
 import com.leshang.common.enums.ExceptionEnum;
 import com.leshang.common.exception.LyException;
 import com.leshang.common.pojo.UserInfo;
 import com.leshang.common.utils.IdWorker;
+import com.leshang.common.vo.PageResult;
 import com.leshang.item.pojo.ZkItem;
 import com.leshang.order.client.AddressClient;
 import com.leshang.order.client.ItemClinet;
@@ -21,12 +24,15 @@ import com.leshang.order.pojo.OrderDetail;
 import com.leshang.order.pojo.OrderStatus;
 import com.leshang.order.service.OrderService;
 import com.leshang.order.utils.PayHelper;
+import com.leshang.order.vo.OrderVo;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -247,6 +253,66 @@ public class OrderServiceImpl implements OrderService {
             return payHelper.queryPayState(orderId);
         } catch (InterruptedException e) {
             return null;
+        }
+    }
+
+    @Override
+    public PageResult<OrderVo> queryBrandByPage(Integer page, Integer rows, String sortBy, Boolean desc,String status, String key) {
+        //分页
+        PageHelper.startPage(page, rows);
+
+        //过滤
+        Example example = new Example(Order.class);
+        Example.Criteria criteria = example.createCriteria();
+
+        if (StringUtils.isNoneBlank(key)) {
+            //过滤条件
+            criteria.orLike("orderId", "%" + key + "%"/*).orEqualTo("letter", key.toUpperCase()*/);
+        }
+        //排序
+        if (StringUtils.isNoneBlank(sortBy)) {
+            String orderByClause = sortBy + (desc ? " DESC" : " ASC");
+            example.setOrderByClause(orderByClause);
+        }
+        //过滤未付款或已付款
+        if(StringUtils.isNoneBlank(status)){
+            Example example1 = new Example(OrderStatus.class);
+            example1.createCriteria().andEqualTo("status",status);
+            List<Long> orderIds = statusMapper.selectByExample(example1)
+                    .stream().map(OrderStatus::getOrderId).collect(Collectors.toList());
+            criteria.andIn("orderId",orderIds);
+        }
+
+        //查询
+        List<Order> list = orderMapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEnum.BRAND_NOT_FOUND);
+        }
+        //封装需要显示的数据
+        List<OrderVo> orderVos = new ArrayList<>();
+        for (Order order : list) {
+            OrderVo oVo = new OrderVo();
+            BeanUtils.copyProperties(order,oVo);
+            OrderDetail detail = new OrderDetail();
+            detail.setOrderId(order.getOrderId());
+            OrderStatus orderStatus = statusMapper.selectByPrimaryKey(order.getOrderId());
+            oVo.setOrderId(orderStatus.getOrderId().toString());
+            oVo.setStatus(orderStatus.getStatus());
+            orderVos.add(oVo);
+        }
+        PageInfo<OrderVo> info = new PageInfo<>(orderVos);
+        return new PageResult<>(info.getTotal(),orderVos);
+    }
+
+    @Override
+    public void deleteOrder(String orderId) {
+        //同时删除三张表中数据
+        if (StringUtils.isNoneBlank(orderId)) {
+            orderMapper.deleteByPrimaryKey(orderId);
+            OrderDetail detail = new OrderDetail();
+            detail.setOrderId(Long.valueOf(orderId));
+            detailMapper.delete(detail);
+            statusMapper.deleteByPrimaryKey(orderId);
         }
     }
 }

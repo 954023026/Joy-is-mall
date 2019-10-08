@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Lowin</title>
+    <link rel="stylesheet" href="./assets/css/auth.css">
+    <link rel="stylesheet" href="assets/css/plugins.css">
+
+    <!-- Revoulation CSS  -->
+    <link rel="stylesheet" href="assets/css/revoulation.css">
+    <link rel="stylesheet" href="assets/css/style1.css">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="assets/js/vue/vue.js"></script>
+    <script src="assets/js/axios.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script src="assets/js/validate.js"></script>
+    <script>Vue.config.productionTip = false</script>
+</head>
+
+<body>
+<div id="particles-js"></div>
+<div class="lowin">
+    <div class="col-md-6" style="z-index: -2"></div>
+
+    <div class="col-md-6 pull-right" >
+        <div class="lowin-brand" style="margin-right: 270px;">
+            <img src="assets/img/kodinger.jpg" alt="logo">
+        </div>
+        <div class="lowin-wrapper" >
+            <div class="lowin-box lowin-login"  style="width: 450px">
+                <div class="lowin-box-inner" >
+                    <form id="loginApp">
+                        <p>Sign in to continue</p>
+                        <div class="lowin-group">
+                            <label>账号： <span style="color: red;" v-if="msg" v-text="msg"></span></label>
+                            <input type="email" placeholder="邮箱/用户名/手机号" v-model="form.username"  autocomplete="name" name="username" class="lowin-input">
+                        </div>
+                        <div class="lowin-group password-group">
+                            <label>密码： <a href="#" class="forgot-link">Forgot Password?</a></label>
+                            <input type="password"  v-model="form.password" placeholder="请输入密码" name="password" autocomplete="current-password" class="lowin-input">
+                        </div>
+                        <a href="#" class="lowin-btn login-btn text-center" @click.prevent="login">
+                            登 陆
+                        </a>
+                    </form>
+                    <div class="text-foot">
+                        还没有帐号？ <a href="" class="register-link">Register</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lowin-box lowin-register" style="width: 450px">
+                <div class="lowin-box-inner">
+                    <form  id="registerApp">
+                        <p>Let's create your account</p>
+                        <div class="lowin-group">
+                            <label>用户名：<span style="color: red;" v-show="errors.has('username')">{{errors.first('username')}}</span></label>
+                            <input type="text" name="username"  placeholder="请输入您的用户名" v-model.lazy="user.username" data-vv-as="用户名"
+                                   v-validate="'required|alpha_dash|min:4|max:30|useful:1'" autocomplete="name" class="lowin-input">
+                        </div>
+
+                        <div class="lowin-group">
+                            <label >密码：<span style="color: red;" v-show="errors.has('password')">{{ errors.first('password') }}</span></label>
+                            <input type="password"  v-model="user.password" placeholder="设置登录密码" data-vv-as="密码"
+                                   v-validate="'required|alpha_dash|min:4|max:30'" name="password" autocomplete="current-password" class="lowin-input">
+                        </div>
+                        <div class="lowin-group">
+                            <label >确认密码：<span style="color: red;" v-show="errors.has('confirmPass')">{{ errors.first('confirmPass') }}</span></label>
+                            <input type="password"  v-model="user.confirmPassword"  placeholder="再次确认密码" data-vv-as="确认密码"
+                                   v-validate="{required:true,confirm:user.password}" name="confirmPass" autocomplete="current-password" class="lowin-input">
+                        </div>
+                        <div class="lowin-group">
+                            <label>手机号：<span style="color: red;" v-show="errors.has('phone')">{{ errors.first('phone') }}</span></label>
+                            <input type="phone"  placeholder="请输入你的手机号" data-vv-as="手机号"
+                                   autocomplete="phone" name="phone" v-validate="{required:true,regex:/^1[35678]\d{9}$/,useful:2}"
+                                   v-model="user.phone"class="lowin-input">
+                        </div>
+                        <div class="lowin-group" >
+                            <label>验证码：<span style="color: red;" v-show="errors.has('code')">{{ errors.first('code') }}</span></label>
+                            <input type="text" placeholder="短信验证码"  v-model="user.code"
+                                   name="code" v-validate="'required'" data-vv-as="验证码" class="lowin-input " style="width: 245px">
+                            <button class="lowin-btn" style="width: 128px;margin-left: 20px;"
+                               @click.prevent="createVerifyCode" :disabled="message!=='获取短信验证码'" v-text="message">
+                            </button>
+
+                        </div>
+                        <div class="controls">
+                            <input name="m1" type="checkbox" value="2"  checked=""><span>同意协议并注册《乐尚用户协议》</span>
+                        </div>
+                        <a class="lowin-btn text-center"  href="javascript:void(0)" target="_blank"  @click.prevent="submit">
+                            注    册
+                        </a>
+
+
+                    </form>
+                    <div class="text-foot">
+                        已经有帐号了？ <a href="" class="login-link">Login</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="lowin-footer">
+        </footer>
+    </div>
+</div>
+<script src="assets/js/auth.js"></script>
+<script src="/assets/js/particle/particles.js"></script>
+<script src="/assets/js/particle/app.js"></script>
+<script>
+    Auth.init({
+        login_url: '#login',
+        forgot_url: '#forgot'
+    });
+
+</script>
+<script type="text/javascript">
+    Vue.use(VeeValidate, {
+        events: 'blur',
+        dictionary: {
+            zh: {
+                messages: {
+                    required: (field) => field + '不能为空！',
+                    min: (field, args) => field + '长度不能小于' + args[0],
+                    max: (field, args) => field + '长度不能大于' + args[0],
+                    alpha_dash: (field) => field + '只能包含数字、字母或下划线',
+                    regex: (field) => field + "格式不正确",
+                    is: () => "两次密码不一致"
+                }
+            }
+        },
+        locale: 'zh'
+    });
+    var registerVm = new Vue({
+        el: "#registerApp",
+        data: {
+            user: {
+                username: '',
+                password: '',
+                confirmPassword: '',
+                phone: '',
+                code: ''
+            },
+            check: {
+                username: false
+            },
+            message:'获取短信验证码',
+        },
+        created() {
+            this.$validator.extend('useful', {
+                getMessage(field, args, data) {
+                    return args[0] === '1' ? '用户名' + data : '手机' + data;
+                },
+                validate(value, args) {
+                    return new Promise(resolve => {
+                        leyou.http.get("/user/check/" + value + "/" + args[0])
+                            .then(resp => {
+                                resolve({
+                                    valid: resp.data,
+                                    data: "已存在!"
+                                })
+                            })
+                    });
+                }
+            })
+            this.$validator.extend('confirm', {
+                getMessage() {
+                    return "两次密码不一致"
+                },
+                validate(val, args) {
+                    return val === args[0]
+                }
+            })
+        },
+        methods: {
+            createVerifyCode() {// 生成短信验证码
+                this.$validator.validate("phone").then(r => {
+                    if (r) {
+                        leyou.http.post("/user/code", "phone=" + this.user.phone);
+                        // 将按钮disabled，60秒后才可点击
+                        var timeCount = 60;
+                        const time = setInterval(() => {
+                            timeCount--;
+                            this.message = timeCount;
+                            if (timeCount === 0) {
+                                clearInterval(time);
+                                this.message = "获取短信验证码";
+                            }
+                        },1000);
+                    }
+                });
+
+            },
+            submit() {
+                this.$validator.validateAll().then(d => {
+                    if (d) {
+                        // 校验通过，提交表单
+                        leyou.http.post("/user/register", leyou.stringify(this.user))
+                            .then(resp => {
+                                if (resp.status === 201) {
+                                    // 注册成功
+                                    alert("注册成功,即将跳转到登录页！");
+                                    setTimeout(() => window.location = '/login.html', 2000);
+                                }
+                            })
+                            .catch(() => alert("注册失败！"))
+                    }
+                })
+            }
+        }
+    });
+</script>
+<script>
+    var loginVm = new Vue({
+        el: "#loginApp",
+        data: {
+            form:{
+                username:'',
+                password:''
+            },
+            msg:''
+        },
+        methods:{
+            login(){
+                leyou.http.post("/auth/login",leyou.stringify(this.form))
+                    .then(resp => {
+                        if(resp.status === 200){
+                            const url = leyou.getUrlParam("returnUrl");
+                            window.location = url || 'http://www.leshang.com';
+                        }
+                    })
+                    .catch(() => this.msg = '用户名或密码错误')
+            }
+        }
+    });
+
+</script>
+
+
+</body>
+</html>

@@ -52,7 +52,7 @@ public class ItemServiceImpl implements ItemService {
         }
         //上下架过滤
         if (status != null) {
-            criteria.andEqualTo("status", 1);
+            criteria.andEqualTo("status", status);
         }
         //分类过滤
         if (cid != null) {
@@ -67,11 +67,15 @@ public class ItemServiceImpl implements ItemService {
             throw new LyException(ExceptionEnum.ITEM_NOT_FOND);
         }
         //设置该商品库存
-        zkItems.forEach(c -> c.setNum(stockMapper.queryItemNumById(c.getId())));
+        for (ZkItem zkItem : zkItems) {
+            zkItem.setNum(stockMapper.queryItemNumById(zkItem.getId()));
+            zkItem.setCname(itemCatMapper.queryItemCname(zkItem.getCid()));
+        }
         //解析分页结果
         PageInfo<ZkItem> info = new PageInfo<>(zkItems);
         return new PageResult<>(info.getTotal(), (long) info.getPages(), zkItems);
     }
+
     /**
      * 查找该商品类别下的所有商品,并排序
      *
@@ -79,7 +83,9 @@ public class ItemServiceImpl implements ItemService {
      * @return
      */
     @Override
-    public List<ZkItem> queryItemsByCidAndPriceSort(String way, Long cid) {
+    public PageResult<ZkItem> queryItemsByCidAndPriceSort(Integer page, String way, Long cid) {
+        //分页
+        PageHelper.startPage(page, 8);
         Example example = new Example(ZkItem.class);
         //搜索字段过滤
         Example.Criteria criteria = example.createCriteria();
@@ -87,18 +93,19 @@ public class ItemServiceImpl implements ItemService {
             criteria.andEqualTo("cid", cid);
         }
         //默认排序
-        example.setOrderByClause("price " + way);
-        return itemMapper.selectByExample(example);
-    }
-
-    @Override
-    public List<ZkItem> queryItemsByCidAndPriceSort(Long cid) {
-        return queryItemsByCidAndPriceSort(SORT,cid);
+        example.setOrderByClause("price " + (StringUtils.isNotBlank(way) ?  way: SORT));
+        //查询
+        List<ZkItem> zkItems = itemMapper.selectByExample(example);
+        //解析分页结果
+        PageInfo<ZkItem> info = new PageInfo<>(zkItems);
+        return new PageResult<>(info.getTotal(), (long) info.getPages(), zkItems);
     }
 
     @Override
     public ZkItem queryItemsById(Long id) {
-        return itemMapper.selectByPrimaryKey(id);
+        ZkItem zkItem = itemMapper.selectByPrimaryKey(id);
+        zkItem.setNum(stockMapper.queryItemNumById(zkItem.getId()));//设置库存
+        return zkItem;
     }
 
     @Override
@@ -116,5 +123,14 @@ public class ItemServiceImpl implements ItemService {
                 throw new LyException(ExceptionEnum.STOCK_NOT_ENOUGH);
             }
         }
+    }
+
+    @Override
+    public void goodsShelves(Long id, byte status) {
+        //修改商品状态
+        ZkItem item = new ZkItem();
+        item.setId(id);
+        item.setStatus(status);
+        itemMapper.updateByPrimaryKeySelective(item);
     }
 }

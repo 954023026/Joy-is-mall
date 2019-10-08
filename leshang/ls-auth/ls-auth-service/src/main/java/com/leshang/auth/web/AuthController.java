@@ -43,10 +43,20 @@ public class AuthController {
         String token = authService.login(username, password);
         //写入cookie
         CookieUtils.newBuilder(response).httpOnly().request(request)
-                .build("LS_TOKEN",token);
+                .build(cookieName,token);
 //        CookieUtils.setCookie(request, response, prop.getCookieName(), token, prop.getExpire() * 60);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
+
+
+    @DeleteMapping("/loginOut")
+    public ResponseEntity<Void> loginOut(HttpServletResponse response, HttpServletRequest request) {
+        //登录
+        //写入cookie
+        CookieUtils.deleteCookie(request,response,cookieName);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
 
     /**
      * 校验用户登录状态
@@ -66,7 +76,7 @@ public class AuthController {
             String newToken = JwtUtils.generateToken(info, prop.getPrivateKey(), prop.getExpire());
             //写入token中
             CookieUtils.newBuilder(response).httpOnly().request(request)
-                    .build("LS_TOKEN",newToken);
+                    .build(cookieName,newToken);
 
             //已登录，返回用户信息
             return ResponseEntity.ok(info);

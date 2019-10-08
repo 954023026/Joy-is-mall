@@ -11,9 +11,7 @@ public interface ItemService {
 
     PageResult<ZkItem> queryItemsPage(Integer page, Integer rows, Integer status, String key, Integer cid);
 
-    List<ZkItem> queryItemsByCidAndPriceSort(String way, Long cid);
-
-    List<ZkItem> queryItemsByCidAndPriceSort(Long cid);
+    PageResult<ZkItem> queryItemsByCidAndPriceSort(Integer page,String way, Long cid);
 
     ZkItem queryItemsById(Long id);
 
@@ -21,4 +19,5 @@ public interface ItemService {
 
     void decreaseStock(List<CartDto> carts);
 
+    void goodsShelves(Long id,byte status);
 }

@@ -97,7 +97,19 @@ public class ZkUserServiceImpl implements ZkUserService {
 
     @Override
     public Boolean checkData(String data, Integer type) {
-        return null;
+        //判断数据类型
+        ZkUser record = new ZkUser();
+        switch (type) {
+            case 1:
+                record.setUsername(data);
+                break;
+            case 2:
+                record.setPhone(data);
+                break;
+            default:
+                throw new LyException(ExceptionEnum.INVALID_USER_DATA_TYPE);
+        }
+        return userMapper.selectCount(record) == 0;
     }
 
     @Override

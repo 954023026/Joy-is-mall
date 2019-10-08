@@ -92,15 +92,15 @@ const shortcut = {
                                 </a>
                                 <ul class="user-info-menu">
                                     <li v-if='user && user.username'>
-                                        <a href="my-account.html">{{user.username}}</a>
+                                        <a href="my-account.html" v-text="user.username"></a>
                                         <a href="order-tracking.html">我的订单</a>
                                         <a href="compare.html">收藏</a>
                                         <a href="../wishlist.html">我的收藏</a>
-                                        <a href="lost-password.html">注销</a>
+                                        <a href="#" @click.prevent="loginOut">注销</a>
                                     </li>
                                     <li v-else>
-                                        <a href="my-account.html">登录</a>
-                                        <a href="my-account1.html">注册</a>
+                                        <a href="#" @click.prevent="gotoLogin">登录</a>
+                                        <a href="#" @click.prevent="gotoLogin">注册</a>
                                     </li>
                                 </ul>
                             </li>
@@ -135,7 +135,7 @@ const shortcut = {
                             <nav class="secondary-navigation d-xl-block d-none">
                                 <a href="#" class="secondary-nav-btn">
                                     <i class="fa fa-navicon"></i>
-                                    SHOP BY DEPARTMENT
+                                    按分类购物
                                 </a>
                                 <ul class="secondary-menu">
                                     <li><a href="">Beauty</a></li>
@@ -165,176 +165,6 @@ const shortcut = {
                                             <span class="mm-text">商城</span>
                                             <span class="badge">热门</span>
                                         </a>
-                                        <ul class="megamenu four-column">
-                                            <li>
-                                                <a class="megamenu-title" href="#">
-                                                    <span class="mm-text">Shop Layout</span>
-                                                </a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="shop-fullwidth.html">
-                                                            <span class="mm-text">FullWidth</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="../shop-sidebar.html">
-                                                            <span class="mm-text">with Sidebar</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-two-columns.html">
-                                                            <span class="mm-text">Two columns</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-three-columns.html">
-                                                            <span class="mm-text">Three columns</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-collections.html">
-                                                            <span class="mm-text">With collections</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop-instagram.html">
-                                                            <span class="mm-text">Shop Instagram</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="megamenu-title" href="#">
-                                                    <span class="mm-text">Single Product</span>
-                                                </a>
-                                                <ul>
-                                                    <li>
-                                                        <a href="../product-details.html">
-                                                            <span class="mm-text">Simple 01</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-02.html">
-                                                            <span class="mm-text">Simple 02</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-sticky.html">
-                                                            <span class="mm-text">Sticky Info</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-gallery.html">
-                                                            <span class="mm-text">Thumbnail Gallery</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-sidebar.html">
-                                                            <span class="mm-text">Sidebar</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-grouped.html">
-                                                            <span class="mm-text">Grouped</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-affiliate.html">
-                                                            <span class="mm-text">Affiliate</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="product-details-configurable.html">
-                                                            <span class="mm-text">Configurable</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="megamenu-title" href="#">
-                                                    <span class="mm-text">Shop Pages</span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="my-account.html">
-                                                            <span class="mm-text">My Account</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="cart.html">
-                                                            <span class="mm-text">Shopping Cart</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="checkout.html">
-                                                            <span class="mm-text">Check Out</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="../wishlist.html">
-                                                            <span class="mm-text">Wishlist</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="order-tracking.html">
-                                                            <span class="mm-text">Order tracking</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="compare.html">
-                                                            <span class="mm-text">compare</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="banner-holder">
-                                                <div class="megamenu-banner">
-                                                    <div class="megamenu-banner-image"></div>
-                                                    <div class="megamenu-banner-info">
-                                                        <span>Autumn Winter 2019</span>
-                                                        <h3>new <strong>arrival</strong></h3>
-                                                    </div>
-                                                    <a href="../shop-sidebar.html" class="megamenu-banner-link"></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="mainmenu__item menu-item-has-children has-children">
-                                        <a href="#" class="mainmenu__link">
-                                            <span class="mm-text">Pages</span>
-                                        </a>
-                                        <ul class="sub-menu">
-                                            <li>
-                                                <a href="about-us.html">
-                                                    <span class="mm-text">About Us</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="team.html">
-                                                    <span class="mm-text">Our teams</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="contact-us.html">
-                                                    <span class="mm-text">Contact Page</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="404.html">
-                                                    <span class="mm-text">404 page</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="faqs-page.html">
-                                                    <span class="mm-text">FAQs page</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="coming-soon.html">
-                                                    <span class="mm-text">Coming Soon</span>
-                                                </a>
-                                            </li>
-                                        </ul>
                                     </li>
                                     <li class="mainmenu__item">
                                         <a href="shop-collections.html" class="mainmenu__link">
@@ -423,343 +253,12 @@ const shortcut = {
             </div>
         </div>
     </div>
-    <div class="mobile-menu-wrapper" id="mobileMenu">
-        <div class="mobile-menu-inner">
-            <a href="" class="btn-close">
-                        <span class="hamburger-icon">
-                        </span>
-            </a>
-            <nav class="mobile-navigation">
-                <ul class="mobile-menu">
-                    <li class="menu-item-has-children active">
-                        <a href="../index.html">
-                            <span class="mm-text">Home</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children">
-                                <a href="#">
-                                    <span class="mm-text">Demo Group 01</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="../index.html">
-                                            <span class="mm-text">Demo 01</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-02.html">
-                                            <span class="mm-text">Demo 02</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-03.html">
-                                            <span class="mm-text">Demo 03</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-04.html">
-                                            <span class="mm-text">Demo 04</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-05.html">
-                                            <span class="mm-text">Demo 05</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">
-                                    <span class="mm-text">Demo Group 02</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="index-06.html">
-                                            <span class="mm-text">Demo 06</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-07.html">
-                                            <span class="mm-text">Demo 07</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-08.html">
-                                            <span class="mm-text">Demo 08</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-09.html">
-                                            <span class="mm-text">Demo 09</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="index-10.html">
-                                            <span class="mm-text">Demo 10</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="../shop-sidebar.html">
-                            <span class="mm-text">Shop</span>
-                            <span class="badge">Hot</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children">
-                                <a href="#">
-                                    <span class="mm-text">Shop Layout</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="shop-fullwidth.html">
-                                            <span class="mm-text">FullWidth</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../shop-sidebar.html">
-                                            <span class="mm-text">with Sidebar</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-two-columns.html">
-                                            <span class="mm-text">Two columns</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-three-columns.html">
-                                            <span class="mm-text">Three columns</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-collections.html">
-                                            <span class="mm-text">With collections</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop-instagram.html">
-                                            <span class="mm-text">Shop Instagram</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">
-                                    <span class="mm-text">Single Product</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="../product-details.html">
-                                            <span class="mm-text">Simple 01</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-02.html">
-                                            <span class="mm-text">Simple 02</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-sticky.html">
-                                            <span class="mm-text">Sticky Info</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-gallery.html">
-                                            <span class="mm-text">Thumbnail Gallery</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-sidebar.html">
-                                            <span class="mm-text">Sidebar</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-grouped.html">
-                                            <span class="mm-text">Grouped</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-affiliate.html">
-                                            <span class="mm-text">Affiliate</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-configurable.html">
-                                            <span class="mm-text">Configurable</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children">
-                                <a href="#">
-                                    <span class="mm-text">Shop Pages</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="my-account.html">
-                                            <span class="mm-text">My Account</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="cart.html">
-                                            <span class="mm-text">Shopping Cart</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="checkout.html">
-                                            <span class="mm-text">Check Out</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="../wishlist.html">
-                                            <span class="mm-text">Wishlist</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="order-tracking.html">
-                                            <span class="mm-text">Order tracking</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="compare.html">
-                                            <span class="mm-text">compare</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="#">
-                            <span class="mm-text">Pages</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="about-us.html">
-                                    <span class="mm-text">About Us</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="team.html">
-                                    <span class="mm-text">Our teams</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="contact-us.html">
-                                    <span class="mm-text">Contact Page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="404.html">
-                                    <span class="mm-text">404 page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="faqs-page.html">
-                                    <span class="mm-text">FAQs page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="coming-soon.html">
-                                    <span class="mm-text">Coming Soon</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="mobile-menu__item">
-                        <a href="shop-collections.html">
-                            <span class="mm-text">Collections</span>
-                        </a>
-                    </li>
-                    <li class="menu-item-has-children">
-                        <a href="blog.html">
-                            <span class="mm-text">Blog</span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="menu-item-has-children has-children">
-                                <a href="#">
-                                    <span class="mm-text">Blog Grid</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="blog-02-columns.html">
-                                            <span class="mm-text">Blog 02 Columns</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-03-columns.html">
-                                            <span class="mm-text">Blog 03 Columns</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="blog.html">
-                                            <span class="mm-text">Blog Sidebar</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu-item-has-children has-children">
-                                <a href="#">
-                                    <span class="mm-text">Blog List</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="blog-classic.html">
-                                            <span class="mm-text">Blog Classic</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="blog-no-sidebar.html">
-                                            <span class="mm-text">Blog No Sidebar</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="blog-masonary.html">
-                                    <span class="mm-text">Blog Masonary</span>
-                                </a>
-                            </li>
-                            <li class="menu-item-has-children has-children">
-                                <a href="#">
-                                    <span class="mm-text">Blog Details</span>
-                                </a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="single-post.html">
-                                            <span class="mm-text">Single Post</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="single-post-sidebar.html">
-                                            <span class="mm-text">Single Post Sidebar</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="shop-instagram.html">
-                            <span class="mm-text">New Look</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
 </header>
 `,
     name: "shortcut",   //页面头部
     data() {
         return {
-            user: null,
-            form: {
-                username: 'zhou',
-                password: '123456'
-            },
+            user: {},
             msg: '',
             key: "",
             query: location.search,
@@ -769,10 +268,7 @@ const shortcut = {
 
     },
     created() {
-        ly.http.post("/auth/login", ly.stringify(this.form));
-
-        ly.http("/auth/verify")
-            .then(resp => {
+        ly.http("/auth/verify").then(resp => {
                 this.user = resp.data;
             })
     },
@@ -783,6 +279,14 @@ const shortcut = {
         search() {
             window.location = 'shop-sidebar.html?key=' + this.key;
         },
+        loginOut(){
+            ly.verifyUser().then(resp => {
+                ly.http.delete("/auth/loginOut")
+                    .then(resp => {
+                        window.location = "index.html";
+                    })
+            })
+        }
 
     }
 };

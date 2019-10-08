@@ -21,7 +21,9 @@ public class ZkItem implements Serializable {
     private Long price;
     @Transient
     private Integer num;
-
+    @Transient
+    private String cname;
+    
     private String image;
 
     private Long cid;

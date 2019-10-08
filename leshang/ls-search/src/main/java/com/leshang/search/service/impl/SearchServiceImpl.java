@@ -19,6 +19,8 @@ import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.Aggregations;
 import org.elasticsearch.search.aggregations.bucket.terms.LongTerms;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
@@ -94,6 +96,10 @@ public class SearchServiceImpl implements SearchService {
         queryBuilder.withPageable(PageRequest.of(page, size));
         //过滤
         queryBuilder.withQuery(QueryBuilders.matchQuery("all", request.getKey()));
+        //价格排序
+        if(StringUtils.isNotBlank(request.getSort())){
+            queryBuilder.withSort(SortBuilders.fieldSort("price").order("DESC".equals(request.getSort())?SortOrder.DESC:SortOrder.ASC));
+        }
 
         //聚合分类和品牌
         //聚合分类

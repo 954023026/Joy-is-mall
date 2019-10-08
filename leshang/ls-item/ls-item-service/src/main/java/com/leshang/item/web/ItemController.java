@@ -58,25 +58,14 @@ public class ItemController {
     }
 
 
-    @GetMapping("/cid")
-    public ResponseEntity<List<ZkItem>> queryItemsByCatId(Long cid) {
-        return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(cid));
+    @GetMapping("/cid/{way}")
+    public ResponseEntity<PageResult<ZkItem>> queryItemsByCatId(
+            @RequestParam(value = "page", defaultValue = "1") Integer page,
+            @PathVariable(value = "way", required = false) String way,
+            @RequestParam(value = "cid", required = false) Long cid
+    ) {
+        return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(page,way,cid));
     }
-
-    /**
-     * 排序，根据价格，分类id
-     * @param way
-     * @param cid
-     * @return
-     */
-    @GetMapping("/sort/{way}/{cid}")
-    public ResponseEntity<List<ZkItem>> queryItemsByPriceSort(
-            @PathVariable(value = "way") String way,
-            @PathVariable(value = "cid", required = false) Long cid
-    ){
-        return ResponseEntity.ok(itemService.queryItemsByCidAndPriceSort(way,cid));
-    }
-
     /**
      * 根据商品的id查询所有商品
      * @param ids
@@ -96,5 +85,11 @@ public class ItemController {
     public ResponseEntity<Void> decreseStock(@RequestBody List<CartDto> carts){
         itemService.decreaseStock(carts);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("OperationCargo/{id}/{status}")
+    public ResponseEntity<Void> goodsShelves(@PathVariable("id") Long id,@PathVariable("status") byte status){
+        itemService.goodsShelves(id,status);
+        return ResponseEntity.ok().build();
     }
 }

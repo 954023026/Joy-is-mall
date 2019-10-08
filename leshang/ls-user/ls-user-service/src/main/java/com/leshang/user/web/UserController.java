@@ -52,7 +52,7 @@ public class UserController {
      * @return
      */
     @PostMapping("/register")
-    public ResponseEntity<Void> register(@Valid ZkUser user, BindingResult result, @RequestParam("code")String code){
+    public ResponseEntity<Void> register(@Valid ZkUser user, @RequestParam("code")String code){
         userService.register(user,code);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

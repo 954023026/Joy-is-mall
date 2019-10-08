@@ -9,10 +9,10 @@ package com.leshang.search.pojo;
  */
 public class SearchRequest {
     private String key;// 搜索条件
-
+    private String sort;//排序
     private Integer page;// 当前页
 
-    private static final Integer DEFAULT_SIZE = 20;// 每页大小，不从页面接收，而是固定大小
+    private static final Integer DEFAULT_SIZE = 8;// 每页大小，不从页面接收，而是固定大小
     private static final Integer DEFAULT_PAGE = 1;// 默认页
 
     public String getKey() {
@@ -37,5 +37,13 @@ public class SearchRequest {
 
     public Integer getSize() {
         return DEFAULT_SIZE;
+    }
+
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
     }
 }

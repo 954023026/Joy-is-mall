@@ -34,10 +34,12 @@ public class PageServiceImpl implements PageService {
     @Override
     public Map<String, Object> loadModel(Long spuId) {
         Map<String, Object> map = new HashMap<>();
+        //查询该商品信息
         ZkItem item = itemClinet.queryItemsById(spuId);
-        map.put("title", item.getTitle());
-        map.put("price",item.getPrice());
-        map.put("image",item.getImage());
+
+        //查询该商品库存
+
+        map.put("item", item);
         return map;
     }
 

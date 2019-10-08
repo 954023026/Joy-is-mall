@@ -22,26 +22,30 @@ public class ItemCatController {
 
     @Autowired
     private ItemCatService itemCatService;
+
     /**
-     *  根据分类id查询该id下所有分类
+     * 根据分类id查询该id下所有分类
+     *
      * @return
      */
     @GetMapping("/cid")
-    public ResponseEntity<ZkItemCat> queryCatById(@RequestParam("id") Long id){
-                return ResponseEntity.ok(itemCatService.queryCatById(id));
-            }
+    public ResponseEntity<ZkItemCat> queryCatById(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(itemCatService.queryCatById(id));
+    }
 
     /**
-     *  根据分类id集合查询分类
+     * 根据分类id集合查询分类
+     *
      * @return
      */
     @GetMapping("/list")
-    public ResponseEntity<List<ZkItemCatVo>> queryItemCatByIds(@RequestParam("ids") List<Long> ids){
+    public ResponseEntity<List<ZkItemCatVo>> queryItemCatByIds(@RequestParam("ids") List<Long> ids) {
         return ResponseEntity.ok(itemCatService.queryItemCatByIds(ids));
     }
 
     /**
      * 获取商品类别
+     *
      * @return
      */
     @GetMapping
