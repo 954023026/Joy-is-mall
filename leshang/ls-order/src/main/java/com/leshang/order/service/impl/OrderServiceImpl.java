@@ -293,8 +293,8 @@ public class OrderServiceImpl implements OrderService {
         for (Order order : list) {
             OrderVo oVo = new OrderVo();
             BeanUtils.copyProperties(order,oVo);
-            OrderDetail detail = new OrderDetail();
-            detail.setOrderId(order.getOrderId());
+//            OrderDetail detail = new OrderDetail();
+//            detail.setOrderId(order.getOrderId());
             OrderStatus orderStatus = statusMapper.selectByPrimaryKey(order.getOrderId());
             oVo.setOrderId(orderStatus.getOrderId().toString());
             oVo.setStatus(orderStatus.getStatus());
@@ -314,5 +314,34 @@ public class OrderServiceImpl implements OrderService {
             detailMapper.delete(detail);
             statusMapper.deleteByPrimaryKey(orderId);
         }
+    }
+
+    @Override
+    public PageResult<OrderVo> queryOrderByUid(String userId) {
+        //分页
+        PageHelper.startPage(1, 5);
+
+        //过滤
+        Example example = new Example(Order.class);
+        Example.Criteria criteria = example.createCriteria();
+        criteria.andEqualTo("userId",userId);
+        //查询
+        List<Order> list = orderMapper.selectByExample(example);
+        if (CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEnum.BRAND_NOT_FOUND);
+        }
+        //封装需要显示的数据
+        List<OrderVo> orderVos = new ArrayList<>();
+        for (Order order : list) {
+            OrderVo oVo = new OrderVo();
+            BeanUtils.copyProperties(order,oVo);
+            OrderStatus orderStatus = statusMapper.selectByPrimaryKey(order.getOrderId());
+            oVo.setOrderId(order.getOrderId().toString());
+            oVo.setStatus(orderStatus.getStatus());
+            oVo.setTotalPay(order.getTotalPay());
+            orderVos.add(oVo);
+        }
+        PageInfo<OrderVo> info = new PageInfo<>(orderVos);
+        return new PageResult<>(info.getTotal(),orderVos);
     }
 }

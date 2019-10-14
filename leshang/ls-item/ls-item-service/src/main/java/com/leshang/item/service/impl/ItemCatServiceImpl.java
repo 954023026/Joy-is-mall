@@ -1,5 +1,8 @@
 package com.leshang.item.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.leshang.common.enums.ExceptionEnum;
+import com.leshang.common.exception.LyException;
 import com.leshang.item.mapper.ZkItemCatMapper;
 import com.leshang.item.mapper.ZkItemMapper;
 import com.leshang.item.mapper.ZkStockMapper;
@@ -11,6 +14,7 @@ import com.leshang.item.vo.ZkItemCatVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
@@ -42,8 +46,21 @@ public class ItemCatServiceImpl implements ItemCatService {
 
     @Override
     public List<ZkItemCatVo> queryAllCat() {
+        PageHelper.startPage(1,8);
         //获取商品所有类别
-        return CopyItemCatVo(itemCatMapper.selectAll());
+        return CopyItemCatVo(itemCatMapper.queryAllCat());
+    }
+
+    @Override
+    public List<ZkItemCat> queryCategoryListByPid(Long pid) {
+        //查询条件，mapper会把对象中的非空属性作为查询条件
+        ZkItemCat t = new ZkItemCat();
+        t.setParentId(pid);
+        List<ZkItemCat> list = itemCatMapper.select(t);
+        if (CollectionUtils.isEmpty(list)){
+            throw new LyException(ExceptionEnum.CATEGORY_NOT_FOND);
+        }
+        return list;
     }
 
     //封装需要展示的数据，并查询该分类下商品数量

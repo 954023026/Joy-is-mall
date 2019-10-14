@@ -51,6 +51,15 @@ public class OrderQueryController {
     public ResponseEntity<Void> deleteOrder(@RequestParam(value = "oId",required = true)String orderId){
         orderService.deleteOrder(orderId);
         return ResponseEntity.ok().build();
+    }
 
+    /**
+     * 获取当前用户所有订单
+     * @param userId
+     * @return
+     */
+    @GetMapping("{userId}")
+    public ResponseEntity<PageResult<OrderVo>> queryOrderByUid(@PathVariable("userId")String userId){
+        return ResponseEntity.ok(orderService.queryOrderByUid(userId));
     }
 }

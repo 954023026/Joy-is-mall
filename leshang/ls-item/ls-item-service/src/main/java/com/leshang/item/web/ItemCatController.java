@@ -53,4 +53,14 @@ public class ItemCatController {
         return ResponseEntity.ok(itemCatService.queryAllCat());
     }
 
+    /**
+     * 根据父节点id查询商品分类
+     * @param pid
+     * @return
+     */
+    @GetMapping("catList")
+    public ResponseEntity<List<ZkItemCat>> queryCategoryListByPid(@RequestParam("pid") Long pid){
+        return ResponseEntity.ok(itemCatService.queryCategoryListByPid(pid));
+    }
+
 }

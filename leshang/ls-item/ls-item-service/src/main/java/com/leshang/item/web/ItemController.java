@@ -37,7 +37,7 @@ public class ItemController {
     @GetMapping
     public ResponseEntity<PageResult<ZkItem>> queryItemsPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
-            @RequestParam(value = "rows", defaultValue = "14") Integer rows,
+            @RequestParam(value = "rows", defaultValue = "8") Integer rows,
             @RequestParam(value = "status", defaultValue = "1") Integer status,
             @RequestParam(value = "key", required = false) String key,
             @RequestParam(value = "cid", required = false) Integer cid

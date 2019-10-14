@@ -14,4 +14,5 @@ public interface ItemCatService {
 
     List<ZkItemCatVo> queryAllCat();
 
+    List<ZkItemCat> queryCategoryListByPid(Long pid);
 }

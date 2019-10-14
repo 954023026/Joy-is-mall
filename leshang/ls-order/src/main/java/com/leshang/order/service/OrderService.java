@@ -26,4 +26,5 @@ public interface OrderService {
 
     void deleteOrder(String orderId);
 
+    PageResult<OrderVo> queryOrderByUid(String userId);
 }

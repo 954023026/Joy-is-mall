@@ -19,6 +19,7 @@
         <module name="ls-registry" />
         <module name="ls-search" />
         <module name="ls-sms" />
+        <module name="ls-upload" />
         <module name="ls-user-interface" />
         <module name="ls-user-service" />
       </profile>
@@ -40,6 +41,7 @@
       <module name="ls-registry" options="-parameters" />
       <module name="ls-search" options="-parameters" />
       <module name="ls-sms" options="-parameters" />
+      <module name="ls-upload" options="-parameters" />
       <module name="ls-user" options="-parameters" />
       <module name="ls-user-interface" options="-parameters" />
       <module name="ls-user-service" options="-parameters" />

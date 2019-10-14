@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * 描述:
+ *      用户模块基本功能
  *
  * @author 愿你活的通透拎得清轻重辩得明是非
  * @create 2019-09-13 10:45
@@ -57,6 +58,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /**
+     * 校验用户，其他微服务调用接口，根据用户名跟密码查询该用户
+     * @param username
+     * @param password
+     * @return
+     */
     @GetMapping("/query")
     public ResponseEntity<ZkUser> queruUserByUsernameAndPassword(
             @RequestParam("username") String username,
@@ -74,5 +81,14 @@ public class UserController {
         return  ResponseEntity.ok(userService.queryAddress());
     }
 
+    /**
+     * 根据id查询该用户信息
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<ZkUser> queryUserById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(userService.queryUserById(id));
+    }
 
 }

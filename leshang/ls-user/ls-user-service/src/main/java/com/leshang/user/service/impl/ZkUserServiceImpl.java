@@ -116,4 +116,9 @@ public class ZkUserServiceImpl implements ZkUserService {
     public List<ZkAreas> queryAddress() {
         return areasMapper.selectAll();
     }
+
+    @Override
+    public ZkUser queryUserById(Long id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
 }

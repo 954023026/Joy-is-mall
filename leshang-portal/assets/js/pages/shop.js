@@ -93,7 +93,7 @@ const shortcut = {
                                 <ul class="user-info-menu">
                                     <li v-if='user && user.username'>
                                         <a href="my-account.html" v-text="user.username"></a>
-                                        <a href="order-tracking.html">我的订单</a>
+                                        <a href="my-account.html#orders">我的订单</a>
                                         <a href="compare.html">收藏</a>
                                         <a href="../wishlist.html">我的收藏</a>
                                         <a href="#" @click.prevent="loginOut">注销</a>

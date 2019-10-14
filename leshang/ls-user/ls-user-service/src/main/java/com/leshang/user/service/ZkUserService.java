@@ -15,4 +15,6 @@ public interface ZkUserService {
     Boolean checkData(String data, Integer type);
 
     List<ZkAreas> queryAddress();
+
+    ZkUser queryUserById(Long id);
 }

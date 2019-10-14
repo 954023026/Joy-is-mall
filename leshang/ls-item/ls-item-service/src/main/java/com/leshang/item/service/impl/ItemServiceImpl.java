@@ -96,6 +96,8 @@ public class ItemServiceImpl implements ItemService {
         example.setOrderByClause("price " + (StringUtils.isNotBlank(way) ?  way: SORT));
         //查询
         List<ZkItem> zkItems = itemMapper.selectByExample(example);
+        //设置库存
+        zkItems.forEach(z -> z.setNum(stockMapper.queryItemNumById(z.getId())));
         //解析分页结果
         PageInfo<ZkItem> info = new PageInfo<>(zkItems);
         return new PageResult<>(info.getTotal(), (long) info.getPages(), zkItems);

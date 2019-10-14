@@ -1,35 +1,29 @@
 package com.leshang.item.pojo;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Data
-@Table(name = "zk_item_cat")
+@Table(name = "tb_category")
 public class ZkItemCat implements Serializable {
     @Id
+//	@GeneratedValue(strategy= GenerationType.IDENTITY)
+    @KeySql(useGeneratedKeys = true)
     private Long id;
-
-    private Long parentId;
 
     private String name;
 
-    private Integer status;
-
-    private Integer sortOrder;
+    private Long parentId;
 
     private Boolean isParent;
 
-    private Date created;
+    private Integer sort;
 
-    private Date updated;
-
-    @Transient
-    List<ZkItem> itemList;
+    private Integer status;
 
 }

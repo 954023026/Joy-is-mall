@@ -36,6 +36,7 @@
     <script src="assets/js/vue/vue.js"></script>
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
+    <script src="assets/js/validate.js"></script>
     <script>Vue.config.productionTip = false</script>
 </head>
 
@@ -52,21 +53,200 @@
 <!-- Preloader End -->
 
 <!-- Main Wrapper Start -->
-<div class="wrapper" id="lsApp">
+<div class="wrapper" id="myAccount">
     <!-- Header Area Start -->
     <!-- 头部栏位 -->
-    <div id="nav-account">
-        <shortcut/>
-    </div>
-    <script type="text/javascript">
-        var account = new Vue({
-            el:"#nav-account",
-            name:"ls-account",
-            components:{
-                shortcut:() => import('./assets/js/pages/shop.js')
-            }
-        });
-    </script>
+    <header class="header header-st yle-3" id="shortcut">
+        <div class="header-inner headroom headroom--fixed">
+            <div class="top-bar d-none d-lg-block">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-4 d-none d-xl-block">
+                            <!-- Social Icons Start Here -->
+                            <ul class="social social-medium dark-color">
+                                <li class="social__item">
+                                    <a href="https://www.facebook.com" class="social__link">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://www.twitter.com" class="social__link">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://www.pinterest.com" class="social__link">
+                                        <i class="fa fa-pinterest"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://www.youtube.com" class="social__link">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://www.plus.google.com" class="social__link">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Social Icons End Here -->
+                        </div>
+                        <div class="col-xl-4 text-center">
+                            <div class="header__text">
+                            <span>Flash sale! Off 20% All Items This Week <a
+                                    href="../shop-sidebar.html">SHOP NOW</a></span>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 text-right d-none d-xl-block">
+                            <div class="contact-info">
+                                    <span>
+                                        <i class="fa fa-phone"></i>
+                                        (+612) 2531 5600
+                                    </span>
+                                <span>
+                                        <i class="fa fa-envelope"></i>
+                                        info@company.com
+                                    </span>
+                                <span>
+                                        <i class="fa fa-map-marker"></i>
+                                        Get direction
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header-bottom d-lg-block d-none" style="background-color: #0A9400;">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="header-bottom__left">
+                                <!-- Secondary Navigation Start Here -->
+                                <nav class="secondary-navigation d-xl-block d-none">
+                                    <a href="#" class="secondary-nav-btn">
+                                        <i class="fa fa-navicon"></i>
+                                        按分类购物
+                                    </a>
+                                    <ul class="secondary-menu">
+                                        <li><a href="">Beauty</a></li>
+                                        <li><a href="">Bike</a></li>
+                                        <li><a href="">Books</a></li>
+                                        <li><a href="">Cell Phones &amp; Accessories</a></li>
+                                        <li><a href="">Clothing</a></li>
+                                        <li><a href="">Digitar Music</a></li>
+                                        <li><a href="">Electronics &amp; Tech</a></li>
+                                        <li><a href="">Fashions</a></li>
+                                        <li><a href="">Food</a></li>
+                                        <li><a href="">Furniture</a></li>
+                                    </ul>
+                                </nav>
+                                <!-- Secondary Navigation End Here -->
+
+                                <!-- Main Navigation Start Here -->
+                                <nav class="main-navigation main-navigation-3 white-color">
+                                    <ul class="mainmenu">
+                                        <li class="mainmenu__item menu-item-has-children megamenu-holder active">
+                                            <a href="../index.html" class="mainmenu__link">
+                                                <span class="mm-text">主页</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children megamenu-holder">
+                                            <a href="shop-sidebar.html" class="mainmenu__link">
+                                                <span class="mm-text">商城</span>
+                                                <span class="badge">热门</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item">
+                                            <a href="shop-collections.html" class="mainmenu__link">
+                                                <span class="mm-text">Collections</span>
+                                            </a>
+                                        </li>
+                                        <li class="mainmenu__item menu-item-has-children has-children">
+                                            <a href="blog.html" class="mainmenu__link">
+                                                <span class="mm-text">Blog</span>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                <li class="menu-item-has-children has-children">
+                                                    <a href="#">
+                                                        <span class="mm-text">Blog Grid</span>
+                                                    </a>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="blog-02-columns.html">
+                                                                <span class="mm-text">Blog 02 Columns</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="blog-03-columns.html">
+                                                                <span class="mm-text">Blog 03 Columns</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="blog.html">
+                                                                <span class="mm-text">Blog Sidebar</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li class="menu-item-has-children has-children">
+                                                    <a href="#">
+                                                        <span class="mm-text">Blog List</span>
+                                                    </a>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="blog-classic.html">
+                                                                <span class="mm-text">Blog Classic</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="blog-no-sidebar.html">
+                                                                <span class="mm-text">Blog No Sidebar</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="blog-masonary.html">
+                                                        <span class="mm-text">Blog Masonary</span>
+                                                    </a>
+                                                </li>
+                                                <li class="menu-item-has-children has-children">
+                                                    <a href="#">
+                                                        <span class="mm-text">Blog Details</span>
+                                                    </a>
+                                                    <ul class="sub-menu">
+                                                        <li>
+                                                            <a href="single-post.html">
+                                                                <span class="mm-text">Single Post</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="single-post-sidebar.html">
+                                                                <span class="mm-text">Single Post Sidebar</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="mainmenu__item">
+                                            <a href="shop-instagram.html" class="mainmenu__link">
+                                                <span class="mm-text">New Look</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <!-- Main Navigation End Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
     <!-- Header Area End -->
 
     <!-- Breadcrumb area Start -->
@@ -90,21 +270,27 @@
         <div class="page-content-inner">
             <div class="container">
                 <div class="row pt--50 pt-md--40 pt-sm--20 pb--80 pb-md--60 pb-sm--40">
-                    <div class="col-12" id="div">
+                    <div class="col-12">
                         <div class="user-dashboard-tab flex-column flex-md-row">
-                            <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
+                            <div class="user-dashboard-tab__head nav flex-md-column" role="tablist"
+                                 aria-orientation="vertical">
                                 <h4 style="text-align:center;padding-bottom: 12px">全部功能</h4>
-                                <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">信息</a>
-                                <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders" aria-selected="true" id="dindan">订单</a>
-                                <a class="nav-link" data-toggle="pill" role="tab" href="#downloads" aria-controls="downloads" aria-selected="true" id="ziliao">个人资料</a>
-                                <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">安全设置</a>
+                                <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard"
+                                   aria-controls="dashboard" aria-selected="true">信息</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders"
+                                   aria-selected="true" ref="order" >订单</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#downloads"
+                                   aria-controls="downloads" aria-selected="true" id="ziliao">个人资料</a>
+                                <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails"
+                                   aria-controls="accountdetails" aria-selected="true">安全设置</a>
                                 <a class="nav-link" href="javascript:void(0)" id="logout">注销</a>
                             </div>
                             <div class="user-dashboard-tab__content tab-content">
                                 <div class="tab-pane fade show active" id="dashboard">
-                                  <p>您好！ <strong>${sessionScope.user.username}</strong> (not <strong>${sessionScope.user.username}</strong>? <a href="login">注销</a>)</p>
-                                    <c:if test="${empty sessionScope.user.username}"><p>您好！请<a href="loginMain">登录</a></p></c:if>
-                                    <p>来自您的帐户信息中心。您可以轻松查看和查看<a href="">最近的订单</a>, 管理您的 <a href="">送货和帐单地址，</a> 以及 <a href="">修改密码和帐户详细信息。</a></p>
+                                    <p>您好！ <strong v-text="user.username"></strong> (not
+                                        <strong>{{user.username}}</strong>? <a href="login">注销</a>)</p>
+                                    <p>来自您的帐户信息中心。您可以轻松查看和查看<a href="">最近的订单</a>, 管理您的 <a href="">送货和帐单地址，</a> 以及 <a
+                                            href="">修改密码和帐户详细信息。</a></p>
                                 </div>
                                 <div class="tab-pane fade" id="orders">
                                     <div class="message-box mb--30 d-none">
@@ -123,7 +309,12 @@
                                             </tr>
                                             </thead>
                                             <tbody id="dindang">
-
+                                            <tr v-for="order in order.items">
+                                                <td width="30px"  v-text="order.orderId"></td>
+                                                <td  v-text="order.createTime"></td>
+                                                <td  v-text="order.status"></td>
+                                                <td  v-text="order.totalPay+'.00'"></td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -137,31 +328,36 @@
                                         <form action="/user/updatedata" method="post" class="form form--account">
 
                                             <fieldset class="form__fieldset mb--20">
-                                                <legend class="form__legend">个人资料</legend>
+                                                <legend class="form__legend" >个人资料</legend>
                                                 <div class="row grid-space-30 mb--20">
                                                     <div class="col-md-6 mb-sm--20">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="username">用户名<span class="required">*</span></label>
-                                                            <input type="text" name="username" id="username" class="form__input" value="${sessionScope.user.username}">
-                                                            <span id="userWro"></span>
+                                                            <label class="form__label" for="username">用户名<span
+                                                                    class="required">*</span></label>
+                                                            <input type="text" name="username" id="username" data-vv-as="用户名" v-validate="'required|alpha_dash|min:4|max:30|useful:1'"
+                                                                   class="form__input" v-model="user.username">
+                                                            <span style="color: red;" v-show="errors.has('username')">{{errors.first('username')}}</span>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb--20">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="phone">手机号码<span class="required">*</span></label>
-                                                            <input type="text" name="phone" id="phone" class="form__input" value="${sessionScope.user.phone}" onblur="isPhone(this.value)">
-                                                            <span id="phoneWro" style="font-size: 13px"></span>
-                                                            <%--<span class="suggestion"><em>这将是您的名字将如何显示在帐户部分和审查</em></span>--%>
+                                                            <label class="form__label" for="phone" >手机号码<span
+                                                                    class="required">*</span></label>
+                                                            <input type="text" name="phone" id="phone" disabled="true"
+                                                                   class="form__input" v-validate="{required:true,regex:/^1[35678]\d{9}$/,useful:2}" v-model="user.phone">
+
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="row mb--20">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="email">邮箱地址<span class="required">*</span></label>
-                                                            <input type="email" name="email" id="email" class="form__input" value="${sessionScope.user.email}" onblur="checkEmail(this.value)">
+                                                            <label class="form__label" for="email">邮箱地址
+                                                            <input type="email" name="email" id="email"
+                                                                   class="form__input" v-model="user.email">
+                                                            <span v-if="user.email == null">您还没有设置邮箱地址。</span>
                                                             <span id="mailWro"></span>
                                                         </div>
                                                     </div>
@@ -169,9 +365,10 @@
                                                 <div class="row mb--20">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="email">收货地址<span class="required">*</span>(默认情况下，结帐页面将使用以下地址。)</label>
+                                                            <label class="form__label" for="email">收货地址(默认情况下，结帐页面将使用以下地址。)</label>
 
-                                                            <input type="text" name="address" id="address" class="form__input" value="<c:if test="${not empty sessionScope.user.address}">${user.address}</c:if><c:if test="${empty sessionScope.user.address}">您还没有设置这种类型的地址。</c:if>" >
+                                                            <input type="text" name="address" id="address"
+                                                                   class="form__input" v-model="user.address"><span v-if="user.address == null">您还没有设置这种类型的地址。</span>
 
                                                         </div>
                                                     </div>
@@ -180,8 +377,9 @@
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <input type="submit" value="保存" class="btn btn-style-1 btn-submit" id="saveBut">
-                                                            <c:if test="${not empty message}">${message}</c:if>
+                                                            <input type="submit" value="保存"
+                                                                   class="btn btn-style-1 btn-submit" id="saveBut">
+                                                            <!--<c:if test="${not empty message}">${message}</c:if>-->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -190,87 +388,24 @@
 
                                     </div>
                                 </div>
-                                <%--<div class="tab-pane fade" id="addresses">
-                                <p class="mb--20"></p>
-                                <div class="row">
-                                    <div class="col-md-6 mb-sm--20">
-                                        <div class="text-block">
-                                            <h4 class="mb--20">收货地址</h4>
-                                            <a href="">Edit</a>
+                                <div class="tab-pane fade" id="addresses">
+                                    <p class="mb--20"></p>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-sm--20">
+                                            <div class="text-block">
+                                                <h4 class="mb--20" >收货地址</h4>
+                                                <a href="">Edit</a>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
 
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-
-                                    </div>
-                                </div>
-                            </div>--%>
-
-                                <div class="tab-pane fade" id="accountdetails">
-                                    <form action="#" class="form form--account">
-
-                                        <fieldset class="form__fieldset mb--20">
-                                            <legend class="form__legend">修改密码</legend>
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="cur_pass">旧密码</label>
-                                                        <input type="password" name="cur_pass" id="cur_pass" class="form__input">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="new_pass">新密码</label>
-                                                        <input type="password" name="new_pass" id="new_pass" class="form__input" onblur="isPass(this.value)" placeholder="密码由6-20个字母、数字、下划线">
-                                                        <span id="newPwd" style="font-size: 13px"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="conf_new_pass">确认密码</label>
-                                                        <input type="password" name="conf_new_pass" id="conf_new_pass" class="form__input" onblur="checkPwd(this.value)">
-                                                        <span id="pwdCheck" style="font-size: 13px"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="form__group">
-                                                    <input type="button" value="修改" class="btn btn-style-1 btn-submit" id="updata" onclick="updatePwd()">
-                                                    <span id="updatespan" style="font-size: 13px"></span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <script type="text/javascript">
-                        var user = new Vue({
-                            el:"#div",
-                            name:"ls-user-dashboard",
-                            data() {
-                                return {
-                                    user: null,
-                                }
-
-                            },
-                            created() {
-                                ly.http("/auth/verify")
-                                    .then(resp => {
-                                        this.user = resp.data;
-                                    })
-                            },
-                            components:{
-                            }
-                        });
-                    </script>
                 </div>
             </div>
         </div>
@@ -278,149 +413,153 @@
     <!-- Main Content Wrapper Start -->
 
     <!-- Footer Start -->
-    <footer class="footer"></footer>
-    <script type="text/javascript">$(".footer").load("module/footer.html");</script>
-    <!-- Footer End -->
-
-    <!-- Search from Start -->
-    <div class="searchform__popup" id="searchForm">
-        <a href="#" class="btn-close"><i class="dl-icon-close"></i></a>
-        <div class="searchform__body">
-            <p>Start typing and press Enter to search</p>
-            <form class="searchform">
-                <input type="text" name="popup-search" id="popup-search" class="searchform__input" placeholder="Search Entire Store...">
-                <button type="submit" class="searchform__submit"><i class="dl-icon-search10"></i></button>
-            </form>
-        </div>
-    </div>
-    <!-- Search from End -->
-
-    <!-- Side Navigation Start -->
-    <%@ include file="../insertion/sideNav.jsp" %>
-    <!-- Side Navigation End -->
-
-    <!-- Mini Cart Start -->
-    <%@ include file="../insertion/miniCart.jsp" %>
-    <!-- Mini Cart End -->
-
-    <!-- Global Overlay Start -->
-    <div class="zuka-global-overlay"></div>
-    <!-- Global Overlay End -->
-
-    <!-- Modal Start -->
-    <div class="modal fade product-modal" id="productModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close custom-close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"><i class="dl-icon-close"></i></span>
-                    </button>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="zuka-element-carousel product-image-carousel nav-vertical-center nav-style-1"
-                                 data-slick-options='{
-                                    "slidesToShow": 1,
-                                    "slidesToScroll": 1,
-                                    "arrows": true,
-                                    "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "dl-icon-left" },
-                                    "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "dl-icon-right" }
-                                }'
-                            >
-                                <div class="product-image">
-                                    <div class="product-image--holder">
-                                        <a href="single-product">
-                                            <img src="/assets/img/products/prod-7-1.jpg" alt="Product Image" class="primary-image">
-                                        </a>
-                                    </div>
-                                    <span class="product-badge sale">sale</span>
-                                </div>
-                                <div class="product-image">
-                                    <div class="product-image--holder">
-                                        <a href="single-product">
-                                            <img src="/assets/img/products/prod-7-2.jpg" alt="Product Image" class="primary-image">
-                                        </a>
-                                    </div>
-                                    <span class="product-badge sale">sale</span>
-                                </div>
+    <footer class="footer footer-3">
+        <div class="footer-top pt--80 pt-md--60">
+            <div class="container-fluid">
+                <div class="row footer-row">
+                    <div class="footer-column footer-column-1 order-first mb-xl--35 mb-md--30 mb-sm--20">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <div class="textwidget mb--30 mb-sm--20">
+                                <a href="../index.html" class="footer-logo">
+                                    <img src="../assets/img/logo/logo.png" alt="Logo" class="logo-img">
+                                </a>
+                            </div>
+                            <div class="textwidget mr--40 mr-sm--0">
+                                <p>Integer ut ligula quis lectus fringilla elementum porttitor sed est. Duis fringilla
+                                    efficitur ligula sed lobortis.</p>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="modal-box product-summary">
-                                <div class="product-top-meta d-flex justify-content-between flex-sm-row flex-column-reverse">
-                                    <div class="product-rating d-flex">
-                                        <div class="star-rating star-five">
-                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                        </div>
-                                        <a href="" class="review-link">(1 customer review)</a>
-                                    </div>
-                                    <div class="product-navigation">
-                                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
-                                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <h3 class="product-title mb--30 mb-md--20">Fake News Network Abstract Novelty T-Shirt</h3>
-                                <div class="product-price-wrapper mb--30 mb-md--20">
-                                <span class="product-price-old">
-                                    <span class="money">&pound;60.00</span>
-                                </span>
-                                    <span class="money">&pound;49.00</span>
-                                </div>
-                                <p class="product-short-description mb--30 mb-md--20">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                <div class="product-action d-flex flex-row align-items-center mb--20">
-                                    <div class="quantity mr--20">
-                                        <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
-                                    </div>
-                                    <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart'">
-                                        Add To Cart
-                                    </button>
-                                    <a href="wishlist" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
-                                    <a href="compare" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
-                                </div>
-                                <div class="product-extra mb--20">
-                                    <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near you</a>
-                                    <a href="#" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and return</a>
-                                </div>
-                                <div class="product-summary-footer">
-                                    <div class="product-meta mb--20">
-                                        <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF. LA-887</span></span>
-                                        <span class="posted_in font-size-12">Categories: <a href="shop-sidebar" rel="tag">Fashions</a></span>
-                                    </div>
-                                    <div class="product-share-box">
-                                        <span class="font-size-12">Share With</span>
-                                        <!-- Social Icons Start Here -->
-                                        <ul class="social social-small">
-                                            <li class="social__item">
-                                                <a href="facebook.com" class="social__link">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="twitter.com" class="social__link">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="plus.google.com" class="social__link">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="plus.google.com" class="social__link">
-                                                    <i class="fa fa-pinterest-p"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <!-- Social Icons End Here -->
-                                    </div>
-                                </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-2 order-xl-2 order-3 mb-sm--30 mb-xs--25">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">Helful Link</h3>
+                            <ul class="widget-menu">
+                                <li><a href="shop-collections.html">The Collections</a></li>
+                                <li><a href="#">Size Guide</a></li>
+                                <li><a href="#">Return Policy</a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-3 order-xl-3 order-4 mb-sm--30">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25">Company Link</h3>
+                            <ul class="widget-menu">
+                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="shop-collections.html">Portfolios</a></li>
+                                <li><a href="#">Our Services</a></li>
+                                <li><a href="#">Affiliate Program</a></li>
+                                <li><a href="#">Work for Zuka</a></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-4 order-xl-4 order-5 mb-xs--25">
+                        <!-- Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25">Openning Time</h3>
+                            <ul class="widget-menu">
+                                <li><span>Monday – Saturday</span></li>
+                                <li><span>7:00 – 22:00</span></li>
+                                <li><span>Sunday</span></li>
+                                <li><span>9:00 – 20:00</span></li>
+                            </ul>
+                        </div>
+                        <!-- Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-5 order-xl-5 order-6">
+                        <!-- Contact Widget Start Here -->
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">Contact Info</h3>
+                            <div class="widget_contact_info">
+                                <ul>
+                                    <li><i class="fa fa-phone"></i><span>(+612) 2531 5600</span></li>
+                                    <li><i class="fa fa-envelope"></i><a
+                                            href="mailto:info@company.com">info@company.com</a></li>
+                                    <li><i class="fa fa-map-marker"></i><span>Get direction</span></li>
+                                </ul>
                             </div>
+                        </div>
+                        <!-- Contact Widget End Here -->
+                    </div>
+                    <div class="footer-column footer-column-6 order-xl-6 order-2 mb-xl--35 mb-md--30 mb-xs--25">
+                        <div class="footer-widget text-center text-sm-left">
+                            <h3 class="widget-title mb--25 mb-xs--20">MailChimp Signup Form</h3>
+                            <!-- Subscribe widget Start Here -->
+                            <div class="subscribe-widget mb--30">
+                                <form action="https://company.us19.list-manage.com/subscribe/post?u=2f2631cacbe4767192d339ef2&amp;id=24db23e68a"
+                                      class="newsletter-form mc-form" method="post" target="_blank">
+                                    <input type="email" name="EMAIL" id="newsletter_email"
+                                           placeholder="Enter your email address.." required="required"
+                                           class="newsletter-form__input">
+                                    <button type="submit" class="newsletter-form__submit">Submit</button>
+                                </form>
+                            </div>
+                            <!-- Subscribe widget End Here -->
+
+                            <!-- Social Icons Start Here -->
+                            <ul class="social social-medium">
+                                <li class="social__item">
+                                    <a href="https://twitter.com" class="social__link">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://plus.google.com" class="social__link">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://facebook.com" class="social__link">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://youtube.com" class="social__link">
+                                        <i class="fa fa-youtube"></i>
+                                    </a>
+                                </li>
+                                <li class="social__item">
+                                    <a href="https://instagram.com" class="social__link">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Social Icons End Here -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        <div class="footer-bottom pt--45 pb--50 pb-xs--45">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">&copy; 2018 ZUKA. Designed by HasTech</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Search from Start -->
+    <!-- Search from End -->
+
+    <!-- Side Navigation Start -->
+    <!-- Side Navigation End -->
+
+    <!-- Mini Cart Start -->
+    <!-- Mini Cart End -->
+
+    <!-- Global Overlay Start -->
+    <!-- Global Overlay End -->
+
+    <!-- Modal Start -->
     <!-- Modal End -->
 
 </div>
@@ -429,6 +568,94 @@
 
 <!-- ************************* JS Files ************************* -->
 
+<script type="text/javascript">
+    Vue.use(VeeValidate, {
+        events: 'blur',
+        dictionary: {
+            zh: {
+                messages: {
+                    required: (field) => field + '不能为空！',
+                    min: (field, args) => field + '长度不能小于' + args[0],
+                    max: (field, args) => field + '长度不能大于' + args[0],
+                    alpha_dash: (field) => field + '只能包含数字、字母或下划线',
+                    regex: (field) => field + "格式不正确",
+                    is: () => "两次密码不一致"
+                }
+            }
+        },
+        locale: 'zh'
+    });
+    var account = new Vue({
+        el: "#myAccount",
+        name: "ls-account",
+        data() {
+            return {
+                user: {},
+                order:{},
+            }
+        },
+        created() {
+            // 验证登录，查询用户信息
+            ly.verifyUser().then(resp => {
+                this.user = resp.data;
+                ly.http.get("/user/"+this.user.id).then(resp =>{
+                    this.user = resp.data
+                })
+                ly.http.get("/order/orderQuery/"+this.user.id).then(resp =>{
+                    this.order = resp.data
+                    this.order.items.forEach(o => {
+                        //截取字符串并替换其中T
+                        o.createTime = this.stringsplit(o.createTime, ".").replace("T", " ");
+                        o.status = this.statusStr(o.status)
+                        })
+                    })
+            }) .catch(() => {
+                // 去登录
+                this.gotoLogin();
+            });
+            this.$validator.extend('useful', {
+                getMessage(field, args, data) {
+                    return args[0] === '1' ? '用户名' + data : '手机' + data;
+                },
+                validate(value, args) {
+                    return new Promise(resolve => {
+                        leyou.http.get("/user/check/" + value + "/" + args[0])
+                            .then(resp => {
+                                resolve({
+                                    valid: resp.data,
+                                    data: "已存在!"
+                                })
+                            })
+                    });
+                }
+            })
+        },
+        methods: {
+            gotoLogin() {
+                window.location = "login.html?returnUrl=" + window.location;
+            },
+            stringsplit(str,s){
+                return str.split(s)[0];
+            },
+            statusStr(i){
+                //1、未付款 2、已付款,未发货 3、已发货,未确认 4、交易成功 5、交易关闭 6、已评价'
+                if (i == 1){
+                    return "未付款"
+                } else if(i == 2){
+                    return "已付款"
+                }else if(i == 3){
+                    return "未发货,未确认"
+                }else if(i == 4){
+                    return "交易成功"
+                }else if(i == 5){
+                    return "交易关闭"
+                }else if(i == 6){
+                    return "已评价"
+                }
+            },
+        }
+    });
+</script>
 <!-- All Plugins Js -->
 <script src="/assets/js/plugins.js"></script>
 

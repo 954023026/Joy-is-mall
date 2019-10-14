@@ -326,95 +326,6 @@
     <!-- Search from End -->
 
     <!-- Side Navigation Start -->
-    <aside class="side-navigation" id="sideNav">
-        <div class="side-navigation-wrapper">
-            <div class="side-navigation-inner">
-                <div class="widget mb--30">
-                    <ul class="sidenav-menu">
-                        <li><a href="about-us.html">About Us</a></li>
-                        <li><a href="shop-collections.html">Portfolios</a></li>
-                        <li><a href="contact-us.html">Our Services</a></li>
-                        <li><a href="#">Affiliate Program</a></li>
-                        <li><a href="#">Work For Zuka</a></li>
-                    </ul>
-                </div>
-                <div class="widget mb--30">
-                    <div class="banner-box banner-type-1 banner-hover-1">
-                        <div class="banner-inner">
-                            <div class="banner-image">
-                                <img src="assets/img/banner/menu-humberger.jpg" alt="Banner">
-                            </div>
-                            <div class="banner-info">
-                                <a class="banner-title-1 text-uppercase" href="shop-sidebar.html">New</a>
-                            </div>
-                            <a class="banner-link banner-overlay" href="shop-sidebar.html">New</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget mb--30">
-                    <div class="text-widget">
-                        <p>
-                            <a href="#">(+612) 2531 5600</a>
-                            <a href="mailto:info@la-studioweb.com">info@la-studioweb.com</a>
-                            PO Box 1622 Colins Street West
-                        </p>
-                    </div>
-                </div>
-                <div class="widget mb--5">
-                    <div class="text-widget google-map-link">
-                        <p>
-                            <a href="https://www.google.com/maps" target="_blank">Google Maps</a>
-                        </p>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="text-widget">
-                        <!-- Social Icons Start Here -->
-                        <ul class="social social-small">
-                            <li class="social__item">
-                                <a href="twitter.com" class="social__link">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="plus.google.com" class="social__link">
-                                    <i class="fa fa-google-plus"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="facebook.com" class="social__link">
-                                    <i class="fa fa-facebook"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="youtube.com" class="social__link">
-                                    <i class="fa fa-youtube"></i>
-                                </a>
-                            </li>
-                            <li class="social__item">
-                                <a href="instagram.com" class="social__link">
-                                    <i class="fa fa-instagram"></i>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- Social Icons End Here -->
-                    </div>
-                </div>
-                <div class="widget mtb--15">
-                    <div class="text-widget">
-                        <p>
-                            <img src="assets/img/others/payments.png" alt="payment">
-                        </p>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="text-widget">
-                        <p class="copyright-text">&copy; 2018 Zuka Shop All rights <a href="http://www.bootstrapmb.com/" title="bootstrapmb">Reserved</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </aside>
     <!-- Side Navigation End -->
 
     <!-- Mini Cart Start -->
@@ -623,6 +534,7 @@
                 }).catch(() => {
                     // 未登录
                     this.carts = ly.store.get("carts") || [];
+                    this.cartNum()
                 })
             },
             getCartList(){
@@ -679,7 +591,6 @@
                 ly.verifyUser().then(res => {
                     // TODO，已登录购物车
                     ly.http.delete("/cart/"+this.carts[i].id).then(() => {
-                        this.cartNum()
                         this.carts.splice(i,1)
                     })
                 }).catch(() => {
@@ -687,13 +598,13 @@
                     this.carts.splice(i, 1);
                     ly.store.set("carts", this.carts);
                 })
+                this.cartNum()
             },
             clearCart(){
                 ly.verifyUser().then(res =>{
                     if(confirm("您是否要清空购物车？")){
                         ly.http.get("/cart/clear").then(() => {
                             this.carts.splice(0,this.carts.length)
-                            this.cartNum()
                             ly.store.set("carts",[]);
                         })
                     }
@@ -702,6 +613,7 @@
                     this.carts.splice(i, 1);
                     ly.store.set("carts",[]);
                 })
+                this.cartNum()
             },
             stringPrice(price){
                 return "$ "+price+".00";

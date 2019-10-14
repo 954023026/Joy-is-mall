@@ -1,4 +1,5 @@
-<div id="content" class="main-content-wrapper">
+const commodity = {
+    template: `<div id="content" class="main-content-wrapper">
     <div class="page-content-inner enable-page-sidebar">
         <div class="container-fluid">
             <div class="row shop-sidebar mt-md-2 pt--30 pt-md--15 pt-sm--10 pb--90 pb-md--70 pb-sm--50">
@@ -53,7 +54,7 @@
                                                     <a class="add_wishlist action-btn" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="收藏">
                                                         <i class="dl-icon-heart4"></i>
                                                     </a>
-                                                    <a class="add_to_cart_btn action-btn" href="cart.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加到购物车">
+                                                    <a class="add_to_cart_btn action-btn" href="cart.html" @click.prevent="addCart(item.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加到购物车">
                                                         <i class="dl-icon-cart29"></i>
                                                     </a>
                                                 </div>
@@ -186,146 +187,185 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    var content = new Vue({
-        el: "#content",
-        name:"commodity",
-        data: {
-            items:{},
-            commodity:{},
-            cType:0,   //当前类别选中的类别
+`,
+    name: "commodity",   //页面
+    data() {
+        return {
+            items: {},
+            commodity: {},
+            cType: 0,   //当前类别选中的类别
             ly,
             search: {},
             goodsList: [],
             total: 0,
-            page:1,
-            ByType:true,//分类查或搜索查
-            way:'',
+            page: 1,
+            ByType: true,//分类查或搜索查
+            way: '',
             totalPage: 0,
-            selectedSku:{},
-            filters:[],//过滤项
-        },
-        created() {
-            //获取请求参数
-            const search = ly.parse(location.search.substring(1))
-            //默认页给1
-            this.page = parseInt(search.page) || 1;
-            this.search = search;
-            if (!this.search.key) {
-                ly.http.get("/item/").then(resp => {
-                    //保存分页结果
-                    this.total = resp.data.total;
-                    this.totalPage = resp.data.totalPage;
-                    this.items = resp.data.items;
-                })
-            }else{
-                this.loadData();//搜索发起请求
+            selectedSku: {},
+            filters: [],//过滤项
+        }
+    },
+    created() {
+        //获取请求参数
+        const search = ly.parse(location.search.substring(1))
+        //默认页给1
+        this.page = parseInt(search.page) || 1;
+        this.search = search;
+        if (!this.search.key) {
+            this.goFind(210)
+        }else{
+            this.loadData();//搜索发起请求
+        }
+        //查询分类
+        ly.http.get("/item-service/itemCat").then(resp => {
+            this.commodity = resp.data;
+        })
+    },
+    watch:{
+        search:{
+            deep:true,
+            handler(val,oldVal){
+                this.loadData();
+                //把请求参数写到url中
+                if (!oldVal || !oldVal.key){
+                    return;
+                }
+                location.search = "?"+ly.stringify(this.search)
             }
-            //查询分类
-            ly.http.get("/item-service/itemCat").then(resp => {
-                this.commodity = resp.data;
-            })
         },
-        watch:{
-            search:{
-                deep:true,
-                handler(val,oldVal){
-                    this.loadData();
-                    //把请求参数写到url中
-                    if (!oldVal || !oldVal.key){
-                        return;
-                    }
-                    location.search = "?"+ly.stringify(this.search)
-                }
-            },
-            page:{  //监听当前页码值的改变，根据搜索或分类不同查询
-                deep:true,
-                handler(){
-                   if(this.ByType)
-                       this.searchQuery(this.page,this.search.sort);
-                   else
-                       this.itemPageByCid(this.page,this.cType,this.way);
-                }
+        page:{  //监听当前页码值的改变，根据搜索或分类不同查询
+            deep:true,
+            handler(){
+                if(this.ByType)
+                    this.searchQuery(this.page,this.search.sort);
+                else
+                    this.itemPageByCid(this.page,this.cType,this.way);
             }
         }
-        ,
-        methods: {
-            loadData() {
+    }
+    ,
+    methods: {
+        loadData() {
+            //发送后台
+            ly.http.post("/search/page", this.search).then(resp => {
+                //保存分页结果
+                this.total = resp.data.total;
+                this.totalPage= resp.data.totalPage;
+                this.items = resp.data.items;
+                console.log(this.items)
+                //保存当前页商品
+                this.goodsList = resp.data.items;
+                //我们获取聚合结果，形参过滤项
+            }).catch(error => {
+
+            })
+        },
+        index(i){
+            if (this.page <= 3 || this.totalPage < 5 ){
+                return i;
+            }else if(this.page >= this.totalPage - 2){
+                return this.totalPage - 5 + i;
+            }else{
+                return i + this.page - 3;
+            }
+        },
+        prePage(){
+            if (this.page > 1) this.page--;
+        },
+        nextPage(){
+            if (this.page <this.totalPage) this.page++;
+        },
+        goFind(cid) {
+            ly.http.get("/item/cid/ASC/?cid="+cid).then(resp => {
+                this.ByType = false;    //修改根据分类查询
+                this.cType = cid;
+                this.page =1;
+                this.items = resp.data.items;
+                this.total = resp.data.total;
+                this.totalPage= resp.data.totalPage;
+            })
+        },
+        itemPageByCid(page,cid,way){
+            this.way = way.length==0?'ASC':way;
+            ly.http.get("/item/cid/"+this.way+"/?cid="+cid+"&page="+page).then(resp => {
+                this.items = resp.data.items;
+                this.total = resp.data.total;
+                this.totalPage= resp.data.totalPage;
+            })
+        },
+        orderByPrice(way){
+            this.page = 1;//排序后初始当前页码
+            if (this.cType!=0){
+                this.way = way;//记录当前排序规则
+                this.itemPageByCid(this.page,this.cType,way);
+                return;
+            }
+            this.searchQuery(this.page,way);
+        },
+        searchQuery(page,way){
+            const search = ly.parse(location.search.substring(1))
+            if (search!= null) {
                 //发送后台
+                this.search.sort = way;
+                this.search.page = page;
                 ly.http.post("/search/page", this.search).then(resp => {
                     //保存分页结果
                     this.total = resp.data.total;
                     this.totalPage= resp.data.totalPage;
                     this.items = resp.data.items;
-                    console.log(this.items)
                     //保存当前页商品
-                    this.goodsList = resp.data.items;
-                    //我们获取聚合结果，形参过滤项
                 }).catch(error => {
 
-                })
-            },
-            index(i){
-                if (this.page <= 3 || this.totalPage < 5 ){
-                    return i;
-                }else if(this.page >= this.totalPage - 2){
-                    return this.totalPage - 5 + i;
-                }else{
-                    return i + this.page - 3;
-                }
-            },
-            prePage(){
-                if (this.page > 1) this.page--;
-            },
-            nextPage(){
-                if (this.page <this.totalPage) this.page++;
-            },
-            goFind(cid) {
-                ly.http.get("/item/cid/ASC/?cid="+cid).then(resp => {
-                    this.ByType = false;    //修改根据分类查询
-                    this.cType = cid;
-                    this.page =1;
-                    this.items = resp.data.items;
-                    this.total = resp.data.total;
-                    this.totalPage= resp.data.totalPage;
-                })
-            },
-            itemPageByCid(page,cid,way){
-                this.way = way.length==0?'ASC':way;
-                ly.http.get("/item/cid/"+this.way+"/?cid="+cid+"&page="+page).then(resp => {
-                    this.items = resp.data.items;
-                    this.total = resp.data.total;
-                    this.totalPage= resp.data.totalPage;
-                })
-            },
-            orderByPrice(way){
-                this.page = 1;//排序后初始当前页码
-                if (this.cType!=0){
-                    this.way = way;//记录当前排序规则
-                    this.itemPageByCid(this.page,this.cType,way);
-                    return;
-                }
-                this.searchQuery(this.page,way);
-            },
-            searchQuery(page,way){
-                const search = ly.parse(location.search.substring(1))
-                if (search!= null) {
-                    //发送后台
-                    this.search.sort = way;
-                    this.search.page = page;
-                    ly.http.post("/search/page", this.search).then(resp => {
-                        //保存分页结果
-                        this.total = resp.data.total;
-                        this.totalPage= resp.data.totalPage;
-                        this.items = resp.data.items;
-                        //保存当前页商品
-                    }).catch(error => {
-
-                    });
-                }
+                });
             }
         },
+        addCart(id) {  //添加购物车
+            // 判断是否登录
+            this.item = this.items.find(i => i.id === id); //查找到该商品
+            ly.verifyUser().then(() => {
+                // 已登录
+                ly.http.post("/cart", {
+                    id: this.item.id,
+                    title: this.item.title,
+                    image: this.item.image,
+                    price: this.item.price,
+                    num:1,
+                    stock:this.item.num,//商品库存
+                    sellPoint:this.item.sellPoint
+                }).then(() => {
+                    // 跳转到购物车列表页
+                    window.location.href = "http://www.leshang.com/cart.html";
+                }).catch(() => {
+                    alert("添加购物车失败，请重试！");
+                })
+            }).catch(() => {
+                // 获取以前的购物车
+                const carts = ly.store.get("carts") || [];
+                // 获取与当前商品id一致的购物车数据
+                const cart = carts.find(i => i.id === id); //查找到该商品
+                if (cart) {
+                    // 存在，修改数量
+                    cart.num += this.num;
+                } else {
+                    // 不存在，新增
+                    carts.push({
+                        id: this.item.id,
+                        title: this.item.title,
+                        image: this.item.image,
+                        price: this.item.price,
+                        num:1,
+                        stock:this.item.num,    //商品库存
+                        sellPoint:this.item.sellPoint
+                    })
+                }
+                // 未登录
+                ly.store.set("carts", carts);
+                // 跳转到购物车列表页
+                window.location.href = "http://www.leshang.com/cart.html";
+            })
+        }
 
-    })
-
-</script>
+    },
+};
+export default commodity;
