@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * @Author: Adorez
- * @Date: 2019/9/18 9:14
- * @Description:
- */
 @RequestMapping("item")
 public interface ItemApi {
     /**
@@ -42,22 +37,6 @@ public interface ItemApi {
             @RequestParam(value = "key", required = false) String key,
             @RequestParam(value = "cid", required = false) Integer cid
     );
-
-
-    /**
-     * 获取商品类别
-     * @return
-     */
-    @GetMapping("/getCats")
-    public List<ZkItemCat> queryAllCats();
-
-    /**
-     * 根据商品分类id，查询商品
-     * @param cid
-     * @return
-     */
-    @GetMapping("/cid")
-    public List<ZkItem> queryItemsByCatId(Long cid);
 
     /**
      * 根据商品的id查询所有商品

@@ -25,6 +25,7 @@ import com.leshang.order.pojo.OrderStatus;
 import com.leshang.order.service.OrderService;
 import com.leshang.order.utils.PayHelper;
 import com.leshang.order.vo.OrderVo;
+import com.leshang.user.pojo.ZkUserAddress;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -58,7 +59,8 @@ public class OrderServiceImpl implements OrderService {
     private ItemClinet itemClinet;
     @Autowired
     public PayHelper payHelper;
-
+    @Autowired
+    private AddressClient addressClient;
 
     @Override
     @Transactional
@@ -78,13 +80,13 @@ public class OrderServiceImpl implements OrderService {
 
         //1.3 收货人地址
         //todo 收货地址
-        AddressDTO addr = AddressClient.findById(orderDto.getAddressId());
-        order.setReceiver(addr.getName());
-        order.setReceiverAddress(addr.getAddress());
+        ZkUserAddress addr = addressClient.queryAddressByAddressId(orderDto.getAddressId());
+        order.setReceiver(addr.getRealname());
+        order.setReceiverAddress(addr.getStreet());
         order.setReceiverCity(addr.getCity());
-        order.setReceiverDistrict(addr.getDistrict());
-        order.setReceiverMobile(addr.getPhone());
-        order.setReceiverState(addr.getState());
+        order.setReceiverDistrict(addr.getArea());
+        order.setReceiverMobile(addr.getTelphone());
+        order.setReceiverState(addr.getProvince());
         //1.4 金额
         //把cartdto转为一个map，key 是sku的id，值是num
         Map<Long, Integer> numMap = orderDto.getCarts()
@@ -317,9 +319,9 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public PageResult<OrderVo> queryOrderByUid(String userId) {
+    public PageResult<OrderVo> queryOrderByUid(String userId,Integer page) {
         //分页
-        PageHelper.startPage(1, 5);
+        PageHelper.startPage(page, 2);
 
         //过滤
         Example example = new Example(Order.class);
@@ -341,7 +343,7 @@ public class OrderServiceImpl implements OrderService {
             oVo.setTotalPay(order.getTotalPay());
             orderVos.add(oVo);
         }
-        PageInfo<OrderVo> info = new PageInfo<>(orderVos);
-        return new PageResult<>(info.getTotal(),orderVos);
+        PageInfo<Order> info = new PageInfo<>(list);
+        return new PageResult<>(info.getTotal(),(long) info.getPages(),orderVos);
     }
 }

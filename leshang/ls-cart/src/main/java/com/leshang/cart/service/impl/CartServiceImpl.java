@@ -112,25 +112,21 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public void clearCart(){
-        //获取登录用户
-        UserInfo user = UserInterceptor.getUser();
-        //key
-        String key = KEY_PREFIX + user.getId();
-
-        //清空
-        redisTemplate.delete(key);
+        deleteUserCart();
     }
 
     @Override
     public void deleteByIdsCart(List<Long> ids) {
+        deleteUserCart();
+    }
+    private void deleteUserCart(){
         //获取登录用户
         UserInfo user = UserInterceptor.getUser();
         //key
         String key = KEY_PREFIX + user.getId();
         //删除
-        redisTemplate.opsForHash().delete(key, Arrays.toString(ids.toArray()));
+        redisTemplate.delete(key);
     }
-
     @Override
     public void addLocal(List<Cart> cart) {
         //获取当前数据，添加到购物车

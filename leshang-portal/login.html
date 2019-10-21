@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Lowin</title>
+    <title>乐尚商城</title>
     <link rel="stylesheet" href="./assets/css/auth.css">
     <link rel="stylesheet" href="assets/css/plugins.css">
 
@@ -31,13 +31,13 @@
             <div class="lowin-box lowin-login"  style="width: 450px">
                 <div class="lowin-box-inner" >
                     <form id="loginApp">
-                        <p>Sign in to continue</p>
+                        <p>登录以继续</p>
                         <div class="lowin-group">
                             <label>账号： <span style="color: red;" v-if="msg" v-text="msg"></span></label>
                             <input type="email" placeholder="邮箱/用户名/手机号" v-model="form.username"  autocomplete="name" name="username" class="lowin-input">
                         </div>
                         <div class="lowin-group password-group">
-                            <label>密码： <a href="#" class="forgot-link">Forgot Password?</a></label>
+                            <label>密码： <a href="#" class="forgot-link">忘记密码?</a></label>
                             <input type="password"  v-model="form.password" placeholder="请输入密码" name="password" autocomplete="current-password" class="lowin-input">
                         </div>
                         <a href="#" class="lowin-btn login-btn text-center" @click.prevent="login">
@@ -45,7 +45,7 @@
                         </a>
                     </form>
                     <div class="text-foot">
-                        还没有帐号？ <a href="" class="register-link">Register</a>
+                        还没有帐号？ <a href="" class="register-link">注册</a>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
 
                     </form>
                     <div class="text-foot">
-                        已经有帐号了？ <a href="" class="login-link">Login</a>
+                        已经有帐号了？ <a href="" class="login-link">登录</a>
                     </div>
                 </div>
 

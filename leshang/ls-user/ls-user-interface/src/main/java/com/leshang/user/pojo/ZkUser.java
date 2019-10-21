@@ -34,8 +34,6 @@ public class ZkUser implements Serializable {
     private Date created;
     private Date updated;
 
-    private String address;
-
     @JsonIgnore
     private String salt;// 密码的盐值
 

@@ -1,9 +1,6 @@
 package com.leshang.user.service;
 
-import com.leshang.user.pojo.ZkAreas;
 import com.leshang.user.pojo.ZkUser;
-
-import java.util.List;
 
 public interface ZkUserService {
     void sendCode(String phone);
@@ -14,7 +11,7 @@ public interface ZkUserService {
 
     Boolean checkData(String data, Integer type);
 
-    List<ZkAreas> queryAddress();
-
     ZkUser queryUserById(Long id);
+
+    void updateUserById(ZkUser user);
 }

@@ -14,7 +14,7 @@
     <title>确认收货</title>
 
     <!-- ************************* CSS Files ************************* -->
-
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <!-- All Plugins CSS  -->
     <link rel="stylesheet" href="/assets/css/plugins.css">
 
@@ -37,6 +37,7 @@
     <script src="assets/js/axios.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script>Vue.config.productionTip = false</script>
+
 </head>
 
 <body class="default-color">
@@ -93,7 +94,7 @@
                             <!-- User Action Start -->
                             <div class="user-actions user-actions__coupon">
                                 <div class="message-box mb--30 mb-sm--20">
-                                    <p><i class="fa fa-exclamation-circle"></i><a class="expand-btn" href="#coupon_info">请填写好信息</a></p>
+                                    <p><i class="fa fa-exclamation-circle"></i><a class="expand-btn" href="#coupon_info">请填写好地址信息</a></p>
                                 </div>
                             </div>
                             <!-- User Action End -->
@@ -101,61 +102,60 @@
                     </div>
                     <div class="row pb--80 pb-md--60 pb-sm--40">
                         <!-- Checkout Area Start -->
-                        <div class="col-lg-6" v-if="hasAddress">
+                        <div class="col-lg-6" v-if="!hasAddress">
                             <div class="checkout-title mt--10">
                                 <h2>填写信息</h2>
                             </div>
                             <div class="checkout-form" >
-                                <form action="/order/submitOrder" class="form form--checkout" id="form" method="post">
+                                <form action="/order/submitOrder" class="form form--checkout" id="form" ref="formName" method="post">
                                     <div class="form-row mb--30">
                                         <div class="form__group col-md-6 mb-sm--30">
                                             <label for="billing_fname" class="form__label form__label--2">收货人姓名<span class="required">*</span></label>
-                                            <input type="text" name="receiverName" id="billing_fname"  v-model="user.username" class="form__input form__input--2">
+                                            <input type="text" name="receiverName" placeholder="请输入您的用户名" id="billing_fname"  v-model="address.realname"  class="form__input form__input--2">
                                         </div>
                                     </div>
 
                                     <div class="form-row mb--30">
-                                        <div class="form__group col-12" >
+                                        <div class="form__group col-4" >
                                             <label for="billing_country" class="form__label form__label--2" >省份 <span class="required">*</span></label>
-                                            <select id="billing_country" name="receiverState" v-model="state" class="form__input form__input--2">
-                                                <option v-for="p in this.area.provinces" :key="p.areaId" :value="p.areaId" >{{p.areaName}}</option>
+                                            <select id="billing_country" name="receiverState" v-model="address.province" class="form__input form__input--2">
+                                                <option v-for="p in this.area.provinces"  :value="p.areaName" >{{p.areaName}}</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-row mb--30">
-                                        <div class="form__group col-12">
+                                        <div class="form__group col-4">
                                             <label for="billing_country" class="form__label form__label--2">城市 <span class="required">*</span></label>
-                                            <select  name="receiverCity" v-model="city" class="form__input form__input--2">
-                                                <option v-for="p in this.area.cities" :key="p.areaId" :value="p.areaId" >{{p.areaName}}</option>
-                                                <!--<option value="BD" selected="selected">Bangladesh</option>-->
+                                            <select  name="receiverCity" v-model="address.city" class="form__input form__input--2">
+                                                <option v-for="p in this.area.cities"  :value="p.areaName" >{{p.areaName}}</option>
                                             </select>
                                         </div>
-                                    </div>
-                                    <div class="form-row mb--30">
-                                        <div class="form__group col-12">
+                                        <div class="form__group col-4">
                                             <label for="billing_country" class="form__label form__label--2">县/区 <span class="required">*</span></label>
-                                            <select id="receiver_city" name="receiverCity" class="form__input form__input--2">
-                                                <option v-for="p in this.area.downtowns" :key="p.areaId" :value="p.areaId" >{{p.areaName}}</option>
-                                                <!--<option value="BD" selected="selected">Bangladesh</option>-->
+                                            <select id="receiver_city" v-model="address.area" name="receiverCity" class="form__input form__input--2">
+                                                <option v-for="p in this.area.downtowns"  :value="p.areaName" >{{p.areaName}}</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-row mb--30">
-                                        <div class="form__group col-12">
+                                        <div class="form__group col-6">
                                             <label for="billing_streetAddress" class="form__label form__label--2">街道地址 <span class="required">*</span></label>
-                                            <input type="text" name="receiverAddress" id="billing_streetAddress" class="form__input form__input--2 mb--30" placeholder="" value="">
+                                            <input type="text" name="receiverAddress" v-model="address.street" id="billing_streetAddress" class="form__input form__input--2 mb--30" placeholder="" value="">
+                                        </div>
+                                        <div class="form__group col-6">
+                                            <label for="billing_streetAddress" class="form__label form__label--2">邮政编码  </span><span style="color: red;" v-show="errors.has('zip')">{{ errors.first('zip') }}</span> </label>
+                                            <input type="text" name="zip" v-model="address.zip" placeholder="请输入你的邮政编码" data-vv-as="邮政编码"
+                                                   v-validate="{min:6}"  class="form__input form__input--2 mb--30" placeholder="" value="">
                                         </div>
                                     </div>
                                     <div class="form-row mb--30">
                                         <div class="form__group col-12">
-                                            <label for="billing_phone" class="form__label form__label--2">手机号码 <span class="required">*</span></label>
-                                            <input type="text" name="receiverMobile" id="billing_phone" class="form__input form__input--2" value="">
+                                            <label for="billing_phone" class="form__label form__label--2">手机号码 <span class="required">*  </span><span style="color: red;" v-show="errors.has('telphone')">{{ errors.first('telphone') }}</span></label>
+                                            <input type="text" name="telphone" placeholder="请输入你的手机号" data-vv-as="手机号" v-validate="{required:true,regex:/^1[35678]\d{9}$/}"
+                                                   v-model="address.telphone" id="billing_phone" class="form__input form__input--2" value="">
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    <div class="form-row mb--30">
                                         <div class="form__group col-12">
-                                            <label for="orderNotes" class="form__label form__label--2">订单备注</label>
-                                            <textarea class="form__input form__input--2 form__input--textarea" id="orderNotes" name="receiverDistrict" placeholder="关于你的订单的说明，例如:特别交货说明。"></textarea>
+                                            <button type="button" class="btn btn-fullwidth btn-style-1" @click.prevent="handleAdd">添加地址</button>
                                         </div>
                                     </div>
                                 </form>
@@ -167,12 +167,20 @@
                             </div>
                             <div class="checkout-form" v-for="(ad,i) in addresses">
                                 <div class="form-row mb--30">
-                                    <div class="payment-radio col-md-6 mb-sm--30">
-                                        <input type="radio" :value="i" name="payment-method" v-model="selectedAddress" >
-                                        <label class="payment-label" for="cheque" v-text="ad.name+' '+ad.phone"></label>
+                                    <div class="payment-radio col-md-4 mb-sm--30">
+                                        <input type="radio" :value="ad.addressId" @click.prevent="handleSelect(ad)" name="payment-method" v-model="selectedAddress" >
+                                        <label class="payment-label" for="cheque" v-text="ad.realname+' '+ad.telphone"></label>
                                     </div>
-                                    <div class="payment-info" :data-method="i">
-                                        <p>{{ad.state}} {{ad.city}} {{ad.district}} {{ad.address}}</p>
+                                    <div class="payment-info col-md-6" :data-method="i">
+                                        <p>{{ad.province}} {{ad.city}}  {{ad.area}}  {{ad.street}} {{ad.zip}}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <a href="#" style="margin-top: 2px" class="remove-from-cart remove" @click.prevent="handleEdit(ad)" >
+                                            <i class="dl-icon-edit"></i>
+                                        </a>
+                                        <a href="#" style="margin-top: 2px" class="remove-from-cart remove" @click.prevent="handleDelete(ad)" >
+                                            <i class="dl-icon-close"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -231,11 +239,107 @@
                         </div>
                         <!-- Checkout Area End -->
                     </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title text-left" id="myModalLabel">修改地址</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/order/submitOrder" class="form form--checkout"  method="post">
+                                        <div class="form-row mb--30">
+                                            <div class="form__group col-md-6 mb-sm--30">
+                                                <label for="billing_fname" class="form__label form__label--2">收货人姓名<span class="required">*</span></label>
+                                                <input type="text" name="receiverName" placeholder="请输入您的用户名"  v-model="address.realname"  class="form__input form__input--2">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row mb--30">
+                                            <div class="form__group col-4" >
+                                                <label for="billing_country" class="form__label form__label--2" >省份 <span class="required">*</span></label>
+                                                <select  name="receiverState" v-model="address.province" class="form__input form__input--2">
+                                                    <option v-for="p in this.area.provinces"  :value="p.areaName" >{{p.areaName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form__group col-4">
+                                                <label for="billing_country" class="form__label form__label--2">城市 <span class="required">*</span></label>
+                                                <select  name="receiverCity" v-model="address.city" class="form__input form__input--2">
+                                                    <option v-for="p in this.area.cities"  :value="p.areaName" >{{p.areaName}}</option>
+                                                </select>
+                                            </div>
+                                            <div class="form__group col-4">
+                                                <label for="billing_country" class="form__label form__label--2">县/区 <span class="required">*</span></label>
+                                                <select  v-model="address.area" class="form__input form__input--2">
+                                                    <option v-for="p in this.area.downtowns"  :value="p.areaName" >{{p.areaName}}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb--30">
+                                            <div class="form__group col-6">
+                                                <label for="billing_streetAddress" class="form__label form__label--2">街道地址 <span class="required">*</span></label>
+                                                <input type="text" name="receiverAddress" v-model="address.street"class="form__input form__input--2 mb--30" placeholder="" value="">
+                                            </div>
+                                            <div class="form__group col-6">
+                                                <label for="billing_streetAddress" class="form__label form__label--2">邮政编码  </span><span style="color: red;" v-show="errors.has('zip')">{{ errors.first('zip') }}</span> </label>
+                                                <input type="text" name="zip" v-model="address.zip" placeholder="请输入你的邮政编码" data-vv-as="邮政编码"
+                                                       v-validate="{min:6}"  class="form__input form__input--2 mb--30" placeholder="" value="">
+                                            </div>
+                                        </div>
+                                        <div class="form-row mb--30">
+                                            <div class="form__group col-12">
+                                                <label for="billing_phone" class="form__label form__label--2">手机号码 <span class="required">*  </span><span style="color: red;" v-show="errors.has('telphone')">{{ errors.first('telphone') }}</span></label>
+                                                <input type="text" name="telphone" placeholder="请输入你的手机号" data-vv-as="手机号" v-validate="{required:true,regex:/^1[35678]\d{9}$/}"
+                                                       v-model="address.telphone"  class="form__input form__input--2" value="">
+                                            </div>
+                                        </div>
+                                    </form>
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>
+                                     <button type="button" id="btn_submit" @click.prevent="handleAdd" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                    <!--模态框组件-->
+                    <div class="modal fade" id="myModal1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3>提示</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p>{{msg}}</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-info" data-dismiss="modal">关闭</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <!-- Main Content Wrapper Start -->
+        <script src="assets/js/validate.js"></script>
         <script type="text/javascript">
+            Vue.use(VeeValidate, {
+                events: 'blur',
+                dictionary: {
+                    zh: {
+                        messages: {
+                            required: (field) => field + '不能为空！',
+                            min: (field, args) => field + '长度不能小于' + args[0],
+                            max: (field, args) => field + '长度不能大于' + args[0],
+                            alpha_dash: (field) => field + '只能包含数字、字母或下划线',
+                            regex: (field) => field + "格式不正确",
+                            is: () => "两次密码不一致"
+                        }
+                    }
+                },
+                locale: 'zh'
+            });
             var checkout = new Vue({
                 el: "#content",
                 name: "ls-checkout",
@@ -268,16 +372,15 @@
                         },
                         addresses: [],					// 可选地址列表,需要从后台查询
                         address: {                  // 地址
-                            id: "",
-                            name: "",
-                            phone: "",
-                            areaAddress: {
-                                province: "",
-                                city: "",
-                                downtown: ""
-                            },
-                            detailAddress: "",
-                            isDefault: 0
+                            userId: "",
+                            realname: "",
+                            telphone: "",
+                            province: "",
+                            city: "",
+                            area: "",
+                            street: "",
+                            zip:"",
+                            isDefault: 1    //添加新地址默认为1
                         },
                         selectedAddress: 1, //选中
                         selected:{},
@@ -297,83 +400,52 @@
                             cities: [],                  // 市信息数组
                             downtowns: []                // 县信息数组
                         },
-                        addresses:[// 可选地址列表,假数据，需要从后台查询
-                            {
-                                name:"呵呵",// 收件人姓名
-                                phone:"15800000000",// 电话
-                                state:"上海",// 省份
-                                city:"上海",// 城市
-                                district:"浦东新区",// 区
-                                address:"航头镇航头路18号传智播客 3号楼",// 街道地址
-                                default: true
-                            },
-                            {
-                                name:"张三",// 收件人姓名
-                                phone:"13600000000",// 电话
-                                state:"北京",// 省份
-                                city:"北京",// 城市
-                                district:"朝阳区",// 区
-                                address:"天堂路 3号楼",// 街道地址
-                                default: false
-                            }
-                        ],
-                        // 表单校验规则
-                        rules: {
-                            name: [
-                                {required: true, message: '请输入收货人名称', trigger: 'blur'},
-                                {min: 2, message: '长度不小于 2 个字符', trigger: ['blur', 'change']}
-                            ],
-                            detailAddress: [
-                                {required: true, message: '请输入详细地址', trigger: ['blur', 'change']}
-                            ],
-                            phone: [
-                                {validator: checkPhone, trigger: 'blur'}
-                            ],
-                            receiveZip: [
-                                {validator: checkReceiveZip, trigger: ['blur', 'change']}
-                            ]
-                        },
-                        hasAddress:false //todo					// 用户是否填写过地址信息
+                        hasAddress:false, //todo					// 用户是否填写过地址信息
+                        msg:"",
                     }
                 },
                 created(){
                     // 查询省市区信息
-                    ly.http.get("user/address").then(({data}) => {
+                    ly.http.get("user-service/address").then(({data}) => {
                         this.allAreas = data;
                         this.area.provinces = data.filter(c => c.parentId === 1)
                     });
                      this.loadOrders()
                 },
                 watch:{
-                    state(val, oldval) {
-                        this.area.cities = this.allAreas.filter(c => c.parentId === val ) || [];
+                    "address.province"(val, oldval) {
+                        let province = this.allAreas.filter(c => c.areaName === val )
+                        this.area.cities = this.allAreas.filter(c => c.parentId === province[0].areaId ) || [];
                     },
-                    city(val, oldval) {
-                        this.area.downtowns = this.allAreas.filter(c => c.parentId === val ) || [];
+                    "address.city"(val, oldval) {
+                        let city = this.allAreas.filter(c => c.areaName === val )
+                        this.area.downtowns = this.allAreas.filter(c => c.parentId === city[0].areaId ) || [];
                     }
                 },
                 methods:{
                     loadAddressData(){
                         // 从后台查询用户的地址信息
-                        /*ly.http.get("user/address").then(({data}) => {
+                        ly.http.get("user-service/address/"+this.user.id).then(({data}) => {
                             // 判断该用户是否填写过地址信息
-                            if (data) {
-                                // this.addresses = data;
+                            if (data != null && data.length != 0 && data != undefined) {
+                                this.addresses = data;
                                 // 选择的地址
                                 this.selected = this.addresses.find(a => a.isDefault) || this.addresses[0];
                                 // 找到默认选择的地址
-                                this.selectedAddress = this.selected.id;
+                                this.selectedAddress = this.selected.addressId;
                                 this.hasAddress = true;
                             } else {
                                 // 如果没有填写过地址
                                 this.hasAddress = false;
                             }
-                        });*/
+                        });
                     },
                     // 先判断是否登陆
                     loadOrders(){
                         ly.verifyUser().then((resp) => {
                             this.user = resp.data;
+                            this.address.realname = this.user.username;
+                            this.address.userId = this.user.id;
                             this.loadAddressData();
                             // 如果购物车中没有东西
                             if (!ly.store.get("selectedCarts").length) {
@@ -381,9 +453,12 @@
                             }
                             this.carts = ly.store.get("selectedCarts");
 
-                        }).catch(() => {
+
+                        }).catch((resp) => {
                             // 未登录，跳转至登陆页面
-                            // window.location.href = "/login.html?returnUrl=" + window.location.href;
+                           /* if(resp.status != 200 ){
+                                window.location.href = "/login.html?returnUrl=" + window.location.href;
+                            }*/
                         })
                     },
                     // 提交订单
@@ -419,126 +494,64 @@
                                 alert("服务器繁忙")
                             })
                         }).catch(() => {
-                            location.href = "/login.html?returnUrl=" + location.href;
+                            // location.href = "/login.html?returnUrl=" + location.href;
                         })
                     },
                     // 提交地址
-                    handleSubmit(formName) {
-                        this.$refs[formName].validate((valid) => {
-                            if (valid) {
-                                // 判断是否登陆
-                                ly.verifyUser().then(() => {
-                                    const {areaAddress,...address} = this.address;
-                                    //Object.assign(address, this.address);
-                                    address.areaAddress = Object.values(this.address.areaAddress).join("-");
-                                    console.log(address);
-                                    // 发送请求
-                                    ly.http({
-                                        method:this.isEdit ? "put" : "post",
-                                        url:"user/address",
-                                        data:address
-                                    }).then(() => {
-                                        this.$message.success("保存成功");
-                                        this.loadAddressData();
+                    handleAdd() {
+                        // 判断是否登陆
+                        this.$validator.validateAll().then(d => {
+                                if (d) {
+                                    ly.verifyUser().then(() => {
+                                        const {areaAddress,...address} = this.address;
+                                        // address.areaAddress = Object.values(this.address.areaAddress).join("-");
+                                        console.log(address);
+                                        // 发送请求
+                                        ly.http({
+                                            method:this.isEdit?"put":"post",
+                                            url:"user-service/address",
+                                            data:address
+                                        }).then(() => {
+                                            $('#myModal1').modal();
+                                            this.msg = "操作成功！";
+                                            this.address = {};
+                                            this.loadAddressData();
+                                        }).catch(() => {
+                                            console.log("服务器异常,保存失败")
+                                        });
                                     }).catch(() => {
-                                        this.$message.error("服务器异常,保存失败")
-                                    });
-                                    this.showDialog = false;
-                                    this.resetForm("address")
-                                }).catch(() => {
-                                    location.href = "/login.html?returnUrl=" + location.href;
-                                })
-                            } else {
-                                console.log('error submit!!');
-                                return false;
-                            }
-                        });
+                                        // location.href = "/login.html?returnUrl=" + location.href;
+                                    })
+                                }
+                        })
+
                     },
                     // 编辑地址的方法
                     handleEdit(row) {
                         this.isEdit = true;
-                        this.showDialog = true;
+                        $('#myModal').modal();
                         const {areaAddress,...params} = row;
                         Object.assign(this.address,params);
-                        const area = areaAddress.split("-").map(c => c.trim());
-                        this.address.areaAddress.province = area[0];
-                        this.address.areaAddress.city = area[1];
-                        this.address.areaAddress.downtown = area[2];
-                    },
-                    // 添加地址的方法
-                    handleAdd() {
-                        this.address = {                  // 地址
-                            name: "",
-                            phone: "",
-                            areaAddress: {
-                                province: "",
-                                city: "",
-                                downtown: ""
-                            },
-                            detailAddress: "",
-                            receiveZip: "",
-                            isDefault:0
-                        };
-                        this.isEdit = false;
-                        //this.resetForm("address");
-                        this.showDialog = true;
                     },
                     // 删除地址的方法
                     handleDelete(row){
                         ly.verifyUser().then(() => {
-                            this.$confirm("确定删除该地址?").then(() => {
-                                ly.http.delete("user/address/" + row.id).then(() => {
+                            if(confirm("确定删除该地址?")){
+                                ly.http.delete("user-service/address/" + row.addressId).then(() => {
                                     this.loadAddressData();
-                                    this.$message.success("删除成功")
                                 }).catch(() => {
-                                    this.$message.error("服务器异常,删除失败")
+                                    console.log("服务器异常,删除失败")
                                 })
-                            }).catch(() => {
-                                this.$message.info("删除操作已取消");
-                            })
-                        }).catch(() => {
-                            location.href = "/login.html?returnUrl=" + location.href;
+                            }
+                        }).catch(() =>{
+
                         })
-                    },
-                    // 重置弹窗的内容
-                    resetForm(formName) {
-                        this.$refs[formName].resetFields();
-                        this.address = {                  // 地址
-                            name: "",
-                            phone: "",
-                            areaAddress: {
-                                province: "",
-                                city: "",
-                                downtown: ""
-                            },
-                            detailAddress: "",
-                            receiveZip: "",
-                            isDefault:0
-                        };
-                    },
-                    // 关闭弹窗方法
-                    handleClose() {
-                        this.showDialog = false;
-                        this.address = {                  // 地址
-                            name: "",
-                            phone: "",
-                            areaAddress: {
-                                province: "",
-                                city: "",
-                                downtown: ""
-                            },
-                            detailAddress: "",
-                            receiveZip: "",
-                            isDefault:0
-                        };
-                        this.loadAddressData();
                     },
                     // 选择地址的方法
                     handleSelect(a){
-                        this.selectedAddress = a.id;
+                        this.selectedAddress = a.addressId;
                         this.selected = a;
                     },
-
                 },
                 computed: {
                     //计算总价格
@@ -697,6 +710,7 @@
     <!-- REVOLUTION JS FILES -->
     <script src="/assets/js/revoulation/jquery.themepunch.tools.min.js"></script>
     <script src="/assets/js/revoulation/jquery.themepunch.revolution.min.js"></script>
+    <script src="/assets/js/bootbox.min.js"></script>
 
     <!-- REVOLUTION ACTIVE JS FILES -->
     <script src="/assets/js/revoulation.js"></script>

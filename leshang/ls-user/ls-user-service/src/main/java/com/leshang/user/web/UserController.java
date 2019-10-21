@@ -2,6 +2,7 @@ package com.leshang.user.web;
 
 import com.leshang.user.pojo.ZkAreas;
 import com.leshang.user.pojo.ZkUser;
+import com.leshang.user.pojo.ZkUserAddress;
 import com.leshang.user.service.ZkUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -73,22 +74,18 @@ public class UserController {
     }
 
     /**
-     * 省市区信息
-     * @return
-     */
-    @GetMapping("address")
-    public ResponseEntity<List<ZkAreas>> queryAddress(){
-        return  ResponseEntity.ok(userService.queryAddress());
-    }
-
-    /**
      * 根据id查询该用户信息
      * @param id
      * @return
      */
-    @GetMapping("/{id}")
+    @GetMapping("{id}")
     public ResponseEntity<ZkUser> queryUserById(@PathVariable("id") Long id){
         return ResponseEntity.ok(userService.queryUserById(id));
     }
 
+    @PutMapping
+    public ResponseEntity<Void> updateUserById(@RequestBody ZkUser user){
+        userService.updateUserById(user);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 }

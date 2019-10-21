@@ -59,7 +59,7 @@ public class OrderQueryController {
      * @return
      */
     @GetMapping("{userId}")
-    public ResponseEntity<PageResult<OrderVo>> queryOrderByUid(@PathVariable("userId")String userId){
-        return ResponseEntity.ok(orderService.queryOrderByUid(userId));
+    public ResponseEntity<PageResult<OrderVo>> queryOrderByUid(@PathVariable("userId")String userId,@RequestParam("page")Integer page){
+        return ResponseEntity.ok(orderService.queryOrderByUid(userId,page));
     }
 }

@@ -30,11 +30,6 @@
         <script src="assets/js/axios.min.js"></script>
         <script src="assets/js/common.js"></script>
         <script>Vue.config.productionTip = false</script>
-        <style>
-            .row{
-
-            }
-        </style>
     </head>
 
     <body data-spy="scroll" data-target=".navbar-collapse" style="background:#f1f2f7">
@@ -60,9 +55,10 @@
                                 <div>
                                     <div class="content" style="min-height:28vw">
                                         <p class=""><i class="fa fa-check-circle icon-success" aria-hidden="true"></i>&nbsp;&nbsp;恭喜您支付成功，请等待5-30分钟系统确认</p>
-                                        <p>总共花费 <span class="myprice" id="money"></span> 元</p>
-                                        <input type="text" class="main-btn mybtn" value="查看结果" onclick="submit1()" readonly>
-                                        <input type="text" class="main-btn mybtn" value="继续支付" onclick="submit2()" readonly>
+                                        <p style="margin-right: 120px">支付方式：微信支付</p>
+                                        <p style="margin-right: 120px">总共花费 <span class="myprice" v-text="actualPay+'.00'"></span> 元</p>
+                                        <input type="text" class="main-btn mybtn" value="查看结果" @click="queryOrder" readonly>
+                                        <input type="text" class="main-btn mybtn" value="继续购物" @click="ContinueShopping" readonly>
                                     </div>
                                 </div>
                                   
@@ -89,7 +85,35 @@
         <script type="text/javascript">
             var confirm = new Vue({
                 el:"#culmn",
-                name:"ls-confirm",
+                name:"ls-paysuccess",
+                data(){
+                    return{
+                        ly,
+                        actualPay:0,			// 实际支付金额
+                        orderId:""				// 订单号
+                    }
+                },
+                created(){
+                    // 判断登陆状态
+                    ly.verifyUser().then(() => {
+                        // 查询支付订单
+                        this.orderId = ly.getUrlParam("orderId");
+                        ly.http.get("/order/order/" + this.orderId).then(({data}) => {
+                            this.actualPay = data.actualPay;
+                        });
+                    }).catch(() => {
+                        // 未登录，转至登陆页面
+                        location.href = "/login.html?returnUrl=" + location.href;
+                    })
+                },
+                methods:{
+                    queryOrder(){
+                          location.href = "/my-account.html#orders";
+                    },
+                    ContinueShopping(){
+                        location.href = "/index.html";
+                    }
+                },
                 components:{
                     shortcut:() => import('./assets/js/pages/shop.js')
                 }

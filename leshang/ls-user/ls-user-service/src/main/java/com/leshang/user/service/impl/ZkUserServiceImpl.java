@@ -4,13 +4,16 @@ import com.leshang.common.enums.ExceptionEnum;
 import com.leshang.common.exception.LyException;
 import com.leshang.common.utils.NumberUtils;
 import com.leshang.user.mapper.AreasMapper;
+import com.leshang.user.mapper.UserAddressMapper;
 import com.leshang.user.mapper.UserMapper;
 import com.leshang.user.pojo.ZkAreas;
 import com.leshang.user.pojo.ZkUser;
+import com.leshang.user.pojo.ZkUserAddress;
 import com.leshang.user.service.ZkUserService;
 import com.leshang.user.utils.CodecUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -32,8 +35,7 @@ public class ZkUserServiceImpl implements ZkUserService {
 
     @Autowired
     private UserMapper userMapper;
-    @Autowired
-    private AreasMapper areasMapper;
+
     @Autowired
     private AmqpTemplate amqpTemplate;
     @Autowired
@@ -112,13 +114,15 @@ public class ZkUserServiceImpl implements ZkUserService {
         return userMapper.selectCount(record) == 0;
     }
 
-    @Override
-    public List<ZkAreas> queryAddress() {
-        return areasMapper.selectAll();
-    }
 
     @Override
     public ZkUser queryUserById(Long id) {
         return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public void updateUserById(ZkUser user) {
+        user.setUpdated(new Date());
+        userMapper.updateByPrimaryKeySelective(user);
     }
 }
