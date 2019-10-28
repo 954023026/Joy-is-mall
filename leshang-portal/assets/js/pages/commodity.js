@@ -51,7 +51,7 @@ const commodity = {
                                             </div>
                                             <div class="zuka-product-action">
                                                 <div class="product-action d-flex flex-column align-items-end">
-                                                    <a class="add_wishlist action-btn" href="wishlist.html" data-toggle="tooltip" data-placement="top" title="" data-original-title="收藏">
+                                                    <a class="add_wishlist action-btn" href="wishlist.html" @click.prevent="addCollect(item.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="收藏">
                                                         <i class="dl-icon-heart4"></i>
                                                     </a>
                                                     <a class="add_to_cart_btn action-btn" href="cart.html" @click.prevent="addCart(item.id)" data-toggle="tooltip" data-placement="top" title="" data-original-title="添加到购物车">
@@ -129,7 +129,7 @@ const commodity = {
                         <ul class="pagination">
                             <li><a href="shop-sidebar.html"  @click.prevent="prePage" class="prev page-number"><i class="fa fa-angle-double-left"></i></a></li>
                             <li v-for="i in Math.min(5,totalPage)" :key="i">
-                                <span :class="index(i) === page?'current page-number':'page-number'" v-text="index(i)"></span>
+                                <span :class="index(i) === page?'current page-number':'page-number'" @click="selectPage(index(i))" v-text="index(i)"></span>
                             </li>
                             <li  v-show="page+2<totalPage && totalPage >5"><span>...</span></li>
                             <li><a href="shop-sidebar.html" @click.prevent="nextPage" class="next page-number"><i class="fa fa-angle-double-right"></i></a></li>
@@ -213,7 +213,7 @@ const commodity = {
         this.page = parseInt(search.page) || 1;
         this.search = search;
         if (!this.search.key) {
-            this.goFind(210)
+            this.goFind(1429)
         }else{
             this.loadData();//搜索发起请求
         }
@@ -260,6 +260,9 @@ const commodity = {
             }).catch(error => {
 
             })
+        },
+        selectPage(i){
+            this.page = i;  //修改当前页
         },
         index(i){
             if (this.page <= 3 || this.totalPage < 5 ){
@@ -363,6 +366,27 @@ const commodity = {
                 ly.store.set("carts", carts);
                 // 跳转到购物车列表页
                 window.location.href = "http://www.leshang.com/cart.html";
+            })
+        },
+        addCollect(spuId){
+            ly.verifyUser().then(resp => {
+                ly.http.post("/user-service/collect", {
+                    collectUserId:resp.data.id,
+                    collectSpuId:spuId
+                }).then(resp => {
+                    // 跳转到收藏列表页
+                    window.location.href = "http://www.leshang.com/wishlist.html";
+                }).catch(resp => {
+                    let rest = ly.parse(resp);
+                    if (rest.response.data.status == 403){
+                        alert(rest.response.data.message)
+                        window.location.href = "http://www.leshang.com/wishlist.html";
+                    }
+                })
+
+            }).catch(resp => {
+                // 未登陆状态时，跳转至登陆页面
+                window.location.href = "/login.html?returnUrl="+window.location.href;
             })
         }
 

@@ -141,7 +141,7 @@
                     <div class="col-lg-4">
                         <div class="cart-collaterals">
                             <div class="cart-totals">
-                                <h5 class="font-size-14 font-bold mb--15">总计：</h5>
+                                <h5 class="font-size-14 font-bold mb--15">总计</h5>
                                 <div class="cart-calculator">
                                     <div class="cart-calculator__item">
                                         <div class="cart-calculator__item--head">
@@ -642,8 +642,6 @@
             totalPrice() {
                 return this.carts.reduce((c1, c2) => c1 + c2.num * c2.price, 0);
             },
-
-
         },
         components:{
             shortcut:() => import('./assets/js/pages/shop.js')      //头部引入

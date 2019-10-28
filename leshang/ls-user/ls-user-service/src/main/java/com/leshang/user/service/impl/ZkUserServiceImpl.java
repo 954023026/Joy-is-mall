@@ -55,7 +55,7 @@ public class ZkUserServiceImpl implements ZkUserService {
         msg.put("code", code);
 
         //发送验证码
-//        amqpTemplate.convertAndSend("ls.sms.exchange", "sms.verify.code", msg);
+        amqpTemplate.convertAndSend("ls.sms.exchange", "sms.verify.code", msg);
 
         //保存验证码
         redisTemplate.opsForValue().set(key, code, 5, TimeUnit.MINUTES);
@@ -64,11 +64,11 @@ public class ZkUserServiceImpl implements ZkUserService {
     @Override
     public void register(ZkUser user, String code) {
         //从reids中取出验证码
-        /*String cacheCode = redisTemplate.opsForValue().get(KEY_PREFIX + user.getPhone());
+        String cacheCode = redisTemplate.opsForValue().get(KEY_PREFIX + user.getPhone());
         //校验验证码
         if (!StringUtils.equals(code, cacheCode)) {
             throw new LyException(ExceptionEnum.INVALID_VERIFY_CODE);
-        }*/
+        }
         //生成盐
         String salt = CodecUtils.generateSalt();
         user.setSalt(salt);

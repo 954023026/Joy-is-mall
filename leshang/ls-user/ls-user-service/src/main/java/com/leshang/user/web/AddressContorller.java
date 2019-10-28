@@ -75,6 +75,11 @@ public class AddressContorller {
         return ResponseEntity.ok().build();
     }
 
+    /**
+     * 根据地址id查询地址
+     * @param addressId
+     * @return
+     */
     @GetMapping("id")
     public ResponseEntity<ZkUserAddress> queryAddressByAddressId(@RequestParam("addressId") Long addressId){
         return ResponseEntity.ok(addressService.queryAddressByAddressId(addressId));

@@ -21,8 +21,6 @@
         <module>ls-page</module>
         <module>ls-sms</module>
         <module>ls-upload</module>
-        <!--  <module>ls-upload</module>
-          <module>ls-search</module>-->
     </modules>
     <packaging>pom</packaging>
 

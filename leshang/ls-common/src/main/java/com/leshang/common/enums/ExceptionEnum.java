@@ -56,6 +56,9 @@ public enum ExceptionEnum {
     CREATE_ORDER_ERROR(500,"创建订单失败！"),
     STOCK_NOT_ENOUGH(500,"库存不足！"),
 
+    COLLECTION_DELETE_FAILURE(500,"删除收藏商品失败！"),
+    COLLECTION_INSERT_FAILURE(500,"添加收藏失败！"),
+    COLLECTION_INSERT_CONTAINS(403,"收藏夹中已包含该商品！")
     ;
 
 

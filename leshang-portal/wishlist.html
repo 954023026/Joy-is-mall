@@ -89,98 +89,45 @@
                                     <th>&nbsp;</th>
                                     <th>&nbsp;</th>
                                     <th class="text-left">商品</th>
-                                    <th>Stock Status</th>
+                                    <th>库存状态</th>
+                                    <th>商品状态</th>
                                     <th>价格:</th>
                                     <th>&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
+                                <tr v-for="item in collectList" :key="item.id">
+                                    <td class="product-remove text-left" ><a href="" @click.prevent="deleteCollect(user.id,item.id)"><i  class="dl-icon-close"></i></a></td>
                                     <td class="product-thumbnail text-left">
-                                        <img src="assets/img/products/prod-11-1-70x88.jpg" alt="Product Thumnail">
+                                        <img :src="item.image" :alt="item.sellPoint">
                                     </td>
                                     <td class="product-name text-left wide-column">
                                         <h3>
-                                            <a href="product-details.html">Pinstripe slim-fit suit blazer</a>
+                                            <a href="product-details.html" v-text="item.title"></a>
                                         </h3>
                                     </td>
-                                    <td class="product-stock">
-                                        In Stock
+                                    <td class="product-stock" v-if="item.num > 0">
+                                        库存充足
+                                    </td>
+                                    <td class="product-stock" v-else>
+                                        库存不足
+                                    </td>
+                                    <td class="product-stock" v-if="item.status == 1">
+                                        商品正常
+                                    </td>
+                                    <td class="product-stock" v-else-if="item.status == 2">
+                                        商品已下架
+                                    </td>
+                                    <td class="product-stock" v-else="item.status == 3">
+                                        商品已删除
                                     </td>
                                     <td class="product-price">
                                                 <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
+                                                    <span class="money" v-text="stringPrice(item.price)"></span>
                                                 </span>
                                     </td>
                                     <td class="product-action-btn">
-                                        <a href="cart.html">加入购物车</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
-                                    <td class="product-thumbnail text-left">
-                                        <img src="assets/img/products/prod-29-1-70x88.jpg" alt="Product Thumnail">
-                                    </td>
-                                    <td class="product-name text-left wide-column">
-                                        <h3>
-                                            <a href="product-details.html">Warm Shaker Solid Wood End Table</a>
-                                        </h3>
-                                    </td>
-                                    <td class="product-stock">
-                                        In Stock
-                                    </td>
-                                    <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                    </td>
-                                    <td class="product-action-btn">
-                                        <a href="cart.html">加入购物车</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
-                                    <td class="product-thumbnail text-left">
-                                        <img src="assets/img/products/prod-30-1-70x88.jpg" alt="Product Thumnail">
-                                    </td>
-                                    <td class="product-name text-left wide-column">
-                                        <h3>
-                                            <a href="product-details.html">Atlin Designs Mid Century Club Chair</a>
-                                        </h3>
-                                    </td>
-                                    <td class="product-stock">
-                                        In Stock
-                                    </td>
-                                    <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                    </td>
-                                    <td class="product-action-btn">
-                                        <a href="cart.html">Add to cart</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-remove text-left"><a href=""><i class="dl-icon-close"></i></a></td>
-                                    <td class="product-thumbnail text-left">
-                                        <img src="assets/img/products/prod-31-1-70x88.jpg" alt="Product Thumnail">
-                                    </td>
-                                    <td class="product-name text-left wide-column">
-                                        <h3>
-                                            <a href="product-details.html">Contemporary 5-Light Large Chandelier</a>
-                                        </h3>
-                                    </td>
-                                    <td class="product-stock">
-                                        In Stock
-                                    </td>
-                                    <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49.00</span>
-                                                </span>
-                                    </td>
-                                    <td class="product-action-btn">
-                                        <a href="cart.html">加入购物车</a>
+                                        <a href="cart.html" @click.prevent="addCart(item)">加入购物车</a>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -405,78 +352,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="modal-box product-summary">
-                                <div class="product-top-meta d-flex justify-content-between flex-sm-row flex-column-reverse">
-                                    <div class="product-rating d-flex">
-                                        <div class="star-rating star-five">
-                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                        </div>
-                                        <a href="" class="review-link">(1 customer review)</a>
-                                    </div>
-                                    <div class="product-navigation">
-                                        <a href="#" class="prev"><i class="dl-icon-left"></i></a>
-                                        <a href="#" class="next"><i class="dl-icon-right"></i></a>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <h3 class="product-title mb--30 mb-md--20">Fake News Network Abstract Novelty T-Shirt</h3>
-                                <div class="product-price-wrapper mb--30 mb-md--20">
-                                <span class="product-price-old">
-                                    <span class="money">&pound;60.00</span>
-                                </span>
-                                    <span class="money">&pound;49.00</span>
-                                </div>
-                                <p class="product-short-description mb--30 mb-md--20">Donec accumsan auctor iaculis. Sed suscipit arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget, sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
-                                <div class="product-action d-flex flex-row align-items-center mb--20">
-                                    <div class="quantity mr--20">
-                                        <input type="number" class="quantity-input" name="qty" id="quick-qty" value="1" min="1">
-                                    </div>
-                                    <button type="button" class="btn btn-style-1 btn-semi-large btn-shape-round add-to-cart" onclick="window.location.href='cart.html'">
-                                        Add To Cart
-                                    </button>
-                                    <a href="wishlist.html" class="action-btn action-btn-square"><i class="dl-icon-heart2"></i></a>
-                                    <a href="compare.html" class="action-btn action-btn-square"><i class="dl-icon-compare2"></i></a>
-                                </div>
-                                <div class="product-extra mb--20">
-                                    <a href="#" class="font-size-12"><i class="fa fa-map-marker"></i>Find store near you</a>
-                                    <a href="#" class="font-size-12"><i class="fa fa-exchange"></i>Delivery and return</a>
-                                </div>
-                                <div class="product-summary-footer">
-                                    <div class="product-meta mb--20">
-                                        <span class="sku_wrapper font-size-12">SKU: <span class="sku">REF. LA-887</span></span>
-                                        <span class="posted_in font-size-12">Categories: <a href="shop-sidebar.html" rel="tag">Fashions</a></span>
-                                    </div>
-                                    <div class="product-share-box">
-                                        <span class="font-size-12">Share With</span>
-                                        <!-- Social Icons Start Here -->
-                                        <ul class="social social-small">
-                                            <li class="social__item">
-                                                <a href="facebook.com" class="social__link">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="twitter.com" class="social__link">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="plus.google.com" class="social__link">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="social__item">
-                                                <a href="plus.google.com" class="social__link">
-                                                    <i class="fa fa-pinterest-p"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <!-- Social Icons End Here -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -511,6 +386,8 @@
             cart,
             carts: [],// 购物车数据
             freight: 20,    //运费
+            collectList:[], //收藏集合
+            user:{},
         },
         created() {
             this.loadCarts();
@@ -518,9 +395,12 @@
         methods: {
             loadCarts() {
                 // 先判断登录状态
-                ly.verifyUser().then(res => {
+                ly.verifyUser().then(resp => {
                     // 登陆状态，查看本次localStorage是否存有购物车信息
                     const localCarts = ly.store.get("carts");
+                    this.user = resp.data;
+                    //查询收藏表
+                    this.queryCollect(this.user.id);
                     // 如果本地存有购物车信息，则发送至后台保存，然后删除本地的
                     if (localCarts) {
                         ly.http.post("/cart/addLocal", localCarts)
@@ -536,6 +416,35 @@
                     this.carts = ly.store.get("carts") || [];
                     this.cartNum()
                 })
+
+            },
+            queryCollect(uid){
+                ly.http.get("/user-service/collect",{
+                    params:{
+                        uid:uid
+                    }
+                }).then(resp => {
+                    this.collectList = resp.data;
+                })
+            },
+            deleteCollect(uid,spuId){
+               if(confirm("确定要删除该收藏吗？")){
+                   ly.http.delete("/user-service/collect",{
+                       params:{
+                           uid:uid,
+                           spuId:spuId
+                       }
+                   }).then(resp => {
+                       //查找到该商品
+                       var index = this.collectList.findIndex(item =>{
+                           if(item.id == spuId){
+                               return true
+                           }
+                       });
+                       console.log(index)
+                       this.collectList.splice(index,1);
+                   })
+               }
 
             },
             getCartList(){
@@ -578,6 +487,50 @@
             cartNum(){
                 cart.num = this.carts.length;
                 cart.carts = this.carts;
+            },
+            addCart(item) {  //添加购物车
+                // 判断是否登录
+                ly.verifyUser().then(() => {
+                    // 已登录
+                    ly.http.post("/cart", {
+                        id: item.id,
+                        title:item.title,
+                        image:item.image,
+                        price:item.price,
+                        num:1,
+                        stock:item.num,//商品库存
+                        sellPoint:item.sellPoint
+                    }).then(() => {
+                        // 跳转到购物车列表页
+                        window.location.href = "http://www.leshang.com/cart.html";
+                    }).catch(() => {
+                        alert("添加购物车失败，请重试！");
+                    })
+                }).catch(() => {
+                    // 获取以前的购物车
+                    const carts = ly.store.get("carts") || [];
+                    // 获取与当前商品id一致的购物车数据
+                    const cart = carts.find(i => i.id === id); //查找到该商品
+                    if (cart) {
+                        // 存在，修改数量
+                        cart.num += this.num;
+                    } else {
+                        // 不存在，新增
+                        carts.push({
+                            id: this.item.id,
+                            title: this.item.title,
+                            image: this.item.image,
+                            price: this.item.price,
+                            num:1,
+                            stock:this.item.num,    //商品库存
+                            sellPoint:this.item.sellPoint
+                        })
+                    }
+                    // 未登录
+                    ly.store.set("carts", carts);
+                    // 跳转到购物车列表页
+                    window.location.href = "http://www.leshang.com/cart.html";
+                })
             }
 
         },

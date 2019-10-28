@@ -548,7 +548,7 @@ const ly = leyou = {
      * 封装的校验是否登陆的方法
      */
     verifyUser(){
-        return axios.get("auth/verify");
+        return this.http.get("auth/verify");
     },
     /**
      * 发起ajax请求工具，底层依然是axios
