@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64a16e60-c0cd-407a-8a17-a29368594a13" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ls-page/src/main/resources/static/assets/img/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-page/src/main/resources/static/assets/img/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-interface/src/main/java/com/leshang/user/pojo/ZkCollect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/clinet/ItemClinet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/mapper/CollectMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/CollectService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/CollectServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/CollectController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/commodity.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/commodity.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/shop.js" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/assets/js/pages/shop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/my-account.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/my-account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../leshang-portal/wishlist.html" beforeDir="false" afterPath="$PROJECT_DIR$/../leshang-portal/wishlist.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-auth/ls-auth-common/src/test/java/com/leshang/auth/test/JwtTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-auth/ls-auth-common/src/test/java/com/leshang/auth/test/JwtTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-common/src/main/java/com/leshang/common/enums/ExceptionEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-common/src/main/java/com/leshang/common/enums/ExceptionEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-page/src/main/resources/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/ls-page/src/main/resources/templates/product-details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-user/ls-user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ls-user/ls-user-service/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/LsUserApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/LsUserApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/ZkUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/ZkUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/AddressContorller.java" beforeDir="false" afterPath="$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/AddressContorller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -65,7 +41,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1709">
+            <state relative-caret-position="1672">
               <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -77,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/ZkUserServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+            <state relative-caret-position="110">
+              <caret line="45" selection-start-line="45" selection-end-line="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,7 +83,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/utils/SmsUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1034">
+            <state relative-caret-position="286">
               <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
             </state>
           </provider>
@@ -326,9 +302,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="140" />
-    <option name="y" value="33" />
+    <option name="y" value="32" />
     <option name="width" value="1715" />
-    <option name="height" value="989" />
+    <option name="height" value="990" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -339,6 +315,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -346,17 +324,96 @@
               <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
               <item name="leshang" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="leshang" type="b2602c69:ProjectViewProjectNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user" type="462c0819:PsiDirectoryNode" />
+              <item name="ls-user-service" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="leshang" type="462c0819:PsiDirectoryNode" />
+              <item name="user" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
-    <property name="MyBatisLogPluginindexNum" value="3018" />
+    <property name="MyBatisLogPluginindexNum" value="3132" />
     <property name="MyBatisLogPluginparameters" value="Parameters:" />
     <property name="MyBatisLogPluginpreparing" value="Preparing:" />
     <property name="MyBatisLogPluginrunning" value="true" />
@@ -622,7 +679,8 @@
       <workItem from="1571792890163" duration="1023000" />
       <workItem from="1571896177686" duration="14386000" />
       <workItem from="1571917408693" duration="1432000" />
-      <workItem from="1572225644819" duration="7109000" />
+      <workItem from="1572225644819" duration="8218000" />
+      <workItem from="1572325580236" duration="1094000" />
     </task>
     <task id="LOCAL-00001" summary="乐尚商城基本架构">
       <created>1567684562814</created>
@@ -715,7 +773,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571628281033</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="最终版，不再修改。">
+      <created>1572246529214</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1572246529214</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -751,12 +816,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357471000" />
+    <option name="totallyTimeSpent" value="359674000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="112" y="27" width="1372" height="791" extended-state="0" />
+    <frame x="112" y="26" width="1372" height="792" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49463806" visible="true" weight="0.28234398" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49463806" visible="true" weight="0.2869102" />
       <window_info id="Structure" order="1" sideWeight="0.5053619" side_tool="true" weight="0.23324397" />
       <window_info id="JRebel" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -785,7 +850,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="17" weight="0.3297587" />
       <window_info anchor="bottom" id="Messages" order="18" sideWeight="0.49932975" weight="0.35924932" />
       <window_info anchor="bottom" id="MyBatis Log" order="19" weight="0.3069705" />
-      <window_info anchor="bottom" x="21" y="311" width="1492" height="246" id="Run Dashboard" order="20" sideWeight="0.49932975" visible="true" weight="0.5144158" />
+      <window_info active="true" anchor="bottom" x="21" y="311" width="1492" height="246" id="Run Dashboard" order="20" sideWeight="0.49932975" visible="true" weight="0.5151515" />
       <window_info anchor="bottom" id="Inspection Results" order="21" sideWeight="0.5218703" weight="0.32916668" />
       <window_info anchor="right" id="JRebel Setup Guide" order="0" weight="0.3297587" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
@@ -1201,6 +1266,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1672">
+          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/mq/SmsListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/config/SmsProperties.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/utils/SmsUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/CollectServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="924">
@@ -1242,41 +1338,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/web/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1709">
-          <caret line="87" column="29" selection-start-line="87" selection-start-column="29" selection-end-line="87" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/mq/SmsListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/config/SmsProperties.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ls-sms/src/main/java/com/leshang/utils/SmsUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1034">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ls-user/ls-user-service/src/main/java/com/leshang/user/service/impl/ZkUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="43" column="68" lean-forward="true" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+        <state relative-caret-position="110">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
