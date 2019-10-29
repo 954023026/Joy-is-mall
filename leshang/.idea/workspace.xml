@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="64a16e60-c0cd-407a-8a17-a29368594a13" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="64a16e60-c0cd-407a-8a17-a29368594a13" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/ls-gateway/target/" />
@@ -680,7 +678,7 @@
       <workItem from="1571896177686" duration="14386000" />
       <workItem from="1571917408693" duration="1432000" />
       <workItem from="1572225644819" duration="8218000" />
-      <workItem from="1572325580236" duration="1094000" />
+      <workItem from="1572325580236" duration="1399000" />
     </task>
     <task id="LOCAL-00001" summary="乐尚商城基本架构">
       <created>1567684562814</created>
@@ -780,7 +778,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572246529214</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="最终版，不再修改。">
+      <created>1572328581695</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1572328581696</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -816,7 +821,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="359674000" />
+    <option name="totallyTimeSpent" value="359979000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="112" y="26" width="1372" height="792" extended-state="0" />
